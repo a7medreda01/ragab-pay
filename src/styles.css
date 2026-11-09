@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    direction: rtl;
+    font-family: 'Alexandria', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-slate-950 text-slate-800 antialiased overflow-x-hidden;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 32px 0 rgba(2, 132, 199, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06);
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* iOS Spring Micro Animations */
+.tap-bounce {
+  transition: transform 0.15s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.15s ease;
+}
+.tap-bounce:active {
+  transform: scale(0.96);
+  opacity: 0.92;
+}
+
+/* Safe Area Insets for Mobile */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 16px);
+}
