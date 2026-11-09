@@ -91,6 +91,25 @@ import { AppStateService } from '../../services/app-state.service';
                 <span class="text-[9px] text-white/40">Exclusive</span>
               </div>
 
+              <!-- AI Search Assistant Service -->
+              <div
+                (click)="openAiChat()"
+                class="group p-3.5 rounded-2xl bg-gradient-to-r from-indigo-900/70 via-azure-900/60 to-slate-900 hover:from-indigo-900/90 border border-indigo-400/40 hover:border-indigo-300 transition-all cursor-pointer tap-bounce shadow-sm flex items-start gap-3"
+              >
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform border border-indigo-400/30">
+                  <span class="text-lg">🤖</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <h5 class="text-xs font-bold text-white group-hover:text-indigo-300 transition-colors">مستشار السيرش الذكي (AI)</h5>
+                    <span class="px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 text-[9px] font-bold border border-indigo-500/30">جديد ✨</span>
+                  </div>
+                  <p class="text-[10px] text-white/70 mt-0.5 leading-snug">
+                    تحدث مع الذكاء الاصطناعي ليحلل رغباتك ويقترح لك الوحدة الأنسب فوراً.
+                  </p>
+                </div>
+              </div>
+
               <!-- Service 1: شراء وتفعيل QR السياحي -->
               <div
                 (click)="openQrPass()"
@@ -266,6 +285,11 @@ export class SideDrawerComponent {
 
   close() {
     this.state.isSideDrawerOpen.set(false);
+  }
+
+  openAiChat() {
+    this.close();
+    this.state.isAiChatOpen.set(true);
   }
 
   openQrPass() {

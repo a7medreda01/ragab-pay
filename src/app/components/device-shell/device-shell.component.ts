@@ -17,6 +17,7 @@ import { AuthModalComponent } from '../../screens/auth/auth.component';
 import { SideDrawerComponent } from '../side-drawer/side-drawer.component';
 import { QrPassModalComponent } from '../qr-pass-modal/qr-pass-modal.component';
 import { VipServicesModalComponent } from '../vip-services-modal/vip-services-modal.component';
+import { AiChatModalComponent } from '../ai-chat-modal/ai-chat-modal.component';
 
 @Component({
   selector: 'app-device-shell',
@@ -38,7 +39,8 @@ import { VipServicesModalComponent } from '../vip-services-modal/vip-services-mo
     AuthModalComponent,
     SideDrawerComponent,
     QrPassModalComponent,
-    VipServicesModalComponent
+    VipServicesModalComponent,
+    AiChatModalComponent
   ],
   template: `
     <!-- Desktop Ambient Background Container -->
@@ -182,6 +184,7 @@ import { VipServicesModalComponent } from '../vip-services-modal/vip-services-mo
             <app-side-drawer></app-side-drawer>
             <app-qr-pass-modal></app-qr-pass-modal>
             <app-vip-services-modal></app-vip-services-modal>
+            <app-ai-chat-modal></app-ai-chat-modal>
           </div>
 
           <!-- iPhone Home Indicator Bar (Desktop Mode) -->

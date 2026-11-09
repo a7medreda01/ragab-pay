@@ -63,6 +63,7 @@ export class AppStateService {
   readonly isSideDrawerOpen = signal<boolean>(false);
   readonly isQrPassModalOpen = signal<boolean>(false);
   readonly isVipServicesModalOpen = signal<boolean>(false);
+  readonly isAiChatOpen = signal<boolean>(false);
 
   // Favorites & Bookings
   readonly favorites = signal<string[]>(this.loadFavorites());

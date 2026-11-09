@@ -80,9 +80,19 @@ import { Property } from '../../data/properties.data';
         </div>
       </div>
 
-      <!-- Elite Quick Services Row (Tourism QR, VIP Concierge, All Services) -->
+      <!-- Elite Quick Services Row (AI Search Assistant, Tourism QR, VIP Concierge, All Services) -->
       <div class="px-5 mt-3">
         <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+          <!-- AI Search Assistant Quick Button -->
+          <button
+            (click)="state.isAiChatOpen.set(true)"
+            class="flex items-center gap-1.5 py-2 px-3 rounded-2xl bg-gradient-to-r from-indigo-600 via-azure-600 to-sky-500 text-white text-xs font-bold shadow-md shadow-azure-500/20 tap-bounce flex-shrink-0"
+          >
+            <span class="text-sm">🤖</span>
+            <span>مساعد السيرش الذكي AI</span>
+            <span class="px-1.5 py-0.2 bg-white/25 text-[9px] rounded-md font-sans">جديد</span>
+          </button>
+
           <!-- QR Pass Quick Button -->
           <button
             (click)="state.isQrPassModalOpen.set(true)"

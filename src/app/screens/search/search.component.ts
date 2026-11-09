@@ -67,6 +67,25 @@ import { Property } from '../../data/properties.data';
             </button>
           }
         </div>
+
+        <!-- AI Smart Search Assistant Trigger Banner -->
+        <div
+          (click)="state.isAiChatOpen.set(true)"
+          class="mt-3 p-2.5 rounded-2xl bg-gradient-to-r from-slate-950 via-indigo-950 to-azure-950 text-white border border-azure-400/30 flex items-center justify-between cursor-pointer tap-bounce shadow-sm"
+        >
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-xl bg-azure-500/20 text-azure-300 flex items-center justify-center text-xs border border-azure-400/30">
+              🤖
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-white block">محتار في اختيار الوحدة الأنسب؟</span>
+              <span class="text-[9px] text-azure-300 block">دع مستشار Ragab Pay الذكي يحلل طلبك ويقترح لك الخيار الأنسب</span>
+            </div>
+          </div>
+          <span class="text-[9px] font-bold px-2.5 py-1 rounded-xl bg-azure-600 text-white shadow-xs flex-shrink-0">
+            تحدث مع AI ✨
+          </span>
+        </div>
       </div>
 
       <!-- Result Count & Sort Selector Strip -->
