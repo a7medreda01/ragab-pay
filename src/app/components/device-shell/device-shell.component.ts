@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, signal, computed, OnInit } from '@angular/core';
+﻿import { Component, HostListener, inject, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppStateService } from '../../services/app-state.service';
 import { WelcomeScreenComponent } from '../../screens/welcome/welcome.component';
@@ -48,7 +48,7 @@ import { AuthModalComponent } from '../../screens/auth/auth.component';
           <div class="px-6 py-4 rounded-3xl bg-white shadow-2xl inline-flex items-center justify-center mb-6 border border-white/80">
             <img
               src="assets/logo.png"
-              alt="Ragab Bay Logo"
+              alt="Ragab Pay Logo"
               class="h-12 w-auto object-contain"
             />
           </div>

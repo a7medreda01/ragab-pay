@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+﻿import { Component, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -45,7 +45,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PropertyImageComponent {
   @Input({ required: true }) src!: string;
-  @Input() alt: string = 'Ragab Bay Luxury Unit';
+  @Input() alt: string = 'Ragab Pay Luxury Unit';
   @Input() containerClass: string = '';
 
   readonly isLoaded = signal(false);

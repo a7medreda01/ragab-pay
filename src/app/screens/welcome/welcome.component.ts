@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+﻿import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppStateService } from '../../services/app-state.service';
 
@@ -12,7 +12,7 @@ import { AppStateService } from '../../services/app-state.service';
       <div class="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=85"
-          alt="Ragab Bay Hero"
+          alt="Ragab Pay Hero"
           class="w-full h-full object-cover scale-105 transition-transform duration-1000"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/30"></div>
@@ -24,7 +24,7 @@ import { AppStateService } from '../../services/app-state.service';
         <div class="px-6 py-3.5 rounded-3xl bg-white/95 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.3)] border border-white/60 mb-3 flex items-center justify-center">
           <img
             src="assets/logo.png"
-            alt="Ragab Bay Logo"
+            alt="Ragab Pay Logo"
             class="h-12 w-auto object-contain"
           />
         </div>

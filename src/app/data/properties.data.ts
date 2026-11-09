@@ -1,4 +1,4 @@
-export interface Property {
+﻿export interface Property {
   id: string;
   title: string;
   village: string;
@@ -290,7 +290,7 @@ export const MOCK_PROPERTIES: Property[] = [
         avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
         rating: 5,
         date: 'منذ شهر',
-        comment: 'مستوى استثنائي لا يقل عن أرقى منتجعات كان وموناكو. خدمة راغب باي فوق الممتازة.'
+        comment: 'مستوى استثنائي لا يقل عن أرقى منتجعات كان وموناكو. خدمة Ragab Pay فوق الممتازة.'
       }
     ]
   },
@@ -645,7 +645,7 @@ export const MOCK_NOTIFICATIONS = [
   {
     id: 'notif-3',
     title: 'تذكير موعد تسجيل الدخول',
-    body: 'موعد تسجيل الدخول غداً الساعة 2:00 ظهراً. كونسيرج راغب باي في انتظارك.',
+    body: 'موعد تسجيل الدخول غداً الساعة 2:00 ظهراً. كونسيرج Ragab Pay في انتظارك.',
     time: 'منذ يومين',
     read: true,
     icon: 'calendar'

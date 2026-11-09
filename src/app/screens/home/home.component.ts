@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+﻿import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppStateService } from '../../services/app-state.service';
 import { PropertyImageComponent } from '../../components/property-image/property-image.component';
@@ -16,7 +16,7 @@ import { Property } from '../../data/properties.data';
         <div class="flex items-center gap-2.5">
           <img
             src="assets/logo.png"
-            alt="Ragab Bay"
+            alt="Ragab Pay"
             class="h-8 w-auto object-contain"
           />
         </div>

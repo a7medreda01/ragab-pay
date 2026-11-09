@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+﻿import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppStateService } from '../../services/app-state.service';
@@ -177,7 +177,7 @@ export class AuthModalComponent {
 
   quickGuestLogin() {
     this.state.currentUser.set({
-      name: 'ضيف راغب باي (زائر)',
+      name: 'ضيف Ragab Pay (زائر)',
       phone: '+20 100 000 0000',
       email: 'guest@ragabpay.com',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',

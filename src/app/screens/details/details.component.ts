@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+﻿import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppStateService } from '../../services/app-state.service';
 import { PropertyImageComponent } from '../../components/property-image/property-image.component';
@@ -166,7 +166,7 @@ import { PropertyImageComponent } from '../../components/property-image/property
           <div class="p-4 rounded-2xl bg-gradient-to-r from-azure-900 to-navy-950 text-white mb-6 shadow-lg">
             <div class="flex items-center gap-2 mb-1.5">
               <svg class="w-5 h-5 text-azure-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-              <span class="text-xs font-bold">ضمان راغب باي الفندقي المعتمد - Ragab Pay</span>
+              <span class="text-xs font-bold">ضمان Ragab Pay الفندقي المعتمد - Ragab Pay</span>
             </div>
             <p class="text-[11px] text-white/80 leading-relaxed">
               هذه الوحدة مفحوصة ومُدارة بالكامل من فريق منظومة Ragab Pay. نضمن لك نظافة فندقية معقمة، ومطابقة تامة للعقود الفردية والمؤسسية، ودعم كونسيرج على مدار الساعة.
@@ -230,7 +230,7 @@ export class UnitDetailsScreenComponent {
 
   openWhatsApp(phone: string) {
     const clean = phone.replace(/[^0-9]/g, '');
-    window.open(`https://wa.me/${clean}?text=مرحباً، أستفسر بخصوص حجز وحدة في منصة راغب باي`, '_blank');
+    window.open(`https://wa.me/${clean}?text=مرحباً، أستفسر بخصوص حجز وحدة في منصة Ragab Pay`, '_blank');
   }
 
   proceedToBooking(prop: any) {

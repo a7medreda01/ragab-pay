@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
+﻿import { Component, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppStateService } from '../../services/app-state.service';
 import { PropertyImageComponent } from '../../components/property-image/property-image.component';
@@ -189,7 +189,7 @@ export class ProfileScreenComponent {
   }
 
   openConcierge() {
-    window.open('https://wa.me/201000001234?text=مرحباً، أحتاج مساعدة بخصوص حجوزاتي في راغب باي', '_blank');
+    window.open('https://wa.me/201000001234?text=مرحباً، أحتاج مساعدة بخصوص حجوزاتي في Ragab Pay', '_blank');
   }
 
   logout() {
