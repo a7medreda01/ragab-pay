@@ -64,23 +64,6 @@ import { Property } from '../../data/properties.data';
             </button>
           }
         </div>
-
-        <!-- AI Assistant Banner (Compact) -->
-        <div
-          (click)="state.isAiChatOpen.set(true)"
-          class="mt-2.5 p-2 rounded-xl bg-gradient-to-r from-slate-900 via-indigo-950 to-azure-950 text-white border border-azure-400/25 flex items-center justify-between cursor-pointer tap-bounce"
-        >
-          <div class="flex items-center gap-2">
-            <div class="w-6 h-6 rounded-lg bg-azure-500/20 text-azure-300 flex items-center justify-center text-xs">
-              <i class="bi bi-robot"></i>
-            </div>
-            <span class="text-[11px] font-bold text-white">البحث الذكي بالمساعد AI</span>
-          </div>
-          <span class="text-[9px] font-bold px-2 py-0.5 rounded-md bg-azure-600 text-white flex items-center gap-1">
-            <i class="bi bi-stars"></i>
-            <span>ابدأ</span>
-          </span>
-        </div>
       </div>
 
       <!-- Count & Sort -->
