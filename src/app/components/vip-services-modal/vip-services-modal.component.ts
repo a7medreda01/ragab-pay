@@ -204,3 +204,4 @@ export class VipServicesModalComponent {
     this.state.isVipServicesModalOpen.set(false);
   }
 }
+

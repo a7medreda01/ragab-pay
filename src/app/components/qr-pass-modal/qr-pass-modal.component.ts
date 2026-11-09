@@ -334,3 +334,4 @@ export class QrPassModalComponent {
     this.state.isQrPassModalOpen.set(false);
   }
 }
+

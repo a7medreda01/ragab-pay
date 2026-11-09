@@ -48,17 +48,22 @@ import { AppStateService } from '../../services/app-state.service';
           }
         </button>
 
-        <!-- 3. Raised Quick Action Floating Center (+) Button -->
-        <div class="relative -top-5 flex-1 flex justify-center">
+        <!-- 3. Raised Center Button: Smart AI Assistant (مساعد الذكي) -->
+        <div class="relative -top-5 flex-1 flex flex-col items-center justify-center">
           <button
-            (click)="quickAction()"
-            class="w-12 h-12 rounded-full bg-gradient-to-tr from-azure-600 via-azure-500 to-sky-400 text-white shadow-[0_10px_24px_rgba(2,132,199,0.45)] ring-4 ring-white flex items-center justify-center tap-bounce hover:scale-105 active:scale-95 transition-all duration-200 group"
-            title="حجز سريع وفلاتر ذكية"
+            (click)="openAiChat()"
+            class="relative w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-600 via-azure-600 to-sky-400 text-white shadow-[0_10px_25px_rgba(79,70,229,0.45)] ring-4 ring-white flex items-center justify-center tap-bounce hover:scale-110 active:scale-95 transition-all duration-200 group"
+            title="مساعد Ragab Pay الذكي AI"
           >
-            <svg class="w-6 h-6 transition-transform group-hover:rotate-90 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M12 5v14m7-7H5"/>
+            <!-- Glowing Ambient Ring -->
+            <span class="absolute inset-0 rounded-full bg-azure-400/25 animate-ping pointer-events-none"></span>
+
+            <!-- AI Sparkle / Magic Lightning Vector Icon -->
+            <svg class="w-6 h-6 transition-transform group-hover:scale-110 duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
           </button>
+          <span class="text-[9px] font-black text-indigo-700 tracking-tight mt-0.5 font-arabic">مساعد AI</span>
         </div>
 
         <!-- 4. Favorites Tab -->
@@ -115,7 +120,11 @@ export class BottomNavComponent {
     this.state.navigateToTab(tab);
   }
 
+  openAiChat() {
+    this.state.isAiChatOpen.set(true);
+  }
+
   quickAction() {
-    this.state.isFilterOpen.set(true);
+    this.openAiChat();
   }
 }

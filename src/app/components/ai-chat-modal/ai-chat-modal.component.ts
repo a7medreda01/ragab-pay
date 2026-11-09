@@ -342,3 +342,4 @@ export class AiChatModalComponent {
     this.state.isAiChatOpen.set(false);
   }
 }
+
