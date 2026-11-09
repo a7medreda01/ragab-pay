@@ -72,49 +72,8 @@ import { Property } from '../../data/properties.data';
         </div>
       </div>
 
-      <!-- Quick Services Row -->
-      <div class="px-5 mt-2.5">
-        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
-          <!-- AI Assistant -->
-          <button
-            (click)="state.isAiChatOpen.set(true)"
-            class="flex items-center gap-1.5 py-1.5 px-3 rounded-xl bg-gradient-to-r from-indigo-600 to-azure-600 text-white text-xs font-bold shadow-xs tap-bounce flex-shrink-0"
-          >
-            <i class="bi bi-robot text-xs"></i>
-            <span>مساعد AI</span>
-          </button>
-
-          <!-- QR Pass -->
-          <button
-            (click)="state.isQrPassModalOpen.set(true)"
-            class="flex items-center gap-1.5 py-1.5 px-3 rounded-xl bg-gradient-to-r from-azure-600 to-sky-500 text-white text-xs font-bold shadow-xs tap-bounce flex-shrink-0"
-          >
-            <i class="bi bi-qr-code text-xs"></i>
-            <span>QR الدخول</span>
-          </button>
-
-          <!-- VIP Services -->
-          <button
-            (click)="state.isVipServicesModalOpen.set(true)"
-            class="flex items-center gap-1.5 py-1.5 px-3 rounded-xl bg-slate-900 text-amber-300 border border-amber-500/30 text-xs font-bold shadow-xs tap-bounce flex-shrink-0"
-          >
-            <i class="bi bi-gem text-amber-400 text-xs"></i>
-            <span>خدمات VIP</span>
-          </button>
-
-          <!-- All Services -->
-          <button
-            (click)="state.isSideDrawerOpen.set(true)"
-            class="flex items-center gap-1.5 py-1.5 px-3 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold shadow-2xs tap-bounce flex-shrink-0"
-          >
-            <i class="bi bi-grid text-xs text-azure-600"></i>
-            <span>الخدمات</span>
-          </button>
-        </div>
-      </div>
-
       <!-- Featured Carousel -->
-      <div class="mt-5 px-5">
+      <div class="mt-4 px-5">
         <div class="flex items-center justify-between mb-2.5">
           <div>
             <h2 class="text-xs font-black text-slate-900">وحدات مميزة</h2>
