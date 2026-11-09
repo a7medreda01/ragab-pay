@@ -12,8 +12,17 @@ import { Property } from '../../data/properties.data';
     <div class="w-full h-full overflow-y-auto no-scrollbar pb-[max(7rem,calc(6rem+env(safe-area-inset-bottom,24px)))] font-arabic bg-slate-50 select-none">
       <!-- Top Sticky App Bar with Brand Logo -->
       <div class="sticky top-0 z-20 px-5 pt-3.5 pb-3 bg-white/85 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between shadow-xs">
-        <!-- Logo Branding -->
-        <div class="flex items-center gap-2.5">
+        <!-- Logo Branding & Side Drawer Menu Button -->
+        <div class="flex items-center gap-2">
+          <button
+            (click)="state.isSideDrawerOpen.set(true)"
+            class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 tap-bounce border border-slate-200/60 hover:bg-slate-200 transition-colors"
+            title="شريط الأدوات والخدمات الحصرية"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h10m-10 6h16"/>
+            </svg>
+          </button>
           <img
             src="assets/logo.png"
             alt="Ragab Pay"
@@ -67,6 +76,39 @@ import { Property } from '../../data/properties.data';
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
             </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Elite Quick Services Row (Tourism QR, VIP Concierge, All Services) -->
+      <div class="px-5 mt-3">
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+          <!-- QR Pass Quick Button -->
+          <button
+            (click)="state.isQrPassModalOpen.set(true)"
+            class="flex items-center gap-2 py-2 px-3 rounded-2xl bg-gradient-to-r from-azure-600 to-sky-500 text-white text-xs font-bold shadow-sm tap-bounce flex-shrink-0"
+          >
+            <span class="text-sm">🎫</span>
+            <span>شراء الـ QR السياحي</span>
+            <span class="px-1.5 py-0.5 bg-white/20 text-[9px] rounded-md font-sans">فوري</span>
+          </button>
+
+          <!-- VIP Services Quick Button -->
+          <button
+            (click)="state.isVipServicesModalOpen.set(true)"
+            class="flex items-center gap-2 py-2 px-3 rounded-2xl bg-slate-900 text-amber-300 border border-amber-500/30 text-xs font-bold shadow-sm tap-bounce flex-shrink-0"
+          >
+            <span class="text-sm">👑</span>
+            <span>خدمات VIP والكونسيرج</span>
+          </button>
+
+          <!-- Toolbar / Services Drawer Button -->
+          <button
+            (click)="state.isSideDrawerOpen.set(true)"
+            class="flex items-center gap-1.5 py-2 px-3 rounded-2xl bg-white border border-slate-200 text-slate-700 text-xs font-bold shadow-2xs tap-bounce flex-shrink-0"
+          >
+            <span>✨</span>
+            <span>كل الخدمات</span>
           </button>
         </div>
       </div>

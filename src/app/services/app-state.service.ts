@@ -55,11 +55,14 @@ export class AppStateService {
 
   readonly recentSearches = signal<string[]>(TRENDING_SEARCHES.slice(0, 4));
 
-  // Modals
+  // Modals & Side Toolbar
   readonly isFilterOpen = signal<boolean>(false);
   readonly isComparisonOpen = signal<boolean>(false);
   readonly isAuthOpen = signal<boolean>(false);
   readonly isNotificationOpen = signal<boolean>(false);
+  readonly isSideDrawerOpen = signal<boolean>(false);
+  readonly isQrPassModalOpen = signal<boolean>(false);
+  readonly isVipServicesModalOpen = signal<boolean>(false);
 
   // Favorites & Bookings
   readonly favorites = signal<string[]>(this.loadFavorites());

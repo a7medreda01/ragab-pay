@@ -1,4 +1,4 @@
-﻿import { Component, ElementRef, ViewChild, inject, signal } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppStateService } from '../../services/app-state.service';
 import { PropertyImageComponent } from '../../components/property-image/property-image.component';

@@ -1,4 +1,4 @@
-﻿import { Component, HostListener, inject, signal, computed, OnInit } from '@angular/core';
+import { Component, HostListener, inject, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppStateService } from '../../services/app-state.service';
 import { WelcomeScreenComponent } from '../../screens/welcome/welcome.component';
@@ -14,6 +14,9 @@ import { FilterSheetComponent } from '../filter-sheet/filter-sheet.component';
 import { ComparisonModalComponent } from '../comparison-modal/comparison-modal.component';
 import { NotificationsModalComponent } from '../notifications-modal/notifications-modal.component';
 import { AuthModalComponent } from '../../screens/auth/auth.component';
+import { SideDrawerComponent } from '../side-drawer/side-drawer.component';
+import { QrPassModalComponent } from '../qr-pass-modal/qr-pass-modal.component';
+import { VipServicesModalComponent } from '../vip-services-modal/vip-services-modal.component';
 
 @Component({
   selector: 'app-device-shell',
@@ -32,7 +35,10 @@ import { AuthModalComponent } from '../../screens/auth/auth.component';
     FilterSheetComponent,
     ComparisonModalComponent,
     NotificationsModalComponent,
-    AuthModalComponent
+    AuthModalComponent,
+    SideDrawerComponent,
+    QrPassModalComponent,
+    VipServicesModalComponent
   ],
   template: `
     <!-- Desktop Ambient Background Container -->
@@ -173,6 +179,9 @@ import { AuthModalComponent } from '../../screens/auth/auth.component';
             <app-comparison-modal></app-comparison-modal>
             <app-notifications-modal></app-notifications-modal>
             <app-auth-modal></app-auth-modal>
+            <app-side-drawer></app-side-drawer>
+            <app-qr-pass-modal></app-qr-pass-modal>
+            <app-vip-services-modal></app-vip-services-modal>
           </div>
 
           <!-- iPhone Home Indicator Bar (Desktop Mode) -->
