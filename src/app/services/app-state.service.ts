@@ -37,6 +37,16 @@ export class AppStateService {
   // Properties
   readonly properties = signal<Property[]>(MOCK_PROPERTIES);
 
+  // Owner Property IDs (representative managed units for the owner)
+  readonly ownerPropertyIds = signal<string[]>([
+    'rp-01',
+    'rp-02',
+    'rp-03',
+    'rp-corp-01',
+    'rp-06',
+    'rp-08'
+  ]);
+
   // User & Role (Guest vs Owner)
   readonly userRole = signal<'guest' | 'owner'>('guest');
 
@@ -400,6 +410,12 @@ export class AppStateService {
 
   addNewProperty(newProp: Property) {
     this.properties.update(list => [newProp, ...list]);
+    this.ownerPropertyIds.update(ids => [newProp.id, ...ids]);
+  }
+
+  deleteProperty(propertyId: string) {
+    this.properties.update(list => list.filter(p => p.id !== propertyId));
+    this.ownerPropertyIds.update(ids => ids.filter(id => id !== propertyId));
   }
 
   requestPayout(amount: number, method: string, destination: string) {
