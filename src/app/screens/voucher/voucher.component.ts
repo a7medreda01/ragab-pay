@@ -74,20 +74,21 @@ import { PropertyImageComponent } from '../../components/property-image/property
         </div>
 
         <!-- Action Buttons -->
-        <div class="px-5 mt-5 space-y-2">
+        <div class="px-5 mt-5 space-y-2.5">
           <button
-            (click)="openWhatsAppConcierge(booking)"
-            class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-full shadow-md flex items-center justify-center gap-1.5 tap-bounce"
+            (click)="returnHome()"
+            class="w-full py-3.5 bg-azure-600 hover:bg-azure-500 text-white font-bold text-xs rounded-full shadow-lg flex items-center justify-center gap-2 tap-bounce"
           >
-            <i class="bi bi-whatsapp"></i>
-            <span>تواصل عبر واتساب</span>
+            <span>العودة للرئيسية واستكشاف المزيد</span>
+            <i class="bi bi-arrow-left"></i>
           </button>
 
           <button
-            (click)="returnHome()"
-            class="w-full py-3 bg-white/10 hover:bg-white/20 text-white font-bold text-xs rounded-full border border-white/20 tap-bounce"
+            (click)="openWhatsAppConcierge(booking)"
+            class="w-full py-3 bg-white/10 hover:bg-white/20 text-emerald-400 font-bold text-xs rounded-full border border-emerald-400/30 flex items-center justify-center gap-2 tap-bounce"
           >
-            الرئيسية
+            <i class="bi bi-whatsapp"></i>
+            <span>تواصل مع كونسيرج الفندق عبر واتساب</span>
           </button>
         </div>
       </div>

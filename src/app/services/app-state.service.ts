@@ -142,6 +142,9 @@ export class AppStateService {
   readonly isVipServicesModalOpen = signal<boolean>(false);
   readonly isAiChatOpen = signal<boolean>(false);
 
+  // Global Toast Notification
+  readonly toastMessage = signal<string | null>(null);
+
   // Favorites & Bookings
   readonly favorites = signal<string[]>(this.loadFavorites());
   readonly bookings = signal<Booking[]>(this.loadBookings());
@@ -258,6 +261,65 @@ export class AppStateService {
         localStorage.setItem('ragab_pay_bookings', JSON.stringify(this.bookings()));
       } catch (e) {}
     });
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('popstate', () => {
+        if (this.isAnyModalOpen()) {
+          this.closeAllModals();
+          return;
+        }
+        if (this.currentScreen() === 'details' || this.currentScreen() === 'checkout') {
+          this.currentScreen.set('main');
+          return;
+        }
+        if (this.currentScreen() === 'voucher') {
+          this.currentScreen.set('main');
+          this.activeTab.set('home');
+          return;
+        }
+        if (this.currentScreen() === 'owner-dashboard') {
+          this.switchToGuestMode();
+          return;
+        }
+      });
+    }
+  }
+
+  showToast(msg: string, durationMs: number = 2200) {
+    this.toastMessage.set(msg);
+    setTimeout(() => {
+      if (this.toastMessage() === msg) {
+        this.toastMessage.set(null);
+      }
+    }, durationMs);
+  }
+
+  pushNavState(screen: string) {
+    if (typeof window !== 'undefined' && window.history) {
+      window.history.pushState({ screen }, '', '');
+    }
+  }
+
+  isAnyModalOpen(): boolean {
+    return this.isFilterOpen() ||
+           this.isComparisonOpen() ||
+           this.isNotificationOpen() ||
+           this.isAuthOpen() ||
+           this.isSideDrawerOpen() ||
+           this.isQrPassModalOpen() ||
+           this.isVipServicesModalOpen() ||
+           this.isAiChatOpen();
+  }
+
+  closeAllModals() {
+    this.isFilterOpen.set(false);
+    this.isComparisonOpen.set(false);
+    this.isNotificationOpen.set(false);
+    this.isAuthOpen.set(false);
+    this.isSideDrawerOpen.set(false);
+    this.isQrPassModalOpen.set(false);
+    this.isVipServicesModalOpen.set(false);
+    this.isAiChatOpen.set(false);
   }
 
   private loadFavorites(): string[] {
@@ -280,8 +342,10 @@ export class AppStateService {
     const current = this.favorites();
     if (current.includes(propertyId)) {
       this.favorites.set(current.filter(id => id !== propertyId));
+      this.showToast('تمت الإزالة من المفضلة');
     } else {
       this.favorites.set([...current, propertyId]);
+      this.showToast('تمت الإضافة إلى المفضلة');
     }
   }
 
@@ -291,12 +355,16 @@ export class AppStateService {
 
   addToComparison(prop: Property) {
     const list = this.comparisonList();
-    if (list.some(p => p.id === prop.id)) return;
+    if (list.some(p => p.id === prop.id)) {
+      this.showToast('الوحدة مضافة بالفعل للمقارنة');
+      return;
+    }
     if (list.length >= 3) {
-      alert('يمكنك مقارنة 3 وحدات كحد أقصى في نفس الوقت');
+      this.showToast('الحد الأقصى للمقارنة هو 3 وحدات');
       return;
     }
     this.comparisonList.set([...list, prop]);
+    this.showToast(`تمت إضافة الوحدة للمقارنة (${this.comparisonList().length}/3)`);
   }
 
   removeFromComparison(propertyId: string) {
@@ -352,17 +420,21 @@ export class AppStateService {
   openDetails(prop: Property) {
     this.selectedProperty.set(prop);
     this.currentScreen.set('details');
+    this.pushNavState('details');
   }
 
   startBooking(prop: Property) {
     this.selectedProperty.set(prop);
     this.currentScreen.set('checkout');
+    this.pushNavState('checkout');
   }
 
   confirmBooking(booking: Booking) {
     this.bookings.set([booking, ...this.bookings()]);
     this.lastCompletedBooking.set(booking);
     this.currentScreen.set('voucher');
+    this.pushNavState('voucher');
+    this.showToast('تم تأكيد الحجز وإصدار القسيمة بنجاح');
   }
 
   cancelBooking(bookingId: string) {
@@ -406,6 +478,7 @@ export class AppStateService {
     this.properties.update(list =>
       list.map(p => (p.id === propertyId ? { ...p, ...updates } : p))
     );
+    this.showToast('تم حفظ تعديلات الوحدة بنجاح');
   }
 
   addNewProperty(newProp: Property) {

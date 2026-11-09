@@ -51,6 +51,33 @@ import { OwnerDashboardComponent } from '../../screens/owner/owner-dashboard.com
       <div class="hidden lg:block absolute -top-40 -start-40 w-[600px] h-[600px] bg-azure-600/15 rounded-full blur-[140px] pointer-events-none"></div>
       <div class="hidden lg:block absolute -bottom-40 -end-40 w-[600px] h-[600px] bg-sky-500/15 rounded-full blur-[140px] pointer-events-none"></div>
 
+      <!-- Floating Presenter Role Switcher (Desktop Demo Only) -->
+      <div class="hidden lg:flex items-center gap-2 absolute top-6 end-8 z-50 bg-slate-900/90 backdrop-blur-xl border border-white/20 p-1.5 rounded-full shadow-2xl">
+        <span class="text-[11px] text-white/70 ps-3 font-arabic font-medium">عرض الديمو:</span>
+        <button
+          (click)="state.switchToGuestMode()"
+          class="px-3.5 py-1.5 rounded-full text-xs font-bold font-arabic transition-all flex items-center gap-1.5 tap-bounce"
+          [class.bg-azure-600]="state.userRole() === 'guest'"
+          [class.text-white]="state.userRole() === 'guest'"
+          [class.text-white/60]="state.userRole() !== 'guest'"
+          [class.hover:text-white]="state.userRole() !== 'guest'"
+        >
+          <i class="bi bi-person-fill"></i>
+          <span>النزيل والمسافر</span>
+        </button>
+        <button
+          (click)="state.switchToOwnerMode()"
+          class="px-3.5 py-1.5 rounded-full text-xs font-bold font-arabic transition-all flex items-center gap-1.5 tap-bounce"
+          [class.bg-azure-600]="state.userRole() === 'owner'"
+          [class.text-white]="state.userRole() === 'owner'"
+          [class.text-white/60]="state.userRole() !== 'owner'"
+          [class.hover:text-white]="state.userRole() !== 'owner'"
+        >
+          <i class="bi bi-building"></i>
+          <span>المالك والمضيف</span>
+        </button>
+      </div>
+
       <!-- Desktop Side Branding Panel (Desktop only) -->
       <div class="hidden xl:flex flex-col justify-between h-[844px] max-w-sm me-16 text-white py-10 z-10" [style.transform]="'scale(' + scaleFactor() + ')'">
         <div>
@@ -192,6 +219,16 @@ import { OwnerDashboardComponent } from '../../screens/owner/owner-dashboard.com
             <app-qr-pass-modal></app-qr-pass-modal>
             <app-vip-services-modal></app-vip-services-modal>
             <app-ai-chat-modal></app-ai-chat-modal>
+
+            <!-- Global Toast Notification Pill -->
+            @if (state.toastMessage()) {
+              <div class="absolute bottom-24 inset-x-6 z-50 flex justify-center pointer-events-none animate-fade-in">
+                <div class="px-4 py-2.5 rounded-2xl bg-slate-950/95 text-white text-xs font-bold font-arabic shadow-2xl border border-white/20 flex items-center gap-2 backdrop-blur-md">
+                  <i class="bi bi-check-circle-fill text-emerald-400 text-sm"></i>
+                  <span>{{ state.toastMessage() }}</span>
+                </div>
+              </div>
+            }
           </div>
 
           <!-- iPhone Home Indicator Bar (Desktop Mode) -->
