@@ -44,18 +44,16 @@ interface ChatMessage {
             <div class="flex items-center gap-2.5">
               <div class="relative">
                 <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-azure-600 via-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-azure-500/25">
-                  <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                  </svg>
+                  <i class="bi bi-robot text-lg"></i>
                 </div>
                 <span class="absolute -bottom-0.5 -end-0.5 w-3 h-3 rounded-full bg-emerald-500 ring-2 ring-white"></span>
               </div>
               <div>
                 <div class="flex items-center gap-1.5">
-                  <h2 class="text-xs font-black text-slate-900">مساعد Ragab Pay الذكي (AI)</h2>
-                  <span class="px-1.5 py-0.2 rounded-md bg-azure-50 text-azure-700 text-[9px] font-bold border border-azure-200">GPT-4o</span>
+                  <h2 class="text-xs font-black text-slate-900">المساعد الذكي</h2>
+                  <span class="px-1.5 py-0.2 rounded-md bg-azure-50 text-azure-700 text-[9px] font-bold border border-azure-200">AI</span>
                 </div>
-                <span class="text-[10px] text-slate-400">مستشارك العقاري والفندقي لاختيار الإقامة الأنسب</span>
+                <span class="text-[10px] text-slate-400">ترشيحات فورية تناسب متطلباتك وميزانيتك</span>
               </div>
             </div>
 
@@ -63,7 +61,7 @@ interface ChatMessage {
               (click)="close()"
               class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs tap-bounce"
             >
-              ✕
+              <i class="bi bi-x-lg"></i>
             </button>
           </div>
 
@@ -85,8 +83,8 @@ interface ChatMessage {
               @if (msg.sender === 'ai') {
                 <!-- AI Message Bubble -->
                 <div class="flex items-start gap-2.5 max-w-[92%] animate-fade-in">
-                  <div class="w-8 h-8 rounded-xl bg-azure-600 text-white flex items-center justify-center text-xs flex-shrink-0 shadow-xs mt-1">
-                    🤖
+                  <div class="w-8 h-8 rounded-xl bg-azure-600 text-white flex items-center justify-center text-sm flex-shrink-0 shadow-xs mt-1">
+                    <i class="bi bi-robot"></i>
                   </div>
                   <div class="space-y-2 flex-1 min-w-0">
                     <div class="p-3.5 rounded-3xl rounded-tr-xs bg-white border border-slate-200/80 shadow-xs text-xs text-slate-800 leading-relaxed">
@@ -96,7 +94,10 @@ interface ChatMessage {
                     <!-- Suggested Property Cards (If AI Found Matches) -->
                     @if (msg.suggestedProperties && msg.suggestedProperties.length > 0) {
                       <div class="space-y-2 pt-1">
-                        <span class="text-[10px] font-bold text-azure-600 block">✨ أنسب الوحدات المقترحة لطلبك:</span>
+                        <span class="text-[10px] font-bold text-azure-600 flex items-center gap-1">
+                          <i class="bi bi-stars"></i>
+                          أنسب الوحدات المقترحة:
+                        </span>
                         @for (prop of msg.suggestedProperties; track prop.id) {
                           <div
                             (click)="viewProperty(prop)"
@@ -109,7 +110,10 @@ interface ChatMessage {
                               <div>
                                 <div class="flex items-center justify-between">
                                   <span class="text-[9px] font-bold text-azure-600">{{ prop.categoryArabic }}</span>
-                                  <span class="text-[9px] text-amber-500 font-bold">★ {{ prop.rating }}</span>
+                                  <span class="text-[9px] text-amber-500 font-bold flex items-center gap-0.5">
+                                    <i class="bi bi-star-fill text-[8px]"></i>
+                                    {{ prop.rating }}
+                                  </span>
                                 </div>
                                 <h4 class="text-[11px] font-bold text-slate-900 truncate group-hover:text-azure-600 transition-colors">
                                   {{ prop.title }}
@@ -118,9 +122,9 @@ interface ChatMessage {
                               </div>
                               <div class="flex items-center justify-between mt-1">
                                 <span class="text-[11px] font-black text-slate-900 font-sans">{{ prop.pricePerDay | number }} ج.م <span class="text-[8px] font-normal text-slate-400">/ ليلة</span></span>
-                                <span class="text-[10px] font-bold text-azure-600 flex items-center gap-0.5">
+                                <span class="text-[10px] font-bold text-azure-600 flex items-center gap-1">
                                   <span>تفاصيل</span>
-                                  <span class="rtl:rotate-180">›</span>
+                                  <i class="bi bi-arrow-left text-[9px]"></i>
                                 </span>
                               </div>
                             </div>
@@ -148,8 +152,8 @@ interface ChatMessage {
             <!-- Typing Indicator -->
             @if (isTyping()) {
               <div class="flex items-center gap-2 max-w-[80%] animate-fade-in">
-                <div class="w-8 h-8 rounded-xl bg-azure-600 text-white flex items-center justify-center text-xs flex-shrink-0">
-                  🤖
+                <div class="w-8 h-8 rounded-xl bg-azure-600 text-white flex items-center justify-center text-sm flex-shrink-0">
+                  <i class="bi bi-robot"></i>
                 </div>
                 <div class="p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center gap-1.5">
                   <div class="w-2 h-2 rounded-full bg-azure-600 animate-bounce"></div>
@@ -168,7 +172,7 @@ interface ChatMessage {
                 type="text"
                 [(ngModel)]="userInput"
                 (keydown.enter)="sendMessage()"
-                placeholder="اسألني عن أي فيلا، شاليه، ميزانية، أو سكن شركات..."
+                placeholder="اسأل عن شاليه، فيلا، ميزانية، أو سكن شركات..."
                 class="w-full text-xs bg-transparent outline-none text-slate-800 placeholder:text-slate-400"
               />
             </div>
@@ -180,9 +184,7 @@ interface ChatMessage {
               class="w-10 h-10 rounded-full bg-slate-950 hover:bg-slate-900 disabled:bg-slate-300 text-white flex items-center justify-center tap-bounce shadow-md transition-colors flex-shrink-0"
               title="إرسال"
             >
-              <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
+              <i class="bi bi-send text-xs"></i>
             </button>
           </div>
         </div>
@@ -200,18 +202,18 @@ export class AiChatModalComponent {
 
   // Quick suggestion prompts
   readonly quickPrompts = [
-    '🏖️ شاليه صف أول عالبحر في الساحل لأسرة',
-    '🏢 سكن مهندسين وعمال بالعاصمة الإدارية',
-    '👑 فيلا فاخرة بمسبح خاص في الجونة',
-    '🏙️ شقة فندقية بالتجمع الخامس قريبة من التسعين',
-    '💰 أرخص الشاليهات المتاحة للحجز اليومي'
+    'شاليه صف أول عالبحر بالساحل',
+    'سكن شركات ومشاريع بالعاصمة',
+    'فيلا خاصة بمسبح في الجونة',
+    'شقة فندقية بالتجمع الخامس',
+    'أفضل العروض والأسعار المتاحة'
   ];
 
   readonly messages = signal<ChatMessage[]>([
     {
       id: 'init-1',
       sender: 'ai',
-      text: 'مرحباً بك في منصة Ragab Pay! 👋 أنا مستشارك الذكي للإقامة الفندقية وسكن الأعمال. أخبرني بما تبحث عنه (المكان، الميزانية، أو طبيعة الإقامة) وسأقترح عليك أنسب الوحدات فوراً.',
+      text: 'مرحباً بك في منصة Ragab Pay! أنا مستشارك العقاري الذكي للإقامة الفندقية وسكن الأعمال. أخبرني بما تبحث عنه وسأرشح لك أفضل الخيارات فوراً.',
       time: 'الآن'
     }
   ]);

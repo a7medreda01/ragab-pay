@@ -13,8 +13,8 @@ import { Property } from '../../data/properties.data';
       <!-- Header -->
       <div class="sticky top-0 z-20 px-5 pt-4 pb-3 bg-white/85 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between">
         <div>
-          <h1 class="text-base font-extrabold text-slate-900">الوحدات المفضلة والمحفوظة</h1>
-          <span class="text-[11px] text-slate-400">الوحدات التي قمت بحفظها للرجوع إليها لاحقاً</span>
+          <h1 class="text-base font-extrabold text-slate-900">المفضلة</h1>
+          <span class="text-[11px] text-slate-400">الوحدات المحفوظة للرجوع إليها لاحقاً</span>
         </div>
         <span class="text-xs font-bold text-azure-600 bg-azure-50 px-2.5 py-1 rounded-full">
           {{ favProperties().length }} وحدات
@@ -32,9 +32,9 @@ import { Property } from '../../data/properties.data';
 
               <button
                 (click)="$event.stopPropagation(); removeFav(prop.id)"
-                class="absolute top-3 end-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-rose-500 flex items-center justify-center shadow-md tap-bounce"
+                class="absolute top-3 end-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-rose-500 flex items-center justify-center shadow-md tap-bounce text-sm"
               >
-                ♥
+                <i class="bi bi-heart-fill"></i>
               </button>
 
               <span class="absolute bottom-3 start-3 px-3 py-1 rounded-full bg-slate-900/70 backdrop-blur-md text-white text-[10px] font-bold">
@@ -62,10 +62,10 @@ import { Property } from '../../data/properties.data';
         @if (favProperties().length === 0) {
           <div class="py-20 text-center flex flex-col items-center justify-center">
             <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-3 text-2xl">
-              ♥
+              <i class="bi bi-heart"></i>
             </div>
             <h3 class="text-sm font-bold text-slate-800">قائمة المفضلة فارغة حالياً</h3>
-            <p class="text-xs text-slate-400 mt-1 max-w-xs">انقر على علامة القلب في بطاقات الوحدات التي تعجبك لحفظها هنا.</p>
+            <p class="text-xs text-slate-400 mt-1 max-w-xs">اضغط على أيقونة القلب لحفظ أي شاليه أو فيلا هنا.</p>
             <button
               (click)="goToSearch()"
               class="mt-4 px-5 py-2.5 bg-azure-600 text-white rounded-full text-xs font-bold tap-bounce"

@@ -32,16 +32,16 @@ import { AppStateService } from '../../services/app-state.service';
           <div class="flex items-center justify-between pb-3 pt-1 border-b border-slate-100">
             <div>
               <div class="flex items-center gap-2">
-                <span class="text-sm">🎫</span>
-                <h2 class="text-sm font-black text-slate-900">الـ QR السياحي الفندقي المعتمد</h2>
+                <i class="bi bi-qr-code text-azure-600 text-base"></i>
+                <h2 class="text-sm font-black text-slate-900">الـ QR السياحي الفندقي</h2>
               </div>
-              <span class="text-[10px] text-slate-400">تصاريح الدخول السريع لشواطئ وقرى الساحل والجونة</span>
+              <span class="text-[10px] text-slate-400">تصاريح الدخول السريع للقرى والشواطئ</span>
             </div>
             <button
               (click)="close()"
               class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs tap-bounce"
             >
-              ✕
+              <i class="bi bi-x-lg"></i>
             </button>
           </div>
 
@@ -60,8 +60,9 @@ import { AppStateService } from '../../services/app-state.service';
                   <span class="text-[9px] text-azure-300 font-sans block">Official Village Access</span>
                 </div>
               </div>
-              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-400/30">
-                تصريح نشط ⚡
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-400/30 flex items-center gap-1">
+                <i class="bi bi-patch-check-fill text-emerald-400 text-[10px]"></i>
+                تصريح نشط
               </span>
             </div>
 
@@ -136,7 +137,7 @@ import { AppStateService } from '../../services/app-state.service';
                       [class.text-white]="selectedPackageId === pkg.id"
                       [class.bg-slate-100]="selectedPackageId !== pkg.id"
                     >
-                      {{ pkg.icon }}
+                      <i class="bi" [class]="pkg.icon"></i>
                     </div>
                     <div>
                       <div class="flex items-center gap-2">
@@ -200,18 +201,19 @@ import { AppStateService } from '../../services/app-state.service';
 
               @if (isPurchased()) {
                 <div class="p-3 rounded-2xl bg-emerald-500 text-white text-center animate-bounce">
-                  <span class="text-xs font-black block">🎉 تم تفعيل الـ QR السياحي بنجاح!</span>
-                  <span class="text-[10px] opacity-90 block mt-0.5">تم إرسال نسخة التصريح ورمز الدخول إلى واتساب وهاتفك</span>
+                  <span class="text-xs font-black flex items-center justify-center gap-1.5">
+                    <i class="bi bi-check-circle-fill"></i>
+                    تم تفعيل الـ QR بنجاح
+                  </span>
+                  <span class="text-[10px] opacity-90 block mt-0.5">تم إرسال رمز الدخول وتفاصيل التصريح لهاتفك</span>
                 </div>
               } @else {
                 <button
                   (click)="purchasePass()"
                   class="w-full py-3.5 bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs rounded-full shadow-xl tap-bounce flex items-center justify-center gap-2"
                 >
-                  <span>شراء وتفعيل التصريح الآن ({{ calculateTotal() | number }} ج.م)</span>
-                  <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
+                  <span>شراء وتفعيل التصريح ({{ calculateTotal() | number }} ج.م)</span>
+                  <i class="bi bi-arrow-left"></i>
                 </button>
               }
             </div>
@@ -237,27 +239,27 @@ export class QrPassModalComponent {
   readonly packages = [
     {
       id: 'daily',
-      icon: '🌅',
+      icon: 'bi-sun',
       title: 'تصريح اليوم الواحد (Day Pass)',
-      desc: 'دخول الشواطئ الخاصة ونوادي القرى لمدة 24 ساعة',
+      desc: 'دخول الشواطئ والنوادي لمدة 24 ساعة',
       price: 500,
       duration: 'صالح 24 ساعة',
       popular: false
     },
     {
       id: 'weekend',
-      icon: '🏖️',
+      icon: 'bi-water',
       title: 'تصريح عطلة الويكند (Weekend Pass)',
-      desc: 'دخول غير محدود لجميع القرى والفعاليات طوال نهاية الأسبوع',
+      desc: 'دخول غير محدود طوال عطلة الأسبوع',
       price: 1200,
       duration: 'صالح 3 أيام',
       popular: true
     },
     {
       id: 'seasonal',
-      icon: '👑',
+      icon: 'bi-shield-check',
       title: 'تصريح VIP الموسمي الشامل',
-      desc: 'بطاقة VIP ذهبية للدخول السريع لكافة بوابات الساحل والجونة بدون قيود',
+      desc: 'بطاقة VIP ذهبية لكافة بوابات الساحل والجونة',
       price: 3500,
       duration: 'صالح طوال الموسم',
       popular: false

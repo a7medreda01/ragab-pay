@@ -33,7 +33,10 @@ import { AppStateService, FilterCriteria } from '../../services/app-state.servic
 
           <!-- Header -->
           <div class="px-6 py-2.5 border-b border-slate-100 flex items-center justify-between">
-            <h2 class="text-sm font-bold text-slate-900 font-arabic">محرك البحث والتصفية المتقدم - Ragab Pay</h2>
+            <div class="flex items-center gap-2">
+              <i class="bi bi-sliders text-azure-600"></i>
+              <h2 class="text-xs font-black text-slate-900 font-arabic">تصفية النتائج</h2>
+            </div>
             <button
               (click)="reset()"
               class="text-xs font-semibold text-azure-600 hover:text-azure-700 font-arabic tap-bounce"
@@ -87,8 +90,8 @@ import { AppStateService, FilterCriteria } from '../../services/app-state.servic
             <!-- 3. سكن شركات وعمال ومشاريع Toggle -->
             <div class="flex items-center justify-between p-3.5 bg-azure-50/70 rounded-2xl border border-azure-200/70">
               <div>
-                <span class="block text-xs font-bold text-azure-950">سكن شركات وعمال ووفود هندسية</span>
-                <span class="block text-[10px] text-azure-700">عرض المجمعات السكنية متعددة الغرف المجهزة للمشاريع</span>
+                <span class="block text-xs font-bold text-azure-950">سكن شركات ومشاريع</span>
+                <span class="block text-[10px] text-azure-700">عرض المجمعات متعددة الغرف المجهزة للمشاريع</span>
               </div>
               <button
                 (click)="toggleCorporateOnly()"
@@ -142,8 +145,8 @@ import { AppStateService, FilterCriteria } from '../../services/app-state.servic
                   [class.text-slate-700]="criteria.beachDistanceMax !== 60"
                   [class.border-slate-200]="criteria.beachDistanceMax !== 60"
                 >
-                  <svg class="w-3.5 h-3.5 text-azure-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M3 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg>
-                  <span>صف أول مباشر</span>
+                  <i class="bi bi-water text-azure-600"></i>
+                  <span>صف أول</span>
                 </button>
                 <button
                   (click)="setBeachDistance(300)"
@@ -155,7 +158,7 @@ import { AppStateService, FilterCriteria } from '../../services/app-state.servic
                   [class.text-slate-700]="criteria.beachDistanceMax !== 300"
                   [class.border-slate-200]="criteria.beachDistanceMax !== 300"
                 >
-                  <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  <i class="bi bi-geo-alt text-slate-500"></i>
                   <span>أقل من 300م</span>
                 </button>
                 <button
@@ -168,7 +171,7 @@ import { AppStateService, FilterCriteria } from '../../services/app-state.servic
                   [class.text-slate-700]="criteria.beachDistanceMax !== 5000"
                   [class.border-slate-200]="criteria.beachDistanceMax !== 5000"
                 >
-                  <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <i class="bi bi-compass text-slate-500"></i>
                   <span>أي مسافة</span>
                 </button>
               </div>
@@ -199,7 +202,7 @@ import { AppStateService, FilterCriteria } from '../../services/app-state.servic
             <div class="flex items-center justify-between p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
               <div>
                 <span class="block text-xs font-bold text-slate-900">مسبح خاص (Private Pool)</span>
-                <span class="block text-[10px] text-slate-400">عرض الفيلات والشاليهات التي تحوي مسبحاً مستقلاً</span>
+                <span class="block text-[10px] text-slate-400">عرض الفيلات والشاليهات بمسبح مستقل</span>
               </div>
               <button
                 (click)="togglePrivatePool()"
@@ -222,10 +225,8 @@ import { AppStateService, FilterCriteria } from '../../services/app-state.servic
               (click)="apply()"
               class="flex-1 py-3.5 bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs rounded-full shadow-lg flex items-center justify-center gap-2 tap-bounce font-arabic"
             >
-              <span>عرض ({{ state.matchedCount() }}) وحدة متوافقة في Ragab Pay</span>
-              <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
+              <span>عرض ({{ state.matchedCount() }}) وحدة متوافقة</span>
+              <i class="bi bi-arrow-left"></i>
             </button>
           </div>
         </div>

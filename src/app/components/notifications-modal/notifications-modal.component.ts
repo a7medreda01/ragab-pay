@@ -26,8 +26,13 @@ import { AppStateService } from '../../services/app-state.service';
           </div>
 
           <div class="flex items-center justify-between pb-3 pt-1 border-b border-slate-100">
-            <h2 class="text-sm font-bold text-slate-900">مركز التنبيهات والإشعارات - Ragab Pay</h2>
-            <button (click)="close()" class="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs tap-bounce">✕</button>
+            <div class="flex items-center gap-2">
+              <i class="bi bi-bell text-azure-600 text-sm"></i>
+              <h2 class="text-xs font-black text-slate-900">التنبيهات والإشعارات</h2>
+            </div>
+            <button (click)="close()" class="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs tap-bounce">
+              <i class="bi bi-x-lg"></i>
+            </button>
           </div>
 
           <div class="py-3 space-y-2.5 overflow-y-auto no-scrollbar">

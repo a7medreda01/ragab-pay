@@ -34,16 +34,16 @@ import { AppStateService } from '../../services/app-state.service';
               <img src="assets/logo.png" alt="Ragab Pay" class="max-h-full max-w-full object-contain" />
             </div>
             <h2 class="text-sm font-black text-slate-900 tracking-tight">
-              {{ activeTab() === 'login' ? 'بوابة الدخول إلى Ragab Pay' : 'إنشاء حساب جديد في المنظومة' }}
+              {{ activeTab() === 'login' ? 'تسجيل الدخول' : 'إنشاء حساب جديد' }}
             </h2>
             <p class="text-[11px] text-slate-400 mt-0.5">
-              {{ selectedRole() === 'owner' ? 'لوحة إدارة الشاليهات ومتابعة الحجوزات وسحب الأرباح' : 'حجز الشاليهات والفيلات الفندقية وتصاريح QR السياحية' }}
+              {{ selectedRole() === 'owner' ? 'لوحة إدارة الشاليهات ومتابعة الأرباح' : 'حجز الشاليهات الفندقية وتصاريح QR' }}
             </p>
           </div>
 
           <!-- ROLE SELECTOR: Guest (عميل/نزيل) vs Owner (مالك/مضيف) -->
           <div class="mb-4">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">اختر نوع الحساب وبوابة الدخول</span>
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">اختر نوع الحساب</span>
             <div class="grid grid-cols-2 gap-2.5">
               <!-- Guest Option -->
               <div
@@ -56,8 +56,8 @@ import { AppStateService } from '../../services/app-state.service';
                 @if (selectedRole() === 'guest') {
                   <span class="absolute top-2 end-2 w-2 h-2 rounded-full bg-azure-600 ring-2 ring-white"></span>
                 }
-                <div class="w-10 h-10 rounded-full bg-white shadow-xs flex items-center justify-center text-xl mb-1 border border-slate-100">
-                  🏖️
+                <div class="w-10 h-10 rounded-full bg-white shadow-xs flex items-center justify-center text-lg mb-1 border border-slate-100 text-azure-600">
+                  <i class="bi bi-person-walking"></i>
                 </div>
                 <span class="text-xs font-black text-slate-900 block">نزيل ومسافر</span>
                 <span class="text-[9px] text-slate-500 mt-0.5 leading-tight">حجز الشاليهات والخدمات</span>
@@ -74,8 +74,8 @@ import { AppStateService } from '../../services/app-state.service';
                 @if (selectedRole() === 'owner') {
                   <span class="absolute top-2 end-2 w-2 h-2 rounded-full bg-azure-600 ring-2 ring-white"></span>
                 }
-                <div class="w-10 h-10 rounded-full bg-white shadow-xs flex items-center justify-center text-xl mb-1 border border-slate-100">
-                  🏢
+                <div class="w-10 h-10 rounded-full bg-white shadow-xs flex items-center justify-center text-lg mb-1 border border-slate-100 text-azure-600">
+                  <i class="bi bi-building"></i>
                 </div>
                 <span class="text-xs font-black text-slate-900 block">مالك ومضيف عقار</span>
                 <span class="text-[9px] text-slate-500 mt-0.5 leading-tight">إدارة الوحدات والأرباح</span>
@@ -112,7 +112,7 @@ import { AppStateService } from '../../services/app-state.service';
             @if (activeTab() === 'register') {
               <div>
                 <label class="block text-[11px] font-bold text-slate-700 mb-1">
-                  {{ selectedRole() === 'owner' ? 'اسم المالك أو المضيف بالكامل' : 'الاسم بالكامل' }}
+                  {{ selectedRole() === 'owner' ? 'اسم المالك بالكامل' : 'الاسم بالكامل' }}
                 </label>
                 <input
                   type="text"
@@ -124,7 +124,7 @@ import { AppStateService } from '../../services/app-state.service';
             }
 
             <div>
-              <label class="block text-[11px] font-bold text-slate-700 mb-1">رقم الهاتف المحمول</label>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">رقم الهاتف</label>
               <div class="flex gap-2">
                 <span class="px-3.5 py-2.5 bg-slate-100 rounded-2xl border border-slate-200/80 text-xs font-sans font-bold text-slate-700 flex items-center">
                   +20
@@ -140,7 +140,7 @@ import { AppStateService } from '../../services/app-state.service';
             </div>
 
             <div>
-              <label class="block text-[11px] font-bold text-slate-700 mb-1">كلمة المرور أو الرمز السري</label>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">كلمة المرور</label>
               <input
                 type="password"
                 [(ngModel)]="passwordInput"
@@ -152,7 +152,10 @@ import { AppStateService } from '../../services/app-state.service';
             @if (selectedRole() === 'owner') {
               <div class="p-3 bg-azure-50/60 rounded-2xl border border-azure-100 flex items-center justify-between text-xs">
                 <span class="text-azure-900 font-bold">بوابة إدارة الملاك المعتمدة</span>
-                <span class="text-[10px] text-azure-700 font-semibold">تحصيل فوري وعقود رسمية ✓</span>
+                <span class="text-[10px] text-azure-700 font-semibold flex items-center gap-1">
+                  <i class="bi bi-shield-check text-azure-600"></i>
+                  تحصيل فوري وعقود رسمية
+                </span>
               </div>
             }
 
@@ -161,10 +164,8 @@ import { AppStateService } from '../../services/app-state.service';
               (click)="submitAuth()"
               class="w-full py-3 bg-slate-950 hover:bg-slate-900 text-white rounded-full text-xs font-bold shadow-lg tap-bounce transition-all mt-1 flex items-center justify-center gap-2"
             >
-              <span>{{ selectedRole() === 'owner' ? 'دخول إلى لوحة إدارة المالك' : (activeTab() === 'login' ? 'دخول إلى حسابي' : 'إنشاء الحساب ومتابعة الاستكشاف') }}</span>
-              <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
+              <span>{{ selectedRole() === 'owner' ? 'دخول لوحة المالك' : (activeTab() === 'login' ? 'دخول' : 'إنشاء الحساب') }}</span>
+              <i class="bi bi-arrow-left"></i>
             </button>
           </div>
 
@@ -182,14 +183,16 @@ import { AppStateService } from '../../services/app-state.service';
                 (click)="quickOwnerLogin()"
                 class="w-full py-2.5 px-4 rounded-2xl bg-gradient-to-r from-azure-700 via-azure-600 to-indigo-600 hover:from-azure-800 hover:to-indigo-700 text-white text-xs font-bold shadow-md shadow-azure-500/20 tap-bounce transition-all flex items-center justify-center gap-2"
               >
-                <span>🏢 تجربة لوحة تحكم المالك فوراً (شاليهات، أرباح، تقويم)</span>
+                <i class="bi bi-speedometer2"></i>
+                <span>تجربة لوحة تحكم المالك</span>
               </button>
             } @else {
               <button
                 (click)="quickGuestLogin()"
                 class="w-full py-2.5 px-4 rounded-2xl bg-gradient-to-r from-azure-600 to-sky-500 hover:from-azure-700 hover:to-sky-600 text-white text-xs font-bold shadow-md shadow-azure-500/20 tap-bounce transition-all flex items-center justify-center gap-2"
               >
-                <span>⚡ دخول سريع كعميل ونزيل (تصفح فوري وحجز مباشر)</span>
+                <i class="bi bi-lightning-charge-fill"></i>
+                <span>دخول سريع كنزيل</span>
               </button>
             }
 
@@ -198,7 +201,7 @@ import { AppStateService } from '../../services/app-state.service';
               (click)="toggleRole()"
               class="w-full py-2 text-[11px] font-bold text-azure-600 hover:text-azure-700 text-center block tap-bounce"
             >
-              {{ selectedRole() === 'owner' ? 'تبديل إلى بوابة النزلاء والمسافرين ←' : 'أنت مالك عقار؟ ادخل إلى بوابة الملاك والمضيفين ←' }}
+              {{ selectedRole() === 'owner' ? 'تبديل إلى بوابة النزلاء ←' : 'هل أنت مالك عقار؟ بوابة الملاك ←' }}
             </button>
           </div>
         </div>

@@ -55,44 +55,44 @@ import { OwnerDashboardComponent } from '../../screens/owner/owner-dashboard.com
       <div class="hidden xl:flex flex-col justify-between h-[844px] max-w-sm me-16 text-white py-10 z-10" [style.transform]="'scale(' + scaleFactor() + ')'">
         <div>
           <!-- Official Logo Card -->
-          <div class="px-6 py-4 rounded-3xl bg-white shadow-2xl inline-flex items-center justify-center mb-6 border border-white/80">
+          <div class="px-5 py-3 rounded-2xl bg-white shadow-xl inline-flex items-center justify-center mb-5 border border-white/80">
             <img
               src="assets/logo.png"
               alt="Ragab Pay Logo"
-              class="h-12 w-auto object-contain"
+              class="h-10 w-auto object-contain"
             />
           </div>
 
-          <h2 class="text-xl font-black leading-snug text-white">
-            منظومة الحجز والإدارة الفندقية وسكن الشركات الذكية - Ragab Pay
+          <h2 class="text-lg font-black leading-snug text-white">
+            منظومة Ragab Pay الفندقية
           </h2>
-          <p class="text-xs text-white/70 mt-3 leading-relaxed">
-            واجهة العميل التفاعلية الفاخرة لمنظومة Ragab Pay، تدعم الحجز اليومي والأسبوعي والشهري والسنوي، مع وحدات مخصصة لوفود الشركات والمهندسين والعمال بشتى محافظات مصر.
+          <p class="text-xs text-white/70 mt-2 leading-relaxed">
+            حجز فندقي فاخر وإدارة وحدات سكنية وسكن شركات بعقود مرنة.
           </p>
 
-          <div class="mt-6 space-y-3 text-xs text-white/85">
-            <div class="flex items-center gap-2.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-              <span>محرك بحث ذكي وفلاتر متقدمة مطابقة للواقع</span>
+          <div class="mt-5 space-y-2.5 text-xs text-white/85">
+            <div class="flex items-center gap-2">
+              <i class="bi bi-search text-emerald-400"></i>
+              <span>بحث ذكي وفلاتر دقيقة</span>
             </div>
-            <div class="flex items-center gap-2.5">
-              <span class="w-2 h-2 rounded-full bg-azure-400"></span>
-              <span>مقارنة ذكية للوحدات والأسعار جنباً إلى جنب</span>
+            <div class="flex items-center gap-2">
+              <i class="bi bi-columns-gap text-azure-400"></i>
+              <span>مقارنة فورية للأسعار والمواصفات</span>
             </div>
-            <div class="flex items-center gap-2.5">
-              <span class="w-2 h-2 rounded-full bg-sky-400"></span>
-              <span>حجز مباشر وقسيمة دخول فندقية برمز QR</span>
+            <div class="flex items-center gap-2">
+              <i class="bi bi-qr-code text-sky-400"></i>
+              <span>حجز مباشر وقسيمة دخول رقمية</span>
             </div>
           </div>
         </div>
 
-        <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shadow-sm">
+        <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shadow-sm">
           <div class="flex items-center gap-2 text-xs font-bold text-azure-300 mb-1">
-            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-            <span>تجربة تفاعلية حية كاملة</span>
+            <i class="bi bi-phone text-emerald-400"></i>
+            <span>تجربة تفاعلية حية</span>
           </div>
           <span class="text-[10px] text-white/70 block leading-relaxed">
-            يمكنك تجربة جميع شاشات التطبيق والحجز والتصفية داخل مجسم هاتف iPhone أمامك مباشرة.
+            تصفح الشاشات وجرّب الحجز والتحكم عبر مجسم الهاتف.
           </span>
         </div>
       </div>

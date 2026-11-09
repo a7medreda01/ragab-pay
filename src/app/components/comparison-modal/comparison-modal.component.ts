@@ -31,9 +31,12 @@ import { Property } from '../../data/properties.data';
 
           <!-- Header -->
           <div class="px-6 py-3 border-b border-slate-100 flex items-center justify-between">
-            <div>
-              <h2 class="text-base font-bold text-slate-900 font-arabic">مقارنة الوحدات الذكية - Ragab Pay</h2>
-              <span class="text-xs text-slate-500 font-arabic">مقارنة المواصفات والأسعار جنباً إلى جنب</span>
+            <div class="flex items-center gap-2">
+              <i class="bi bi-arrow-left-right text-azure-600 text-sm"></i>
+              <div>
+                <h2 class="text-xs font-black text-slate-900 font-arabic">مقارنة الوحدات</h2>
+                <span class="text-[10px] text-slate-400 font-arabic">مقارنة الأسعار والمواصفات جنباً إلى جنب</span>
+              </div>
             </div>
             <div class="flex items-center gap-2">
               <button
@@ -46,7 +49,7 @@ import { Property } from '../../data/properties.data';
                 (click)="close()"
                 class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 tap-bounce"
               >
-                ✕
+                <i class="bi bi-x-lg text-xs"></i>
               </button>
             </div>
           </div>
@@ -72,9 +75,9 @@ import { Property } from '../../data/properties.data';
                     <!-- Remove Button -->
                     <button
                       (click)="remove(prop.id)"
-                      class="absolute top-4 end-4 z-10 w-6 h-6 rounded-full bg-slate-900/70 text-white flex items-center justify-center text-xs"
+                      class="absolute top-4 end-4 z-10 w-6 h-6 rounded-full bg-slate-900/70 text-white flex items-center justify-center text-[10px] tap-bounce"
                     >
-                      ✕
+                      <i class="bi bi-x-lg"></i>
                     </button>
 
                     <div class="h-28 rounded-xl overflow-hidden mb-2">

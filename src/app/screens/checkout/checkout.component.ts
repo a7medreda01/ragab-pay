@@ -13,17 +13,15 @@ import { Booking, Property } from '../../data/properties.data';
     @if (state.selectedProperty(); as prop) {
       <div class="relative w-full h-full overflow-y-auto no-scrollbar pb-[max(8.5rem,calc(7.5rem+env(safe-area-inset-bottom,28px)))] font-arabic bg-slate-50 select-none">
         <!-- Header -->
-        <div class="sticky top-0 z-20 px-5 py-3.5 bg-white/90 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between shadow-xs">
+        <div class="sticky top-0 z-20 px-5 py-3 bg-white/90 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between shadow-2xs">
           <button
             (click)="goBack()"
-            class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 tap-bounce hover:bg-slate-200 transition-colors"
+            class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 tap-bounce hover:bg-slate-200 transition-colors"
           >
-            <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-            </svg>
+            <i class="bi bi-chevron-right text-sm"></i>
           </button>
-          <h1 class="text-xs font-black text-slate-900">تأكيد الحجز والدفع - Ragab Pay</h1>
-          <div class="w-9"></div>
+          <h1 class="text-xs font-black text-slate-900">تأكيد الحجز والدفع</h1>
+          <div class="w-8"></div>
         </div>
 
         <div class="p-5 space-y-4">
@@ -106,8 +104,8 @@ import { Booking, Property } from '../../data/properties.data';
               </div>
             </div>
             <div class="flex items-center gap-1.5 text-[10px] text-azure-700 bg-azure-50 p-2 rounded-lg mt-1.5 font-medium">
-              <span>ℹ️</span>
-              <span>يتغير تاريخ الانتهاء تلقائياً بناءً على عدد {{ durationLabel() }} المحدد أعلاه.</span>
+              <i class="bi bi-info-circle text-azure-600"></i>
+              <span>يتم احتساب تاريخ المغادرة تلقائياً حسب المدة.</span>
             </div>
           </div>
 
@@ -185,13 +183,13 @@ import { Booking, Property } from '../../data/properties.data';
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
                   <div
-                    class="w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow-xs"
+                    class="w-9 h-9 rounded-xl flex items-center justify-center text-sm shadow-xs"
                     [class.bg-azure-600]="selectedPaymentMethod === 'card'"
                     [class.text-white]="selectedPaymentMethod === 'card'"
                     [class.bg-slate-100]="selectedPaymentMethod !== 'card'"
                     [class.text-slate-600]="selectedPaymentMethod !== 'card'"
                   >
-                    💳
+                    <i class="bi bi-credit-card-2-front"></i>
                   </div>
                   <div>
                     <div class="flex items-center gap-2">
@@ -232,7 +230,9 @@ import { Booking, Property } from '../../data/properties.data';
                         class="w-full text-xs font-sans tracking-widest font-bold p-2.5 ps-9 bg-white rounded-xl border border-slate-200 outline-none focus:border-azure-600 shadow-2xs"
                         dir="ltr"
                       />
-                      <span class="absolute start-2.5 top-2.5 text-xs">💳</span>
+                      <span class="absolute start-2.5 top-2.5 text-xs text-slate-400">
+                        <i class="bi bi-credit-card"></i>
+                      </span>
                     </div>
                   </div>
 
@@ -252,7 +252,10 @@ import { Booking, Property } from '../../data/properties.data';
                     <div>
                       <label class="text-[10px] font-bold text-slate-700 block mb-1 flex items-center justify-between">
                         <span>رمز الأمان (CVV)</span>
-                        <span class="text-[9px] text-slate-400">🔒 3 أرقام</span>
+                        <span class="text-[9px] text-slate-400 flex items-center gap-0.5">
+                          <i class="bi bi-shield-lock"></i>
+                          <span>3 أرقام</span>
+                        </span>
                       </label>
                       <input
                         type="password"
@@ -267,7 +270,7 @@ import { Booking, Property } from '../../data/properties.data';
 
                   <!-- Cardholder Name -->
                   <div>
-                    <label class="text-[10px] font-bold text-slate-700 block mb-1">اسم حامل البطاقة (كما هو مدون)</label>
+                    <label class="text-[10px] font-bold text-slate-700 block mb-1">اسم حامل البطاقة</label>
                     <input
                       type="text"
                       [(ngModel)]="cardHolderName"
@@ -279,8 +282,8 @@ import { Booking, Property } from '../../data/properties.data';
 
                   <!-- Security Reassurance Pill -->
                   <div class="flex items-center gap-1.5 text-[10px] text-emerald-700 bg-emerald-50 p-2 rounded-xl font-medium border border-emerald-100">
-                    <svg class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                    <span>معاملة مشفرة بنكياً 256-Bit SSL تحت إشراف منظومة Ragab Pay</span>
+                    <i class="bi bi-shield-check text-emerald-600"></i>
+                    <span>دفع آمن ومشفر 256-Bit SSL</span>
                   </div>
                 </div>
               }
@@ -295,15 +298,15 @@ import { Booking, Property } from '../../data/properties.data';
               [class.border-slate-200]="selectedPaymentMethod !== 'apple-pay'"
             >
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-black text-white flex items-center justify-center font-sans font-bold text-sm shadow-xs">
-                  
+                <div class="w-9 h-9 rounded-xl bg-black text-white flex items-center justify-center font-sans font-bold text-base shadow-xs">
+                  <i class="bi bi-apple"></i>
                 </div>
                 <div>
                   <div class="flex items-center gap-1.5">
                     <span class="text-xs font-black text-slate-900">Apple Pay</span>
                     <span class="px-1.5 py-0.5 bg-slate-100 text-slate-700 text-[9px] font-bold rounded-md">1-Tap</span>
                   </div>
-                  <span class="text-[10px] text-slate-500 block mt-0.5">دفع لحظي فوري وسريع عبر بصمة الوجه Face ID</span>
+                  <span class="text-[10px] text-slate-500 block mt-0.5">دفع فوري عبر Face ID</span>
                 </div>
               </div>
 
@@ -349,18 +352,18 @@ import { Booking, Property } from '../../data/properties.data';
           </div>
 
           <!-- Terms Checkbox -->
-          <div class="flex items-start gap-2.5 p-2 text-xs text-slate-500">
+          <div class="flex items-start gap-2 p-2 text-xs text-slate-500">
             <input type="checkbox" [(ngModel)]="termsAccepted" id="terms" class="mt-0.5 rounded accent-azure-600"/>
             <label for="terms" class="cursor-pointer leading-relaxed">
-              أوافق على سياسة الإلغاء المرنة وضوابط الإقامة الفندقية المعتمدة من منظومة <strong>Ragab Pay</strong>.
+              أوافق على سياسة الحجز والإلغاء المعتمدة.
             </label>
           </div>
         </div>
 
-        <!-- Sticky Bottom Checkout Action with Total & CTA (Elevated Safely Above Mobile Browser Bars & Safari Address Bar) -->
-        <div class="fixed bottom-0 inset-x-0 z-30 px-5 pt-3.5 pb-[max(2.5rem,calc(1.5rem+env(safe-area-inset-bottom,34px)))] bg-white/95 backdrop-blur-2xl border-t border-slate-200/80 shadow-[0_-12px_32px_rgba(0,0,0,0.08)] flex items-center justify-between">
+        <!-- Sticky Bottom Checkout Action -->
+        <div class="fixed bottom-0 inset-x-0 z-30 px-5 pt-3 pb-[max(2rem,calc(1.5rem+env(safe-area-inset-bottom,30px)))] bg-white/95 backdrop-blur-2xl border-t border-slate-200/80 shadow-[0_-8px_24px_rgba(0,0,0,0.06)] flex items-center justify-between">
           <div>
-            <span class="text-[11px] text-slate-400 block font-medium">الإجمالي المستحق</span>
+            <span class="text-[10px] text-slate-400 block font-medium">الإجمالي</span>
             <span class="text-base font-black text-slate-900">{{ totalPrice() | number }} <span class="text-xs text-azure-600 font-bold">ج.م</span></span>
           </div>
 
@@ -369,22 +372,20 @@ import { Booking, Property } from '../../data/properties.data';
             <button
               (click)="submitBooking(prop)"
               [disabled]="!termsAccepted"
-              class="px-8 py-3.5 bg-black hover:bg-neutral-900 disabled:bg-slate-300 text-white font-bold text-xs rounded-full shadow-xl tap-bounce flex items-center gap-2 transition-transform"
+              class="px-7 py-3 bg-black hover:bg-neutral-900 disabled:bg-slate-300 text-white font-bold text-xs rounded-full shadow-md tap-bounce flex items-center gap-1.5 transition-transform"
             >
-              <span class="font-sans text-sm">Pay</span>
-              <span>دفع سريع</span>
+              <i class="bi bi-apple text-sm"></i>
+              <span>Pay</span>
             </button>
           } @else {
             <!-- Direct Card Pay Button -->
             <button
               (click)="submitBooking(prop)"
               [disabled]="!termsAccepted"
-              class="px-7 py-3.5 bg-slate-950 hover:bg-slate-900 disabled:bg-slate-300 text-white font-bold text-xs rounded-full shadow-xl tap-bounce flex items-center gap-2 transition-transform"
+              class="px-6 py-3 bg-slate-950 hover:bg-slate-900 disabled:bg-slate-300 text-white font-bold text-xs rounded-full shadow-md tap-bounce flex items-center gap-1.5 transition-transform"
             >
-              <span>دفع الآن ({{ totalPrice() | number }} ج.م)</span>
-              <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
+              <span>دفع ({{ totalPrice() | number }} ج.م)</span>
+              <i class="bi bi-chevron-left text-xs"></i>
             </button>
           }
         </div>
