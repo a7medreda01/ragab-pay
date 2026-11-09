@@ -18,6 +18,7 @@ import { SideDrawerComponent } from '../side-drawer/side-drawer.component';
 import { QrPassModalComponent } from '../qr-pass-modal/qr-pass-modal.component';
 import { VipServicesModalComponent } from '../vip-services-modal/vip-services-modal.component';
 import { AiChatModalComponent } from '../ai-chat-modal/ai-chat-modal.component';
+import { OwnerDashboardComponent } from '../../screens/owner/owner-dashboard.component';
 
 @Component({
   selector: 'app-device-shell',
@@ -40,7 +41,8 @@ import { AiChatModalComponent } from '../ai-chat-modal/ai-chat-modal.component';
     SideDrawerComponent,
     QrPassModalComponent,
     VipServicesModalComponent,
-    AiChatModalComponent
+    AiChatModalComponent,
+    OwnerDashboardComponent
   ],
   template: `
     <!-- Desktop Ambient Background Container -->
@@ -174,6 +176,11 @@ import { AiChatModalComponent } from '../ai-chat-modal/ai-chat-modal.component';
             <!-- Screen 5: Voucher -->
             @if (state.currentScreen() === 'voucher') {
               <app-voucher-screen></app-voucher-screen>
+            }
+
+            <!-- Screen 6: Owner Dashboard Portal -->
+            @if (state.currentScreen() === 'owner-dashboard') {
+              <app-owner-dashboard></app-owner-dashboard>
             }
 
             <!-- Overlays (Inside Device Frame) -->

@@ -173,6 +173,25 @@ import { AppStateService } from '../../services/app-state.service';
                 </div>
               </div>
 
+              <!-- Service 4: بوابة الملاك والمضيفين (Owner Dashboard) -->
+              <div
+                (click)="openOwnerPortal()"
+                class="group p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-slate-800 to-slate-900 hover:from-amber-500/30 border border-amber-400/40 hover:border-amber-400 transition-all cursor-pointer tap-bounce shadow-sm flex items-start gap-3"
+              >
+                <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform border border-amber-400/30 text-lg">
+                  🏢
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <h5 class="text-xs font-bold text-white group-hover:text-amber-300 transition-colors">بوابة الملاك والمضيفين</h5>
+                    <span class="px-2 py-0.5 rounded-md bg-amber-400/20 text-amber-300 text-[9px] font-bold border border-amber-400/30">Host Portal</span>
+                  </div>
+                  <p class="text-[10px] text-white/70 mt-0.5 leading-snug">
+                    إدارة شاليهاتك، تقويم الحجوزات، إيقاف الأيام، ومتابعة وسحب أرباحك فورياً.
+                  </p>
+                </div>
+              </div>
+
               <!-- Service 4: إدارة العقارات للملاك والمستثمرين -->
               <div
                 (click)="openHostContact()"
@@ -300,6 +319,11 @@ export class SideDrawerComponent {
   openVipServices() {
     this.close();
     this.state.isVipServicesModalOpen.set(true);
+  }
+
+  openOwnerPortal() {
+    this.close();
+    this.state.switchToOwnerMode();
   }
 
   filterCorporate() {

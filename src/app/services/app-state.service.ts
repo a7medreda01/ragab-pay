@@ -1,6 +1,24 @@
 import { Injectable, signal, computed, effect } from '@angular/core';
 import { Property, Booking, MOCK_PROPERTIES, INITIAL_BOOKINGS, TRENDING_SEARCHES, MOCK_NOTIFICATIONS } from '../data/properties.data';
 
+export interface PayoutTransaction {
+  id: string;
+  date: string;
+  amount: number;
+  method: string;
+  destination: string;
+  status: 'completed' | 'processing';
+  reference: string;
+}
+
+export interface OwnerEarnings {
+  availableBalance: number;
+  pendingBalance: number;
+  totalPaidOut: number;
+  thisMonthEarnings: number;
+  transactions: PayoutTransaction[];
+}
+
 export interface FilterCriteria {
   rentalType: 'daily' | 'weekly' | 'monthly' | 'yearly';
   minPrice: number;
@@ -19,19 +37,68 @@ export class AppStateService {
   // Properties
   readonly properties = signal<Property[]>(MOCK_PROPERTIES);
 
-  // User
+  // User & Role (Guest vs Owner)
+  readonly userRole = signal<'guest' | 'owner'>('guest');
+
   readonly currentUser = signal({
     name: 'أحمد محمد',
     phone: '+20 100 123 4567',
     email: 'ahmed.m@ragabpay.com',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
     verified: true,
-    memberSince: '2025'
+    memberSince: '2025',
+    role: 'guest' as 'guest' | 'owner'
   });
 
   // Navigation
-  readonly currentScreen = signal<'welcome' | 'main' | 'details' | 'checkout' | 'voucher'>('welcome');
+  readonly currentScreen = signal<'welcome' | 'main' | 'details' | 'checkout' | 'voucher' | 'owner-dashboard'>('welcome');
   readonly activeTab = signal<'home' | 'search' | 'quick-book' | 'favorites' | 'profile'>('home');
+
+  // Owner Financials & Wallet
+  readonly ownerEarnings = signal<OwnerEarnings>({
+    availableBalance: 94200,
+    pendingBalance: 32000,
+    totalPaidOut: 218800,
+    thisMonthEarnings: 126200,
+    transactions: [
+      {
+        id: 'tx-101',
+        date: '2026-11-08',
+        amount: 28000,
+        method: 'حجز فيلا لوتس لاجون (3 ليالٍ)',
+        destination: 'كريم عبد العزيز',
+        status: 'completed',
+        reference: '#RP-EARN-9841'
+      },
+      {
+        id: 'tx-102',
+        date: '2026-11-05',
+        amount: 45000,
+        method: 'سحب أرباح عبر إنستاباي InstaPay',
+        destination: 'ahmed@instapay',
+        status: 'completed',
+        reference: '#WD-88421'
+      },
+      {
+        id: 'tx-103',
+        date: '2026-11-02',
+        amount: 14000,
+        method: 'حجز شاليه هاسيندا باي (عطلة نهاية أسبوع)',
+        destination: 'د. ياسمين فهمي',
+        status: 'completed',
+        reference: '#RP-EARN-9730'
+      },
+      {
+        id: 'tx-104',
+        date: '2026-10-28',
+        amount: 32000,
+        method: 'حجز سكن مهندسين (عقد شهري شركات)',
+        destination: 'المقاولات الهندسية الكبرى',
+        status: 'processing',
+        reference: '#RP-EARN-9620'
+      }
+    ]
+  });
 
   // Selected State
   readonly selectedProperty = signal<Property | null>(MOCK_PROPERTIES[0]);
@@ -297,5 +364,63 @@ export class AppStateService {
   navigateToTab(tab: 'home' | 'search' | 'quick-book' | 'favorites' | 'profile') {
     this.activeTab.set(tab);
     this.currentScreen.set('main');
+  }
+
+  // Owner Portal Methods
+  switchToOwnerMode() {
+    this.userRole.set('owner');
+    this.currentUser.update(u => ({ ...u, role: 'owner' }));
+    this.currentScreen.set('owner-dashboard');
+  }
+
+  switchToGuestMode() {
+    this.userRole.set('guest');
+    this.currentUser.update(u => ({ ...u, role: 'guest' }));
+    this.currentScreen.set('main');
+  }
+
+  toggleDateBlock(propertyId: string, dateStr: string) {
+    this.properties.update(list =>
+      list.map(p => {
+        if (p.id !== propertyId) return p;
+        const exists = p.blockedDates.includes(dateStr);
+        const updatedBlocked = exists
+          ? p.blockedDates.filter(d => d !== dateStr)
+          : [...p.blockedDates, dateStr];
+        return { ...p, blockedDates: updatedBlocked };
+      })
+    );
+  }
+
+  updatePropertyDetails(propertyId: string, updates: Partial<Property>) {
+    this.properties.update(list =>
+      list.map(p => (p.id === propertyId ? { ...p, ...updates } : p))
+    );
+  }
+
+  addNewProperty(newProp: Property) {
+    this.properties.update(list => [newProp, ...list]);
+  }
+
+  requestPayout(amount: number, method: string, destination: string) {
+    const earnings = this.ownerEarnings();
+    if (amount <= 0 || amount > earnings.availableBalance) return;
+
+    const newTx: PayoutTransaction = {
+      id: 'wd-' + Date.now(),
+      date: new Date().toISOString().split('T')[0],
+      amount: amount,
+      method: `طلب سحب أرباح (${method})`,
+      destination: destination,
+      status: 'completed',
+      reference: '#WD-' + Math.floor(10000 + Math.random() * 90000)
+    };
+
+    this.ownerEarnings.set({
+      ...earnings,
+      availableBalance: earnings.availableBalance - amount,
+      totalPaidOut: earnings.totalPaidOut + amount,
+      transactions: [newTx, ...earnings.transactions]
+    });
   }
 }

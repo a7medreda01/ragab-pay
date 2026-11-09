@@ -34,11 +34,11 @@ import { Property } from '../../data/properties.data';
           <!-- User Greeting Badge (Click to open Auth / Switch Account) -->
           <div
             (click)="state.isAuthOpen.set(true)"
-            class="flex items-center gap-2 ps-2 pe-1 py-1 rounded-full bg-slate-100 border border-slate-200/60 cursor-pointer tap-bounce"
+            class="flex items-center gap-2 ps-2.5 pe-1 py-1 rounded-full bg-slate-100/90 border border-slate-200/60 cursor-pointer tap-bounce"
             title="تسجيل الدخول أو تبديل الحساب"
           >
-            <span class="text-[11px] font-bold text-slate-800">{{ state.currentUser().name }}</span>
-            <img [src]="state.currentUser().avatar" alt="Avatar" class="w-6 h-6 rounded-full object-cover"/>
+            <span class="text-[11px] font-bold text-slate-800 max-w-[120px] truncate">{{ state.currentUser().name }}</span>
+            <img [src]="state.currentUser().avatar" alt="Avatar" class="w-6 h-6 rounded-full object-cover flex-shrink-0"/>
           </div>
 
           <!-- Notification Bell with SVG -->

@@ -9,7 +9,7 @@ import { PropertyImageComponent } from '../../components/property-image/property
   imports: [CommonModule, PropertyImageComponent],
   template: `
     @if (state.selectedProperty(); as prop) {
-      <div class="relative w-full h-full overflow-y-auto no-scrollbar pb-[max(7.5rem,calc(6.5rem+env(safe-area-inset-bottom,28px)))] font-arabic bg-slate-50 select-none">
+      <div class="relative w-full h-full overflow-y-auto no-scrollbar pb-[max(8.5rem,calc(7.5rem+env(safe-area-inset-bottom,36px)))] font-arabic bg-slate-50 select-none">
         <!-- Hero Gallery Carousel with Touch Finger Swiping -->
         <div class="relative h-84 w-full bg-slate-900 overflow-hidden">
           <!-- Horizontal Swipeable Track (CSS Snap + Touch gestures) -->
@@ -308,8 +308,8 @@ import { PropertyImageComponent } from '../../components/property-image/property
           </div>
         </div>
 
-        <!-- Sticky Bottom Frosted Booking Bar (Lifted Safely Above Mobile Browser Bars) -->
-        <div class="fixed bottom-0 inset-x-0 z-30 px-5 pt-3.5 pb-[max(1.25rem,calc(0.75rem+env(safe-area-inset-bottom,24px)))] bg-white/95 backdrop-blur-2xl border-t border-slate-200/80 shadow-[0_-12px_32px_rgba(0,0,0,0.08)] flex items-center justify-between">
+        <!-- Sticky Bottom Frosted Booking Bar (Elevated Safely Above Mobile Browser Bars & Safari Address Bar) -->
+        <div class="fixed bottom-0 inset-x-0 z-30 px-5 pt-3.5 pb-[max(2.5rem,calc(1.5rem+env(safe-area-inset-bottom,34px)))] bg-white/95 backdrop-blur-2xl border-t border-slate-200/80 shadow-[0_-12px_32px_rgba(0,0,0,0.08)] flex items-center justify-between">
           <div>
             <span class="text-[11px] text-slate-400 block font-medium">السعر الإجمالي</span>
             <span class="text-base font-black text-slate-900">{{ prop.pricePerDay | number }} <span class="text-xs text-azure-600 font-bold">ج.م</span></span>

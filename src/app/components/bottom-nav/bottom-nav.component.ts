@@ -7,8 +7,8 @@ import { AppStateService } from '../../services/app-state.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <!-- Floating Bottom Navigation Elevated Safely Above Mobile Browser Bar -->
-    <nav class="absolute bottom-[max(1.25rem,calc(0.75rem+env(safe-area-inset-bottom,20px)))] inset-x-4 z-40">
+    <!-- Floating Bottom Navigation Elevated Safely Above Mobile Browser Bar & Safari Toolbar -->
+    <nav class="absolute bottom-[max(1.75rem,calc(1.25rem+env(safe-area-inset-bottom,28px)))] inset-x-4 z-40">
       <!-- Luxury iOS Glass Dock with Brand Blue & Pure White Identity -->
       <div class="relative bg-white/95 backdrop-blur-2xl border border-azure-100/90 rounded-full px-3 py-2 shadow-[0_16px_40px_rgba(2,132,199,0.18)] flex items-center justify-between shadow-[inset_0_1px_2px_rgba(255,255,255,1),_0_12px_36px_rgba(2,132,199,0.14)]">
         

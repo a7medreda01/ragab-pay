@@ -32,6 +32,33 @@ import { Booking } from '../../data/properties.data';
         </button>
       </div>
 
+      <!-- Owner Portal Gateway Banner -->
+      <div class="px-5 pt-4">
+        <div
+          (click)="state.switchToOwnerMode()"
+          class="p-4 rounded-2xl bg-gradient-to-r from-slate-900 via-azure-950 to-slate-900 text-white shadow-lg border border-azure-400/30 cursor-pointer tap-bounce relative overflow-hidden group"
+        >
+          <div class="absolute -end-6 -bottom-6 w-24 h-24 bg-azure-500/15 rounded-full blur-xl group-hover:scale-125 transition-transform pointer-events-none"></div>
+          <div class="flex items-center justify-between relative z-10">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 text-slate-950 flex items-center justify-center text-xl shadow-md font-bold">
+                🏢
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-xs font-black text-white">بوابة الملاك والمضيفين</h3>
+                  <span class="px-1.5 py-0.5 rounded-md bg-amber-400/20 text-amber-300 text-[9px] font-bold border border-amber-400/30">Host Portal</span>
+                </div>
+                <p class="text-[10px] text-slate-300 mt-0.5">إدارة شاليهاتك، تقويم الحجوزات، وسحب أرباحك فورياً</p>
+              </div>
+            </div>
+            <button class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xs rtl:rotate-180">
+              ➜
+            </button>
+          </div>
+        </div>
+      </div>
+
       <!-- Bookings Section Tabs -->
       <div class="p-5">
         <div class="flex items-center justify-between mb-3">

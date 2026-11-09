@@ -357,8 +357,8 @@ import { Booking, Property } from '../../data/properties.data';
           </div>
         </div>
 
-        <!-- Sticky Bottom Checkout Action with Total & CTA -->
-        <div class="fixed bottom-0 inset-x-0 z-30 px-5 pt-3.5 pb-[max(1.25rem,calc(0.75rem+env(safe-area-inset-bottom,24px)))] bg-white/95 backdrop-blur-2xl border-t border-slate-200/80 shadow-[0_-12px_32px_rgba(0,0,0,0.08)] flex items-center justify-between">
+        <!-- Sticky Bottom Checkout Action with Total & CTA (Elevated Safely Above Mobile Browser Bars & Safari Address Bar) -->
+        <div class="fixed bottom-0 inset-x-0 z-30 px-5 pt-3.5 pb-[max(2.5rem,calc(1.5rem+env(safe-area-inset-bottom,34px)))] bg-white/95 backdrop-blur-2xl border-t border-slate-200/80 shadow-[0_-12px_32px_rgba(0,0,0,0.08)] flex items-center justify-between">
           <div>
             <span class="text-[11px] text-slate-400 block font-medium">الإجمالي المستحق</span>
             <span class="text-base font-black text-slate-900">{{ totalPrice() | number }} <span class="text-xs text-azure-600 font-bold">ج.م</span></span>
