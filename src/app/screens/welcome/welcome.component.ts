@@ -103,8 +103,7 @@ export class WelcomeScreenComponent {
   readonly state = inject(AppStateService);
 
   startExploring() {
-    this.state.currentScreen.set('main');
-    this.state.activeTab.set('home');
+    this.state.isAuthOpen.set(true);
   }
 
   quickSearch() {
