@@ -9,14 +9,25 @@ import { AppStateService } from '../../services/app-state.service';
   template: `
     @if (state.isNotificationOpen()) {
       <div class="absolute inset-0 z-50 flex flex-col justify-end">
-        <div (click)="close()" class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm"></div>
+        <div (click)="close()" class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity"></div>
 
-        <div class="relative w-full max-h-[80%] bg-white rounded-t-[36px] shadow-2xl p-5 flex flex-col animate-slide-up font-arabic">
-          <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-3"></div>
+        <div
+          (touchstart)="onSheetTouchStart($event)"
+          (touchmove)="onSheetTouchMove($event)"
+          (touchend)="onSheetTouchEnd($event)"
+          [style.transform]="currentTranslateY > 0 ? 'translateY(' + currentTranslateY + 'px)' : ''"
+          [style.transition]="isDragging ? 'none' : 'transform 0.25s cubic-bezier(0.32, 0.72, 0, 1)'"
+          class="relative w-full max-h-[80%] bg-white rounded-t-[36px] shadow-2xl p-5 pt-2.5 flex flex-col animate-slide-up font-arabic"
+        >
+          <!-- Drag Handle -->
+          <div class="w-full flex flex-col items-center justify-center pt-1 pb-1 cursor-grab active:cursor-grabbing">
+            <div class="w-12 h-1.5 bg-slate-300 hover:bg-slate-400 rounded-full transition-colors"></div>
+            <span class="text-[9px] text-slate-400 mt-1 select-none font-sans">اسحب للأسفل للإغلاق ↓</span>
+          </div>
 
-          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-            <h2 class="text-sm font-bold text-slate-900">مركز التنبيهات والإشعارات</h2>
-            <button (click)="close()" class="text-slate-400 hover:text-slate-600 text-xs">✕</button>
+          <div class="flex items-center justify-between pb-3 pt-1 border-b border-slate-100">
+            <h2 class="text-sm font-bold text-slate-900">مركز التنبيهات والإشعارات - Ragab Pay</h2>
+            <button (click)="close()" class="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs tap-bounce">✕</button>
           </div>
 
           <div class="py-3 space-y-2.5 overflow-y-auto no-scrollbar">
@@ -44,8 +55,38 @@ import { AppStateService } from '../../services/app-state.service';
 export class NotificationsModalComponent {
   readonly state = inject(AppStateService);
 
+  touchStartY = 0;
+  currentTranslateY = 0;
+  isDragging = false;
+
+  onSheetTouchStart(e: TouchEvent) {
+    if (e.touches.length > 0) {
+      this.touchStartY = e.touches[0].clientY;
+      this.isDragging = true;
+    }
+  }
+
+  onSheetTouchMove(e: TouchEvent) {
+    if (!this.isDragging || e.touches.length === 0) return;
+    const currentY = e.touches[0].clientY;
+    const deltaY = currentY - this.touchStartY;
+    if (deltaY > 0) {
+      this.currentTranslateY = deltaY;
+    } else {
+      this.currentTranslateY = 0;
+    }
+  }
+
+  onSheetTouchEnd(e: TouchEvent) {
+    if (!this.isDragging) return;
+    this.isDragging = false;
+    if (this.currentTranslateY > 75) {
+      this.close();
+    }
+    this.currentTranslateY = 0;
+  }
+
   close() {
     this.state.isNotificationOpen.set(false);
   }
 }
-

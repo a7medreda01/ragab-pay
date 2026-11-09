@@ -36,7 +36,7 @@ import { AuthModalComponent } from '../../screens/auth/auth.component';
   ],
   template: `
     <!-- Desktop Ambient Background Container -->
-    <div class="relative w-screen h-screen overflow-hidden flex items-center justify-center bg-gradient-to-br from-slate-950 via-azure-950 to-navy-950 select-none font-arabic">
+    <div class="relative w-full min-h-[100dvh] h-[100dvh] overflow-hidden flex items-center justify-center bg-gradient-to-br from-slate-950 via-azure-950 to-navy-950 select-none font-arabic">
       <!-- Ambient Decorative Coastal Glow & Wave Orbs (Desktop only) -->
       <div class="hidden lg:block absolute -top-40 -start-40 w-[600px] h-[600px] bg-azure-600/15 rounded-full blur-[140px] pointer-events-none"></div>
       <div class="hidden lg:block absolute -bottom-40 -end-40 w-[600px] h-[600px] bg-sky-500/15 rounded-full blur-[140px] pointer-events-none"></div>

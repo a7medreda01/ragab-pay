@@ -14,12 +14,25 @@ import { Property } from '../../data/properties.data';
         <!-- Backdrop -->
         <div (click)="close()" class="absolute inset-0 bg-slate-950/70 backdrop-blur-md"></div>
 
-        <!-- Sheet Modal -->
-        <div class="relative w-full max-h-[92%] bg-white rounded-t-[36px] shadow-2xl flex flex-col overflow-hidden animate-slide-up">
+        <!-- Sheet Modal with Drag Down to Dismiss -->
+        <div
+          (touchstart)="onSheetTouchStart($event)"
+          (touchmove)="onSheetTouchMove($event)"
+          (touchend)="onSheetTouchEnd($event)"
+          [style.transform]="currentTranslateY > 0 ? 'translateY(' + currentTranslateY + 'px)' : ''"
+          [style.transition]="isDragging ? 'none' : 'transform 0.25s cubic-bezier(0.32, 0.72, 0, 1)'"
+          class="relative w-full max-h-[92%] bg-white rounded-t-[36px] shadow-2xl flex flex-col overflow-hidden animate-slide-up"
+        >
+          <!-- Drag Handle -->
+          <div class="w-full flex flex-col items-center justify-center pt-2.5 pb-1 cursor-grab active:cursor-grabbing">
+            <div class="w-12 h-1.5 bg-slate-300 hover:bg-slate-400 rounded-full transition-colors"></div>
+            <span class="text-[9px] text-slate-400 mt-1 select-none font-sans">اسحب للأسفل للإغلاق ↓</span>
+          </div>
+
           <!-- Header -->
-          <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+          <div class="px-6 py-3 border-b border-slate-100 flex items-center justify-between">
             <div>
-              <h2 class="text-lg font-bold text-slate-900 font-arabic">مقارنة الوحدات الذكية</h2>
+              <h2 class="text-base font-bold text-slate-900 font-arabic">مقارنة الوحدات الذكية - Ragab Pay</h2>
               <span class="text-xs text-slate-500 font-arabic">مقارنة المواصفات والأسعار جنباً إلى جنب</span>
             </div>
             <div class="flex items-center gap-2">
@@ -59,53 +72,57 @@ import { Property } from '../../data/properties.data';
                     <!-- Remove Button -->
                     <button
                       (click)="remove(prop.id)"
-                      class="absolute top-4 start-4 z-10 w-6 h-6 rounded-full bg-slate-900/60 backdrop-blur-md text-white text-xs flex items-center justify-center hover:bg-rose-600 tap-bounce"
+                      class="absolute top-4 end-4 z-10 w-6 h-6 rounded-full bg-slate-900/70 text-white flex items-center justify-center text-xs"
                     >
                       ✕
                     </button>
 
-                    <!-- Image & Title -->
-                    <div class="h-32 rounded-xl overflow-hidden mb-2.5">
+                    <div class="h-28 rounded-xl overflow-hidden mb-2">
                       <app-property-image [src]="prop.images[0]" [alt]="prop.title"></app-property-image>
                     </div>
 
-                    <h3 class="text-xs font-bold text-slate-900 line-clamp-2 h-8">{{ prop.title }}</h3>
-                    <p class="text-[11px] text-azure-600 font-medium mt-0.5 truncate">{{ prop.village }}</p>
-
-                    <!-- Price Card -->
-                    <div class="bg-white rounded-xl p-2.5 mt-2 border border-slate-100 shadow-sm text-center">
-                      <span class="text-xs text-slate-400 block">السعر اليومي</span>
-                      <span class="text-sm font-bold text-slate-900">{{ prop.pricePerDay | number }} ج.م</span>
-                    </div>
+                    <span class="text-[10px] text-azure-600 font-bold">{{ prop.categoryArabic }}</span>
+                    <h4 class="text-xs font-bold text-slate-900 line-clamp-1">{{ prop.title }}</h4>
+                    <span class="text-[10px] text-slate-500 mb-3">{{ prop.village }}</span>
 
                     <!-- Comparison Rows -->
-                    <div class="mt-3 space-y-2 text-xs">
-                      <div class="flex justify-between py-1.5 border-b border-slate-200/60">
-                        <span class="text-slate-500">المسافة للبحر:</span>
-                        <span class="font-bold text-slate-800">{{ prop.distanceToBeach }}</span>
+                    <div class="space-y-2 text-xs border-t border-slate-200 pt-2 flex-1">
+                      <div class="flex justify-between">
+                        <span class="text-slate-400 text-[11px]">السعر / ليلة:</span>
+                        <span class="font-bold text-slate-900">{{ prop.pricePerDay | number }} ج.م</span>
                       </div>
-                      <div class="flex justify-between py-1.5 border-b border-slate-200/60">
-                        <span class="text-slate-500">المساحة:</span>
-                        <span class="font-bold text-slate-800">{{ prop.area }} م²</span>
+                      <div class="flex justify-between">
+                        <span class="text-slate-400 text-[11px]">الغرف:</span>
+                        <span class="font-bold text-slate-900">{{ prop.bedrooms }} نوم</span>
                       </div>
-                      <div class="flex justify-between py-1.5 border-b border-slate-200/60">
-                        <span class="text-slate-500">الغرف / الحمامات:</span>
-                        <span class="font-bold text-slate-800">{{ prop.bedrooms }} غرف • {{ prop.bathrooms }} حمام</span>
+                      <div class="flex justify-between">
+                        <span class="text-slate-400 text-[11px]">الحمامات:</span>
+                        <span class="font-bold text-slate-900">{{ prop.bathrooms }}</span>
                       </div>
-                      <div class="flex justify-between py-1.5 border-b border-slate-200/60">
-                        <span class="text-slate-500">المسبح:</span>
-                        <span class="font-bold text-azure-700">{{ prop.poolType }}</span>
+                      <div class="flex justify-between">
+                        <span class="text-slate-400 text-[11px]">المساحة:</span>
+                        <span class="font-bold text-slate-900">{{ prop.area }} م²</span>
                       </div>
-                      <div class="flex justify-between py-1.5 border-b border-slate-200/60">
-                        <span class="text-slate-500">التقييم:</span>
-                        <span class="font-bold text-amber-500">★ {{ prop.rating }} ({{ prop.reviewsCount }})</span>
+                      <div class="flex justify-between">
+                        <span class="text-slate-400 text-[11px]">المسبح:</span>
+                        <span class="font-bold text-slate-900">{{ prop.poolType }}</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span class="text-slate-400 text-[11px]">المسافة للبحر:</span>
+                        <span class="font-bold text-slate-900">{{ prop.distanceToBeach }}</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span class="text-slate-400 text-[11px]">سكن شركات:</span>
+                        <span class="font-bold" [class.text-emerald-600]="prop.isCorporateReady" [class.text-slate-400]="!prop.isCorporateReady">
+                          {{ prop.isCorporateReady ? 'متاح ومجهز' : 'أفراد فقط' }}
+                        </span>
                       </div>
                     </div>
 
-                    <!-- Action Button -->
+                    <!-- Book Action -->
                     <button
                       (click)="book(prop)"
-                      class="mt-4 w-full py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold tap-bounce hover:bg-azure-600 transition-colors"
+                      class="mt-3 w-full py-2 bg-azure-600 hover:bg-azure-700 text-white rounded-xl text-xs font-bold tap-bounce"
                     >
                       احجز هذه الوحدة
                     </button>
@@ -121,6 +138,37 @@ import { Property } from '../../data/properties.data';
 })
 export class ComparisonModalComponent {
   readonly state = inject(AppStateService);
+
+  touchStartY = 0;
+  currentTranslateY = 0;
+  isDragging = false;
+
+  onSheetTouchStart(e: TouchEvent) {
+    if (e.touches.length > 0) {
+      this.touchStartY = e.touches[0].clientY;
+      this.isDragging = true;
+    }
+  }
+
+  onSheetTouchMove(e: TouchEvent) {
+    if (!this.isDragging || e.touches.length === 0) return;
+    const currentY = e.touches[0].clientY;
+    const deltaY = currentY - this.touchStartY;
+    if (deltaY > 0) {
+      this.currentTranslateY = deltaY;
+    } else {
+      this.currentTranslateY = 0;
+    }
+  }
+
+  onSheetTouchEnd(e: TouchEvent) {
+    if (!this.isDragging) return;
+    this.isDragging = false;
+    if (this.currentTranslateY > 75) {
+      this.close();
+    }
+    this.currentTranslateY = 0;
+  }
 
   remove(id: string) {
     this.state.removeFromComparison(id);
@@ -139,4 +187,3 @@ export class ComparisonModalComponent {
     this.state.isComparisonOpen.set(false);
   }
 }
-

@@ -10,21 +10,29 @@ import { AppStateService, FilterCriteria } from '../../services/app-state.servic
   template: `
     @if (state.isFilterOpen()) {
       <div class="absolute inset-0 z-50 flex flex-col justify-end">
-        <!-- Backdrop Blur -->
+        <!-- Backdrop Blur with Fade -->
         <div
           (click)="close()"
           class="absolute inset-0 bg-slate-950/60 backdrop-blur-md transition-opacity duration-300"
         ></div>
 
-        <!-- Sheet Body -->
-        <div class="relative w-full max-h-[88%] bg-white/95 backdrop-blur-2xl rounded-t-[36px] shadow-2xl border-t border-white/50 flex flex-col overflow-hidden animate-slide-up">
-          <!-- Grabber Handle -->
-          <div class="w-full flex justify-center pt-3 pb-1 cursor-pointer" (click)="close()">
-            <div class="w-12 h-1.5 bg-slate-300 rounded-full"></div>
+        <!-- Sheet Body with Drag-Down-to-Dismiss -->
+        <div
+          (touchstart)="onSheetTouchStart($event)"
+          (touchmove)="onSheetTouchMove($event)"
+          (touchend)="onSheetTouchEnd($event)"
+          [style.transform]="currentTranslateY > 0 ? 'translateY(' + currentTranslateY + 'px)' : ''"
+          [style.transition]="isDragging ? 'none' : 'transform 0.25s cubic-bezier(0.32, 0.72, 0, 1)'"
+          class="relative w-full max-h-[88%] bg-white/95 backdrop-blur-2xl rounded-t-[36px] shadow-2xl border-t border-white/50 flex flex-col overflow-hidden animate-slide-up"
+        >
+          <!-- Grabber Handle (Swipe Down Affordance) -->
+          <div class="w-full flex flex-col items-center justify-center pt-3 pb-1 cursor-grab active:cursor-grabbing">
+            <div class="w-12 h-1.5 bg-slate-300 hover:bg-slate-400 rounded-full transition-colors"></div>
+            <span class="text-[9px] text-slate-400 mt-1 select-none font-sans">اسحب للأسفل للإغلاق ↓</span>
           </div>
 
           <!-- Header -->
-          <div class="px-6 py-3 border-b border-slate-100 flex items-center justify-between">
+          <div class="px-6 py-2.5 border-b border-slate-100 flex items-center justify-between">
             <h2 class="text-sm font-bold text-slate-900 font-arabic">محرك البحث والتصفية المتقدم - Ragab Pay</h2>
             <button
               (click)="reset()"
@@ -229,6 +237,38 @@ export class FilterSheetComponent {
   readonly state = inject(AppStateService);
 
   criteria: FilterCriteria = { ...this.state.filterCriteria() };
+
+  // Touch Drag-Down to Dismiss variables
+  touchStartY = 0;
+  currentTranslateY = 0;
+  isDragging = false;
+
+  onSheetTouchStart(e: TouchEvent) {
+    if (e.touches.length > 0) {
+      this.touchStartY = e.touches[0].clientY;
+      this.isDragging = true;
+    }
+  }
+
+  onSheetTouchMove(e: TouchEvent) {
+    if (!this.isDragging || e.touches.length === 0) return;
+    const currentY = e.touches[0].clientY;
+    const deltaY = currentY - this.touchStartY;
+    if (deltaY > 0) {
+      this.currentTranslateY = deltaY;
+    } else {
+      this.currentTranslateY = 0;
+    }
+  }
+
+  onSheetTouchEnd(e: TouchEvent) {
+    if (!this.isDragging) return;
+    this.isDragging = false;
+    if (this.currentTranslateY > 75) {
+      this.close();
+    }
+    this.currentTranslateY = 0;
+  }
 
   readonly rentalTypes = [
     { id: 'daily' as const, label: 'يومي' },

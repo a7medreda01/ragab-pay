@@ -9,7 +9,7 @@ import { Booking } from '../../data/properties.data';
   standalone: true,
   imports: [CommonModule, PropertyImageComponent],
   template: `
-    <div class="w-full h-full overflow-y-auto no-scrollbar pb-32 font-arabic bg-slate-50 select-none">
+    <div class="w-full h-full overflow-y-auto no-scrollbar pb-[max(7.5rem,calc(6.5rem+env(safe-area-inset-bottom,24px)))] font-arabic bg-slate-50 select-none">
       <!-- User Profile Header -->
       <div class="pt-6 pb-5 px-5 bg-white border-b border-slate-100 flex items-center justify-between">
         <div class="flex items-center gap-3">

@@ -9,7 +9,7 @@ import { Property } from '../../data/properties.data';
   standalone: true,
   imports: [CommonModule, PropertyImageComponent],
   template: `
-    <div class="w-full h-full overflow-y-auto no-scrollbar pb-32 font-arabic bg-slate-50 select-none">
+    <div class="w-full h-full overflow-y-auto no-scrollbar pb-[max(7.5rem,calc(6.5rem+env(safe-area-inset-bottom,24px)))] font-arabic bg-slate-50 select-none">
       <!-- Header -->
       <div class="sticky top-0 z-20 px-5 pt-4 pb-3 bg-white/85 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between">
         <div>
