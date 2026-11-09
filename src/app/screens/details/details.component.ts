@@ -9,7 +9,7 @@ import { PropertyImageComponent } from '../../components/property-image/property
   imports: [CommonModule, PropertyImageComponent],
   template: `
     @if (state.selectedProperty(); as prop) {
-      <div class="relative w-full h-full overflow-y-auto no-scrollbar pb-32 font-arabic bg-slate-50 select-none">
+      <div class="relative w-full h-full overflow-y-auto no-scrollbar pb-24 font-arabic bg-slate-50 select-none">
         <!-- Hero Gallery Carousel -->
         <div class="relative h-80 w-full bg-slate-900">
           <app-property-image
@@ -62,7 +62,7 @@ import { PropertyImageComponent } from '../../components/property-image/property
         </div>
 
         <!-- Overlapping Main Sheet (Apple iOS Style) -->
-        <div class="relative -mt-6 z-10 bg-white rounded-t-[36px] px-6 pt-6 pb-6 shadow-2xl border-t border-slate-100">
+        <div class="relative -mt-6 z-10 bg-white rounded-t-[36px] px-6 pt-5 pb-6 shadow-2xl border-t border-slate-100">
           <!-- Grabber -->
           <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
 
@@ -117,26 +117,26 @@ import { PropertyImageComponent } from '../../components/property-image/property
           </div>
 
           <!-- Specifications Grid with SVG Icons -->
-          <div class="mb-6">
-            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">مواصفات وتجهيزات الإقامة</h3>
-            <div class="grid grid-cols-4 gap-2.5">
+          <div class="mb-5">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5">مواصفات وتجهيزات الإقامة</h3>
+            <div class="grid grid-cols-4 gap-2">
               <div class="bg-slate-50 p-2.5 rounded-2xl text-center border border-slate-100 flex flex-col items-center">
-                <svg class="w-5 h-5 text-azure-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <svg class="w-4 h-4 text-azure-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                 <span class="text-[11px] font-bold text-slate-800 block">{{ prop.bedrooms }} غرف</span>
                 <span class="text-[9px] text-slate-400 block">نوم</span>
               </div>
               <div class="bg-slate-50 p-2.5 rounded-2xl text-center border border-slate-100 flex flex-col items-center">
-                <svg class="w-5 h-5 text-azure-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <svg class="w-4 h-4 text-azure-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                 <span class="text-[11px] font-bold text-slate-800 block">{{ prop.bathrooms }} حمام</span>
                 <span class="text-[9px] text-slate-400 block">مجهز</span>
               </div>
               <div class="bg-slate-50 p-2.5 rounded-2xl text-center border border-slate-100 flex flex-col items-center">
-                <svg class="w-5 h-5 text-azure-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                <svg class="w-4 h-4 text-azure-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
                 <span class="text-[11px] font-bold text-slate-800 block">{{ prop.area }} م²</span>
                 <span class="text-[9px] text-slate-400 block">المساحة</span>
               </div>
               <div class="bg-slate-50 p-2.5 rounded-2xl text-center border border-slate-100 flex flex-col items-center">
-                <svg class="w-5 h-5 text-azure-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M3 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg>
+                <svg class="w-4 h-4 text-azure-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M3 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg>
                 <span class="text-[10px] font-bold text-azure-700 block truncate">{{ prop.poolType }}</span>
                 <span class="text-[9px] text-slate-400 block">مسبح</span>
               </div>
@@ -144,14 +144,14 @@ import { PropertyImageComponent } from '../../components/property-image/property
           </div>
 
           <!-- Description Section -->
-          <div class="mb-6">
-            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">عن هذه الوحدة</h3>
+          <div class="mb-5">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">عن هذه الوحدة</h3>
             <p class="text-xs text-slate-600 leading-relaxed">{{ prop.description }}</p>
           </div>
 
           <!-- Amenities List -->
-          <div class="mb-6">
-            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">المزايا المتاحة</h3>
+          <div class="mb-5">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5">المزايا المتاحة</h3>
             <div class="grid grid-cols-2 gap-2">
               @for (feat of prop.features; track feat) {
                 <div class="flex items-center gap-2 p-2 bg-slate-50 rounded-xl text-xs text-slate-700">
@@ -162,11 +162,77 @@ import { PropertyImageComponent } from '../../components/property-image/property
             </div>
           </div>
 
+          <!-- Google Maps Location Preview Card -->
+          <div class="mb-5">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">موقع الوحدة على الخريطة</h3>
+              <span class="text-[10px] font-bold text-azure-600 flex items-center gap-1">
+                <span>Google Maps</span>
+              </span>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs relative bg-slate-100">
+              <!-- Visual Google Map Container with Styled Satellite/Terrain UI -->
+              <div class="relative h-44 w-full overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80"
+                  alt="Location Map Preview"
+                  class="w-full h-full object-cover filter contrast-105"
+                />
+                <div class="absolute inset-0 bg-azure-950/20 backdrop-blur-[1px]"></div>
+
+                <!-- Google Maps Floating Tag -->
+                <div class="absolute top-3 start-3 px-2.5 py-1 rounded-lg bg-white/95 shadow-md flex items-center gap-1.5 border border-slate-100">
+                  <svg class="w-3.5 h-3.5 text-red-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  <span class="text-[10px] font-bold text-slate-800">{{ prop.village }}</span>
+                </div>
+
+                <!-- Map Pin Pulsing Marker -->
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div class="relative flex items-center justify-center">
+                    <span class="absolute w-12 h-12 rounded-full bg-azure-500/30 animate-ping"></span>
+                    <div class="w-10 h-10 rounded-full bg-azure-600 text-white shadow-xl flex items-center justify-center ring-4 ring-white border border-azure-400">
+                      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Open in Google Maps CTA -->
+                <a
+                  [href]="'https://www.google.com/maps/search/?api=1&query=' + encodeUri(prop.village + ' ' + prop.regionArabic)"
+                  target="_blank"
+                  class="absolute bottom-3 inset-x-3 py-2 bg-white/95 hover:bg-white text-slate-900 rounded-xl text-center text-xs font-bold shadow-lg flex items-center justify-center gap-1.5 tap-bounce border border-slate-200"
+                >
+                  <svg class="w-4 h-4 text-azure-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                  <span>فتح الموقع في خرائط Google Maps</span>
+                </a>
+              </div>
+
+              <!-- Distance Details below map -->
+              <div class="p-3 bg-white space-y-1.5 text-[11px] border-t border-slate-100">
+                <div class="flex items-center justify-between text-slate-600">
+                  <span class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-azure-500"></span>
+                    <span>المسافة للشاطئ:</span>
+                  </span>
+                  <span class="font-bold text-slate-900">{{ prop.distanceToBeach }}</span>
+                </div>
+                <div class="flex items-center justify-between text-slate-600">
+                  <span class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>الخدمات والمطاعم:</span>
+                  </span>
+                  <span class="font-bold text-slate-900">3 دقائق سيراً على الأقدام</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Ragab Pay Guarantee Card with Vector Shield -->
-          <div class="p-4 rounded-2xl bg-gradient-to-r from-azure-900 to-navy-950 text-white mb-6 shadow-lg">
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-azure-900 to-navy-950 text-white mb-5 shadow-lg">
             <div class="flex items-center gap-2 mb-1.5">
-              <svg class="w-5 h-5 text-azure-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-              <span class="text-xs font-bold">ضمان Ragab Pay الفندقي المعتمد - Ragab Pay</span>
+              <svg class="w-4 h-4 text-azure-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              <span class="text-xs font-bold">ضمان Ragab Pay الفندقي المعتمد</span>
             </div>
             <p class="text-[11px] text-white/80 leading-relaxed">
               هذه الوحدة مفحوصة ومُدارة بالكامل من فريق منظومة Ragab Pay. نضمن لك نظافة فندقية معقمة، ومطابقة تامة للعقود الفردية والمؤسسية، ودعم كونسيرج على مدار الساعة.
@@ -175,19 +241,19 @@ import { PropertyImageComponent } from '../../components/property-image/property
 
           <!-- Reviews Section -->
           <div>
-            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">تقييمات النزلاء السابقين</h3>
-            <div class="space-y-3">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5">تقييمات النزلاء السابقين</h3>
+            <div class="space-y-2.5">
               @for (rev of prop.reviews; track rev.userName) {
                 <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100">
-                  <div class="flex items-center justify-between mb-1.5">
+                  <div class="flex items-center justify-between mb-1">
                     <div class="flex items-center gap-2">
-                      <img [src]="rev.avatar" alt="Reviewer" class="w-7 h-7 rounded-full object-cover"/>
+                      <img [src]="rev.avatar" alt="Reviewer" class="w-6 h-6 rounded-full object-cover"/>
                       <span class="text-xs font-bold text-slate-900">{{ rev.userName }}</span>
                     </div>
                     <span class="text-xs text-amber-500 font-bold">★ {{ rev.rating }}.0</span>
                   </div>
                   <p class="text-[11px] text-slate-600 leading-relaxed">{{ rev.comment }}</p>
-                  <span class="text-[10px] text-slate-400 block mt-1">{{ rev.date }}</span>
+                  <span class="text-[9px] text-slate-400 block mt-1">{{ rev.date }}</span>
                 </div>
               }
             </div>
@@ -226,6 +292,10 @@ export class UnitDetailsScreenComponent {
 
   toggleFav(id: string) {
     this.state.toggleFavorite(id);
+  }
+
+  encodeUri(str: string): string {
+    return encodeURIComponent(str);
   }
 
   openWhatsApp(phone: string) {
