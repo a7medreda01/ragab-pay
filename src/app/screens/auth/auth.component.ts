@@ -23,9 +23,19 @@ import { AppStateService } from '../../services/app-state.service';
           class="relative w-full max-h-[94%] bg-white rounded-t-[40px] shadow-[0_-20px_50px_rgba(0,0,0,0.25)] p-6 pt-2 flex flex-col overflow-y-auto no-scrollbar animate-slide-up"
         >
           <!-- Grabber Handle with Swipe Down Indicator -->
-          <div class="w-full flex flex-col items-center justify-center pt-2 pb-1 cursor-grab active:cursor-grabbing">
-            <div class="w-12 h-1.5 bg-slate-300 hover:bg-slate-400 rounded-full transition-colors"></div>
-            <span class="text-[9px] text-slate-400 mt-1 select-none font-sans">اسحب للأسفل للإغلاق ↓</span>
+          <div class="w-full flex items-center justify-between pt-1 pb-2">
+            <div class="w-8"></div>
+            <div class="flex flex-col items-center cursor-grab active:cursor-grabbing">
+              <div class="w-12 h-1.5 bg-slate-300 hover:bg-slate-400 rounded-full transition-colors"></div>
+              <span class="text-[9px] text-slate-400 mt-1 select-none font-sans">اسحب للأسفل للإغلاق ↓</span>
+            </div>
+            <button
+              (click)="close()"
+              aria-label="إغلاق نافذة تسجيل الدخول"
+              class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-xs tap-bounce"
+            >
+              <i class="bi bi-x-lg"></i>
+            </button>
           </div>
 
           <!-- Brand Logo Header -->

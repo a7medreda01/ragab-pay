@@ -130,10 +130,11 @@ import { Property } from '../../data/properties.data';
               <div class="absolute top-3 end-3 flex items-center gap-1.5 z-10">
                 <button
                   (click)="$event.stopPropagation(); toggleFav(prop.id)"
-                  class="w-7 h-7 rounded-full bg-white/90 backdrop-blur-md text-slate-700 flex items-center justify-center shadow-xs tap-bounce"
+                  [attr.aria-label]="state.isFavorite(prop.id) ? 'إزالة من المفضلة' : 'إضافة إلى المفضلة'"
+                  class="w-9 h-9 rounded-full bg-white/95 backdrop-blur-md text-slate-700 flex items-center justify-center shadow-md tap-bounce"
                 >
                   <i
-                    class="bi"
+                    class="bi text-sm"
                     [class.bi-heart-fill]="state.isFavorite(prop.id)"
                     [class.text-rose-500]="state.isFavorite(prop.id)"
                     [class.bi-heart]="!state.isFavorite(prop.id)"
@@ -142,55 +143,56 @@ import { Property } from '../../data/properties.data';
               </div>
 
               <div class="absolute bottom-2.5 start-2.5 z-10">
-                <span class="px-2.5 py-0.5 rounded-full bg-slate-950/75 backdrop-blur-md text-white text-[9px] font-semibold flex items-center gap-1">
+                <span class="px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[11px] font-semibold flex items-center gap-1">
                   <i class="bi bi-water text-azure-300"></i>
                   <span>{{ prop.distanceToBeach }}</span>
                 </span>
               </div>
             </div>
 
-            <div class="p-3.5">
+            <div class="p-4">
               <div class="flex items-start justify-between gap-2">
                 <div>
                   <h3 class="text-xs font-bold text-slate-900 leading-snug">{{ prop.title }}</h3>
-                  <p class="text-[10px] text-azure-700 font-semibold mt-0.5">{{ prop.village }}</p>
+                  <p class="text-[11px] text-azure-700 font-semibold mt-0.5">{{ prop.village }}</p>
                 </div>
                 <div class="flex items-center gap-0.5 text-amber-500 text-xs font-extrabold flex-shrink-0">
-                  <i class="bi bi-star-fill text-[9px]"></i>
+                  <i class="bi bi-star-fill text-[10px]"></i>
                   <span>{{ prop.rating }}</span>
                 </div>
               </div>
 
-              <div class="grid grid-cols-3 gap-1.5 my-2.5">
-                <div class="bg-slate-50 rounded-lg p-1.5 text-center border border-slate-100">
-                  <span class="block text-[10px] font-bold text-slate-800">{{ prop.bedrooms }} غرف</span>
-                  <span class="block text-[8px] text-slate-400">نوم</span>
+              <div class="grid grid-cols-3 gap-2 my-3">
+                <div class="bg-slate-50 rounded-xl p-2 text-center border border-slate-100">
+                  <span class="block text-xs font-bold text-slate-900">{{ prop.bedrooms }} غرف</span>
+                  <span class="block text-[10px] text-slate-600 font-medium">نوم</span>
                 </div>
-                <div class="bg-slate-50 rounded-lg p-1.5 text-center border border-slate-100">
-                  <span class="block text-[10px] font-bold text-slate-800">{{ prop.area }} م²</span>
-                  <span class="block text-[8px] text-slate-400">المساحة</span>
+                <div class="bg-slate-50 rounded-xl p-2 text-center border border-slate-100">
+                  <span class="block text-xs font-bold text-slate-900">{{ prop.area }} م²</span>
+                  <span class="block text-[10px] text-slate-600 font-medium">المساحة</span>
                 </div>
-                <div class="bg-slate-50 rounded-lg p-1.5 text-center border border-slate-100">
-                  <span class="block text-[10px] font-bold text-azure-700 truncate">{{ prop.poolType }}</span>
-                  <span class="block text-[8px] text-slate-400">مسبح</span>
+                <div class="bg-slate-50 rounded-xl p-2 text-center border border-slate-100">
+                  <span class="block text-xs font-bold text-azure-700 truncate">{{ prop.poolType }}</span>
+                  <span class="block text-[10px] text-slate-600 font-medium">مسبح</span>
                 </div>
               </div>
 
-              <div class="flex items-center justify-between pt-2.5 border-t border-slate-100">
+              <div class="flex items-center justify-between pt-3 border-t border-slate-100">
                 <div>
                   <span class="text-sm font-black text-slate-900">{{ prop.pricePerDay | number }} ج.م</span>
-                  <span class="text-[9px] text-slate-400"> / ليلة</span>
+                  <span class="text-[10px] text-slate-600"> / ليلة</span>
                 </div>
 
-                <div class="flex items-center gap-1.5">
+                <div class="flex items-center gap-2">
                   <button
                     (click)="$event.stopPropagation(); toggleComparison(prop)"
-                    class="px-2.5 py-1 rounded-full text-[11px] font-bold border transition-colors tap-bounce"
+                    [attr.aria-label]="state.isInComparison(prop.id) ? 'إزالة من المقارنة' : 'إضافة إلى المقارنة'"
+                    class="px-3 py-1.5 rounded-full text-xs font-bold border transition-colors tap-bounce"
                     [class.bg-azure-50]="state.isInComparison(prop.id)"
                     [class.text-azure-700]="state.isInComparison(prop.id)"
                     [class.border-azure-400]="state.isInComparison(prop.id)"
                     [class.bg-white]="!state.isInComparison(prop.id)"
-                    [class.text-slate-600]="!state.isInComparison(prop.id)"
+                    [class.text-slate-700]="!state.isInComparison(prop.id)"
                     [class.border-slate-200]="!state.isInComparison(prop.id)"
                   >
                     {{ state.isInComparison(prop.id) ? 'تمت الإضافة' : '+ مقارنة' }}
@@ -198,9 +200,9 @@ import { Property } from '../../data/properties.data';
 
                   <button
                     (click)="$event.stopPropagation(); bookDirect(prop)"
-                    class="px-3.5 py-1 bg-slate-900 hover:bg-slate-800 text-white text-[11px] font-bold rounded-full tap-bounce"
+                    class="px-4 py-1.5 bg-slate-950 hover:bg-slate-900 text-white text-xs font-bold rounded-full tap-bounce shadow-sm"
                   >
-                    احجز
+                    احجز الآن
                   </button>
                 </div>
               </div>
@@ -209,15 +211,20 @@ import { Property } from '../../data/properties.data';
         }
 
         @if (state.matchedCount() === 0) {
-          <div class="py-12 text-center flex flex-col items-center justify-center">
-            <i class="bi bi-search text-2xl text-slate-300 mb-2"></i>
-            <h3 class="text-xs font-bold text-slate-800">لا توجد نتائج مطابقة</h3>
-            <p class="text-[10px] text-slate-400 mt-0.5 max-w-xs">جرب تقليل الفلاتر أو تغيير كلمة البحث.</p>
+          <div class="py-16 text-center flex flex-col items-center justify-center bg-white rounded-3xl p-6 border border-slate-100 shadow-2xs my-4">
+            <div class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 mb-3 text-2xl shadow-inner">
+              <i class="bi bi-search"></i>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900">لا توجد وحدات مطابقة لبحثك</h3>
+            <p class="text-xs text-slate-600 mt-1 max-w-xs leading-relaxed">
+              جرّب تعديل الكلمات الدلالية أو إعادة ضبط الفلاتر لتصفح كافة الشاليهات والفيلات المتاحة.
+            </p>
             <button
               (click)="resetAllFilters()"
-              class="mt-3 px-4 py-1.5 bg-azure-600 text-white rounded-full text-xs font-bold tap-bounce"
+              class="mt-4 px-5 py-2.5 bg-slate-950 hover:bg-slate-900 text-white rounded-full text-xs font-bold tap-bounce shadow-md flex items-center gap-1.5"
             >
-              إعادة ضبط الفلاتر
+              <i class="bi bi-arrow-repeat text-xs"></i>
+              <span>إعادة ضبط الفلاتر والبحث</span>
             </button>
           </div>
         }

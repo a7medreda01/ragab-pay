@@ -34,7 +34,8 @@ import { AppStateService } from '../../services/app-state.service';
             </div>
             <button
               (click)="close()"
-              class="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs tap-bounce"
+              aria-label="إغلاق خدمات VIP"
+              class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs tap-bounce"
             >
               <i class="bi bi-x-lg"></i>
             </button>

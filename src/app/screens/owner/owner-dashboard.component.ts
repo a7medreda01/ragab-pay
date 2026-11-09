@@ -440,16 +440,16 @@ import { Property } from '../../data/properties.data';
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 pt-2.5 border-t border-white/10 text-center">
-                  <div class="bg-white/5 p-1.5 rounded-lg">
-                    <span class="text-[9px] text-white/50 block">قيد المعالجة</span>
-                    <span class="text-xs font-bold text-amber-300 font-sans mt-0.5 block">
-                      {{ state.ownerEarnings().pendingBalance | number }} ج.م
+                  <div class="bg-white/5 p-2 rounded-xl">
+                    <span class="text-[10px] text-white/60 block">قيد المعالجة</span>
+                    <span class="text-xs font-bold text-amber-300 font-sans mt-0.5 block whitespace-nowrap">
+                      {{ state.ownerEarnings().pendingBalance | number }} <span class="text-[10px]">ج.م</span>
                     </span>
                   </div>
-                  <div class="bg-white/5 p-1.5 rounded-lg">
-                    <span class="text-[9px] text-white/50 block">إجمالي المسحوب</span>
-                    <span class="text-xs font-bold text-emerald-400 font-sans mt-0.5 block">
-                      {{ state.ownerEarnings().totalPaidOut | number }} ج.م
+                  <div class="bg-white/5 p-2 rounded-xl">
+                    <span class="text-[10px] text-white/60 block">إجمالي المسحوب</span>
+                    <span class="text-xs font-bold text-emerald-400 font-sans mt-0.5 block whitespace-nowrap">
+                      {{ state.ownerEarnings().totalPaidOut | number }} <span class="text-[10px]">ج.م</span>
                     </span>
                   </div>
                 </div>

@@ -16,12 +16,13 @@ import { Booking, Property } from '../../data/properties.data';
         <div class="sticky top-0 z-20 px-5 py-3 bg-white/90 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between shadow-2xs">
           <button
             (click)="goBack()"
-            class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 tap-bounce hover:bg-slate-200 transition-colors"
+            aria-label="الرجوع للتفاصيل"
+            class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 tap-bounce hover:bg-slate-200 transition-colors"
           >
             <i class="bi bi-chevron-right text-sm"></i>
           </button>
           <h1 class="text-xs font-black text-slate-900">تأكيد الحجز والدفع</h1>
-          <div class="w-8"></div>
+          <div class="w-9"></div>
         </div>
 
         <div class="p-5 space-y-4">
@@ -371,21 +372,31 @@ import { Booking, Property } from '../../data/properties.data';
             <!-- Apple Pay Button -->
             <button
               (click)="submitBooking(prop)"
-              [disabled]="!termsAccepted"
+              [disabled]="!termsAccepted || isProcessingPayment()"
               class="px-7 py-3 bg-black hover:bg-neutral-900 disabled:bg-slate-300 text-white font-bold text-xs rounded-full shadow-md tap-bounce flex items-center gap-1.5 transition-transform"
             >
-              <i class="bi bi-apple text-sm"></i>
-              <span>Pay</span>
+              @if (isProcessingPayment()) {
+                <i class="bi bi-arrow-repeat animate-spin text-sm"></i>
+                <span>جاري المعالجة...</span>
+              } @else {
+                <i class="bi bi-apple text-sm"></i>
+                <span>Pay</span>
+              }
             </button>
           } @else {
             <!-- Direct Card Pay Button -->
             <button
               (click)="submitBooking(prop)"
-              [disabled]="!termsAccepted"
+              [disabled]="!termsAccepted || isProcessingPayment()"
               class="px-6 py-3 bg-slate-950 hover:bg-slate-900 disabled:bg-slate-300 text-white font-bold text-xs rounded-full shadow-md tap-bounce flex items-center gap-1.5 transition-transform"
             >
-              <span>دفع ({{ totalPrice() | number }} ج.م)</span>
-              <i class="bi bi-chevron-left text-xs"></i>
+              @if (isProcessingPayment()) {
+                <i class="bi bi-arrow-repeat animate-spin text-sm"></i>
+                <span>جاري معالجة الدفع...</span>
+              } @else {
+                <span>دفع ({{ totalPrice() | number }} ج.م)</span>
+                <i class="bi bi-arrow-left text-xs"></i>
+              }
             </button>
           }
         </div>
@@ -395,6 +406,8 @@ import { Booking, Property } from '../../data/properties.data';
 })
 export class CheckoutScreenComponent implements OnInit {
   readonly state = inject(AppStateService);
+
+  readonly isProcessingPayment = signal<boolean>(false);
 
   selectedRentalType: 'daily' | 'weekly' | 'monthly' | 'yearly' = 'daily';
   readonly durationUnits = signal<number>(3);
@@ -552,34 +565,40 @@ export class CheckoutScreenComponent implements OnInit {
   }
 
   submitBooking(prop: any) {
-    const paymentLabel = this.selectedPaymentMethod === 'apple-pay' ? 'Apple Pay (Pay)' : 'دفع الآن بالبطاقة (Visa/MC)';
+    if (this.isProcessingPayment()) return;
+    this.isProcessingPayment.set(true);
 
-    const newBooking: Booking = {
-      id: 'bk-' + Date.now(),
-      propertyId: prop.id,
-      propertyTitle: prop.title,
-      propertyImage: prop.images[0],
-      village: prop.village,
-      rentalType: this.selectedRentalType,
-      rentalTypeArabic: `إيجار ${this.rentalUnitLabel()} (${this.durationUnits()} ${this.durationLabel()})`,
-      checkIn: this.checkInDate,
-      checkOut: this.checkOutDate,
-      durationUnits: this.durationUnits(),
-      nightsCount: this.durationUnits(),
-      guestsCount: this.guestsCount(),
-      unitPrice: this.currentRate(),
-      cleaningFee: this.cleaningFee,
-      serviceFee: this.serviceFee,
-      totalPrice: this.totalPrice(),
-      status: 'upcoming',
-      paymentMethod: paymentLabel,
-      bookingRef: '#RP-' + Math.floor(1000 + Math.random() * 9000),
-      createdAt: new Date().toISOString().split('T')[0],
-      guestName: this.guestName,
-      guestPhone: this.guestPhone,
-      companyName: this.companyName || undefined
-    };
+    setTimeout(() => {
+      const paymentLabel = this.selectedPaymentMethod === 'apple-pay' ? 'Apple Pay (Pay)' : 'دفع بالبطاقة البنكية (Visa/MC)';
 
-    this.state.confirmBooking(newBooking);
+      const newBooking: Booking = {
+        id: 'bk-' + Date.now(),
+        propertyId: prop.id,
+        propertyTitle: prop.title,
+        propertyImage: prop.images[0],
+        village: prop.village,
+        rentalType: this.selectedRentalType,
+        rentalTypeArabic: `إيجار ${this.rentalUnitLabel()} (${this.durationUnits()} ${this.durationLabel()})`,
+        checkIn: this.checkInDate,
+        checkOut: this.checkOutDate,
+        durationUnits: this.durationUnits(),
+        nightsCount: this.durationUnits(),
+        guestsCount: this.guestsCount(),
+        unitPrice: this.currentRate(),
+        cleaningFee: this.cleaningFee,
+        serviceFee: this.serviceFee,
+        totalPrice: this.totalPrice(),
+        status: 'upcoming',
+        paymentMethod: paymentLabel,
+        bookingRef: '#RP-' + Math.floor(1000 + Math.random() * 9000),
+        createdAt: new Date().toISOString().split('T')[0],
+        guestName: this.guestName || 'ضيف Ragab Pay',
+        guestPhone: this.guestPhone || '+20 100 123 4567',
+        companyName: this.companyName || undefined
+      };
+
+      this.isProcessingPayment.set(false);
+      this.state.confirmBooking(newBooking);
+    }, 850);
   }
 }

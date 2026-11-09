@@ -36,24 +36,24 @@ import { PropertyImageComponent } from '../../components/property-image/property
           <div class="absolute top-4 inset-x-4 flex items-center justify-between z-20 pointer-events-none">
             <button
               (click)="goBack()"
-              class="w-9 h-9 rounded-full bg-slate-950/60 backdrop-blur-md text-white flex items-center justify-center border border-white/20 tap-bounce shadow-md pointer-events-auto hover:bg-slate-950/80 transition-colors"
-              aria-label="الرجوع"
+              class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-md text-slate-800 flex items-center justify-center border border-white/80 tap-bounce shadow-lg pointer-events-auto hover:bg-white transition-colors"
+              aria-label="الرجوع للقائمة"
             >
-              <i class="bi bi-chevron-right text-sm"></i>
+              <i class="bi bi-chevron-right text-base"></i>
             </button>
 
             <!-- Counter Badge -->
-            <div class="px-2.5 py-0.5 rounded-full bg-slate-950/60 backdrop-blur-md text-white text-[10px] font-sans font-bold border border-white/15 pointer-events-auto shadow-xs">
+            <div class="px-3 py-1 rounded-full bg-slate-950/70 backdrop-blur-md text-white text-xs font-sans font-bold border border-white/20 pointer-events-auto shadow-sm">
               {{ activeImageIndex() + 1 }} / {{ prop.images.length }}
             </div>
 
             <button
               (click)="toggleFav(prop.id)"
-              class="w-9 h-9 rounded-full bg-slate-950/60 backdrop-blur-md text-white flex items-center justify-center border border-white/20 tap-bounce shadow-md pointer-events-auto hover:bg-slate-950/80 transition-colors"
-              aria-label="المفضلة"
+              class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-md text-slate-800 flex items-center justify-center border border-white/80 tap-bounce shadow-lg pointer-events-auto hover:bg-white transition-colors"
+              [attr.aria-label]="state.isFavorite(prop.id) ? 'إزالة من المفضلة' : 'إضافة إلى المفضلة'"
             >
               <i
-                class="bi text-sm"
+                class="bi text-base"
                 [class.bi-heart-fill]="state.isFavorite(prop.id)"
                 [class.text-rose-500]="state.isFavorite(prop.id)"
                 [class.bi-heart]="!state.isFavorite(prop.id)"
@@ -285,17 +285,16 @@ import { PropertyImageComponent } from '../../components/property-image/property
         <!-- Sticky Bottom Booking Bar -->
         <div class="fixed bottom-0 inset-x-0 z-30 px-5 pt-3 pb-[max(2rem,calc(1.5rem+env(safe-area-inset-bottom,30px)))] bg-white/95 backdrop-blur-2xl border-t border-slate-200/80 shadow-[0_-8px_24px_rgba(0,0,0,0.06)] flex items-center justify-between">
           <div>
-            <span class="text-[10px] text-slate-400 block font-medium">السعر</span>
-            <span class="text-base font-black text-slate-900">{{ prop.pricePerDay | number }} <span class="text-xs text-azure-600 font-bold">ج.م</span></span>
-            <span class="text-[10px] text-slate-500"> / ليلة</span>
+            <span class="text-xs text-slate-600 block font-semibold">السعر / ليلة</span>
+            <span class="text-base font-black text-slate-900 font-sans">{{ prop.pricePerDay | number }} <span class="text-xs text-azure-600 font-bold">ج.م</span></span>
           </div>
 
           <button
             (click)="proceedToBooking(prop)"
-            class="px-7 py-3 bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs rounded-full shadow-md tap-bounce flex items-center gap-1.5"
+            class="px-8 py-3.5 bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs rounded-full shadow-lg tap-bounce flex items-center gap-2"
           >
             <span>احجز الآن</span>
-            <i class="bi bi-chevron-left text-xs"></i>
+            <i class="bi bi-arrow-left text-xs"></i>
           </button>
         </div>
       </div>

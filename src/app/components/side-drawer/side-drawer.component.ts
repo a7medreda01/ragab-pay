@@ -36,7 +36,8 @@ import { AppStateService } from '../../services/app-state.service';
 
               <button
                 (click)="close()"
-                class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center tap-bounce"
+                class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center tap-bounce"
+                aria-label="إغلاق القائمة الجانبية"
                 title="إغلاق"
               >
                 <i class="bi bi-x-lg text-xs"></i>

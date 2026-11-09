@@ -30,7 +30,11 @@ import { AppStateService } from '../../services/app-state.service';
               <i class="bi bi-bell text-azure-600 text-sm"></i>
               <h2 class="text-xs font-black text-slate-900">التنبيهات والإشعارات</h2>
             </div>
-            <button (click)="close()" class="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs tap-bounce">
+            <button
+              (click)="close()"
+              aria-label="إغلاق الإشعارات"
+              class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs tap-bounce"
+            >
               <i class="bi bi-x-lg"></i>
             </button>
           </div>

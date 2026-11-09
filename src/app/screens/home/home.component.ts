@@ -118,9 +118,9 @@ import { Property } from '../../data/properties.data';
         <div class="flex items-center justify-between mb-2.5">
           <div>
             <h2 class="text-xs font-black text-slate-900">وحدات مميزة</h2>
-            <span class="text-[10px] text-slate-400">إطلالات مباشرة وخدمة فندقية</span>
+            <span class="text-[11px] text-slate-600">إطلالات مباشرة وخدمة فندقية</span>
           </div>
-          <button (click)="openSearch()" class="text-[11px] font-bold text-azure-600 hover:text-azure-700">عرض الكل</button>
+          <button (click)="openSearch()" class="text-xs font-bold text-azure-600 hover:text-azure-700">عرض الكل</button>
         </div>
 
         <div class="flex gap-3 overflow-x-auto no-scrollbar snap-x snap-mandatory pt-0.5 pb-2">
@@ -138,15 +138,16 @@ import { Property } from '../../data/properties.data';
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
 
               <div class="absolute top-3 inset-x-3 flex items-center justify-between z-10">
-                <span class="px-2.5 py-0.5 rounded-full bg-slate-950/70 backdrop-blur-md text-white text-[9px] font-bold border border-white/20">
+                <span class="px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-bold border border-white/20">
                   {{ prop.categoryArabic }}
                 </span>
                 <button
                   (click)="$event.stopPropagation(); toggleFav(prop.id)"
-                  class="w-7 h-7 rounded-full bg-slate-950/50 backdrop-blur-md text-white flex items-center justify-center border border-white/20 tap-bounce"
+                  [attr.aria-label]="state.isFavorite(prop.id) ? 'إزالة من المفضلة' : 'إضافة إلى المفضلة'"
+                  class="w-9 h-9 rounded-full bg-slate-950/70 backdrop-blur-md text-white flex items-center justify-center border border-white/30 tap-bounce shadow-md"
                 >
                   <i
-                    class="bi"
+                    class="bi text-sm"
                     [class.bi-heart-fill]="state.isFavorite(prop.id)"
                     [class.text-rose-500]="state.isFavorite(prop.id)"
                     [class.bi-heart]="!state.isFavorite(prop.id)"
@@ -155,21 +156,21 @@ import { Property } from '../../data/properties.data';
               </div>
 
               <div class="absolute bottom-3 inset-x-3 z-10">
-                <div class="glass-panel p-3 rounded-2xl border border-white/60">
-                  <div class="flex items-center gap-1 text-amber-500 text-[10px] font-bold mb-0.5">
-                    <i class="bi bi-star-fill text-[9px]"></i>
+                <div class="glass-panel p-3.5 rounded-2xl border border-white/60">
+                  <div class="flex items-center gap-1 text-amber-500 text-xs font-bold mb-0.5">
+                    <i class="bi bi-star-fill text-[10px]"></i>
                     <span>{{ prop.rating }}</span>
-                    <span class="text-slate-400 font-normal">({{ prop.reviewsCount }})</span>
+                    <span class="text-slate-500 font-normal">({{ prop.reviewsCount }})</span>
                   </div>
                   <h3 class="text-xs font-bold text-slate-900 line-clamp-1">{{ prop.title }}</h3>
-                  <p class="text-[10px] text-azure-700 font-semibold mt-0.5 truncate">{{ prop.village }}</p>
+                  <p class="text-[11px] text-azure-700 font-semibold mt-0.5 truncate">{{ prop.village }}</p>
 
                   <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
                     <div>
-                      <span class="text-xs font-black text-slate-900">{{ prop.pricePerDay | number }} ج.م</span>
-                      <span class="text-[9px] text-slate-400"> / ليلة</span>
+                      <span class="text-xs font-black text-slate-900 font-sans">{{ prop.pricePerDay | number }} ج.م</span>
+                      <span class="text-[10px] text-slate-600"> / ليلة</span>
                     </div>
-                    <span class="text-[9px] font-bold text-azure-700 bg-azure-50 px-2 py-0.5 rounded-md">
+                    <span class="text-[10px] font-bold text-azure-700 bg-azure-50 px-2 py-0.5 rounded-md">
                       {{ prop.poolType }}
                     </span>
                   </div>
@@ -182,7 +183,7 @@ import { Property } from '../../data/properties.data';
 
       <!-- Category Chips -->
       <div class="mt-3.5 px-5">
-        <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">التصنيفات</h3>
+        <h3 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">التصنيفات</h3>
         <div class="flex gap-1.5 overflow-x-auto no-scrollbar py-0.5">
           @for (cat of categories; track cat.name) {
             <button

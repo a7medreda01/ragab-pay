@@ -47,6 +47,7 @@ import { Property } from '../../data/properties.data';
               </button>
               <button
                 (click)="close()"
+                aria-label="إغلاق مقارنة الوحدات"
                 class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 tap-bounce"
               >
                 <i class="bi bi-x-lg text-xs"></i>
