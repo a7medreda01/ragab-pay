@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عرض فني ومالي - تطوير منظومة Ragab Bay الفندقية المتكاملة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --primary: #007AFF;
+      --primary-dark: #0056b3;
+      --primary-light: #EBF5FF;
+      --navy: #0F172A;
+      --slate-800: #1E293B;
+      --slate-600: #475569;
+      --slate-500: #64748B;
+      --slate-200: #E2E8F0;
+      --slate-100: #F1F5F9;
+      --slate-50: #F8FAFC;
+      --white: #FFFFFF;
+      --emerald: #10B981;
+      --amber: #F59E0B;
+      --purple: #8B5CF6;
+      --border: #E2E8F0;
+      --card-bg: #FFFFFF;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+      --font-ar: 'Cairo', sans-serif;
+      --font-en: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: var(--font-ar);
+      background-color: #F8FAFC;
+      color: var(--navy);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 30px 24px;
+    }
+
+    /* Floating Print Action */
+    .print-bar {
+      position: sticky;
+      top: 16px;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      margin-bottom: 24px;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .print-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-family: var(--font-ar);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .print-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Document Sheets */
+    .sheet {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      padding: 48px;
+      margin-bottom: 32px;
+      page-break-after: always;
+      position: relative;
+    }
+
+    .sheet:last-child {
+      page-break-after: auto;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--slate-100);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #007AFF 0%, #0056b3 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(0, 122, 255, 0.35);
+    }
+
+    .brand-title h1 {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+
+    .brand-title p {
+      font-size: 12px;
+      color: var(--slate-500);
+      font-family: var(--font-en);
+      font-weight: 600;
+    }
+
+    .meta-badge {
+      text-align: left;
+      font-size: 12px;
+      color: var(--slate-600);
+    }
+
+    .meta-badge .ref {
+      font-family: var(--font-en);
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    /* Section Titles */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-light);
+    }
+
+    .section-title i {
+      color: var(--primary);
+      font-size: 20px;
+    }
+
+    /* Project Cards Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      background: var(--white);
+      transition: all 0.2s;
+    }
+
+    .card-highlight {
+      background: linear-gradient(180deg, #F0F7FF 0%, #FFFFFF 100%);
+      border-color: #BAE6FD;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .card p, .card ul {
+      font-size: 12px;
+      color: var(--slate-600);
+      margin-bottom: 0;
+    }
+
+    .card ul {
+      padding-right: 18px;
+      margin-top: 8px;
+    }
+
+    .card ul li {
+      margin-bottom: 5px;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .badge-blue { background: #E0F2FE; color: #0369A1; }
+    .badge-green { background: #D1FAE5; color: #047857; }
+    .badge-purple { background: #EDE9FE; color: #6D28D9; }
+    .badge-amber { background: #FEF3C7; color: #B45309; }
+
+    /* Tables */
+    .table-container {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 12.5px;
+    }
+
+    thead th {
+      background: var(--slate-50);
+      color: var(--slate-800);
+      font-weight: 800;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+    }
+
+    tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--slate-600);
+      vertical-align: top;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background-color: #F8FAFC;
+    }
+
+    .td-num {
+      font-family: var(--font-en);
+      font-weight: 700;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .price-tag {
+      font-family: var(--font-en);
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 13.5px;
+    }
+
+    .phase-badge {
+      font-weight: 800;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Summary Total Box */
+    .total-box {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: white;
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+    }
+
+    .total-info h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .total-info p {
+      font-size: 12px;
+      color: #94A3B8;
+    }
+
+    .total-amount {
+      text-align: left;
+    }
+
+    .total-amount .grand-usd {
+      font-family: var(--font-en);
+      font-size: 32px;
+      font-weight: 900;
+      color: #38BDF8;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .total-amount .duration-badge {
+      display: inline-block;
+      margin-top: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      color: #E2E8F0;
+    }
+
+    /* Milestone Cards */
+    .milestone-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .milestone-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      background: var(--slate-50);
+    }
+
+    .milestone-pct {
+      font-family: var(--font-en);
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .milestone-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .milestone-desc {
+      font-size: 11px;
+      color: var(--slate-500);
+      line-height: 1.5;
+    }
+
+    /* Terms */
+    .terms-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .terms-list li {
+      position: relative;
+      padding-right: 22px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: var(--slate-600);
+    }
+
+    .terms-list li::before {
+      content: "✓";
+      position: absolute;
+      right: 0;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--slate-200);
+      padding-top: 18px;
+      margin-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--slate-500);
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+      .print-bar {
+        display: none !important;
+      }
+      .sheet {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 0;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 12mm 14mm 14mm 14mm;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Printable Container -->
+  <div class="container">
+
+    <!-- Sticky Screen Bar (Hidden on print) -->
+    <div class="print-bar">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <i class="bi bi-file-earmark-pdf" style="font-size: 20px; color: #38BDF8;"></i>
+        <div>
+          <strong style="font-size: 13px;">العرض الفني والمالي - Ragab Bay Platform</strong>
+          <p style="font-size: 11px; color: #94A3B8; margin: 0;">جاهز للطباعة والحفظ كـ PDF بمقاس A4 بدقة عالية</p>
+        </div>
+      </div>
+      <button class="print-btn" onclick="window.print()">
+        <i class="bi bi-printer-fill"></i>
+        طباعة أو حفظ PDF
+      </button>
+    </div>
+
+    <!-- SHEET 1: الغلاف ونطاق العمل الأساسي -->
+    <div class="sheet">
+      <!-- Header -->
+      <div class="header">
+        <div class="brand">
+          <div class="brand-icon">
+            <i class="bi bi-water"></i>
+          </div>
+          <div class="brand-title">
+            <h1>منظومة رجب باي | Ragab Bay</h1>
+            <p>Integrated Hospitality & Vacation Rental Operating System</p>
+          </div>
+        </div>
+        <div class="meta-badge">
+          <span class="ref">REF: RB-TECH-2026-V1</span>
+          <div><strong>التاريخ:</strong> نوفمبر 2026</div>
+          <div><strong>النوع:</strong> عرض فني ومالي لبرمجة وتطوير النظام</div>
+        </div>
+      </div>
+
+      <!-- مقدمة العرض -->
+      <div style="margin-bottom: 24px; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 12px; padding: 16px 20px;">
+        <h3 style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">مقدمة المشروع:</h3>
+        <p style="font-size: 12.5px; color: var(--slate-600); line-height: 1.7;">
+          يقدم هذا العرض دراسة فنية ومالية شاملة لتصميم، وهندسة، وبرمجة منظومة <strong>Ragab Bay</strong> الفندقية المتكاملة لإدارة الشاليهات، والقرى السياحية، وإسكان الشركات. تشمل المنظومة بنية سحابية موحدة (Backend & Database) متصلة بـ <strong>3 لوحات ويب متخصصة</strong> وتطبيق هاتف ذكي هجين (iOS & Android)، بالإضافة إلى <strong>محرك ذكاء اصطناعي (AI Model) مخصص</strong> تم تصميمه كمرحلة تشغيلية مستقلة لتوفير تجربة بحث ذكية وتسعير ديناميكي.
+        </p>
+      </div>
+
+      <!-- نطاق العمل والمكونات البرمجية -->
+      <div class="section-title">
+        <i class="bi bi-layers-fill"></i>
+        <span>أولاً: أركان المنظومة البرمجية (Scope of Software Development)</span>
+      </div>
+
+      <div class="grid-2">
+        <!-- 1. Backend & DB -->
+        <div class="card card-highlight">
+          <div class="card-header">
+            <div class="card-icon" style="background: #E0F2FE; color: #0284C7;">
+              <i class="bi bi-database-fill-gear"></i>
+            </div>
+            <div>
+              <div class="card-title">1. الباك إند وقواعد البيانات (Backend & Database)</div>
+              <span class="badge badge-blue">Core Infrastructure</span>
+            </div>
+          </div>
+          <ul>
+            <li><strong>بنية الميكروسيرفس وREST/GraphQL APIs:</strong> خوادم فائقة السرعة معزولة وآمنة.</li>
+            <li><strong>قاعدة البيانات المركزية:</strong> PostgreSQL مع إعدادات النسخ الاحتياطي التلقائي وفهارس متقدمة.</li>
+            <li><strong>طبقة الكاش (Redis Cache):</strong> لتسريع الاستعلامات وتخفيف الحمل عند الذروة.</li>
+            <li><strong>بوابات الدفع الإلكتروني:</strong> ربط Paymob / Stripe / فوري وحسابات أبل وجوجل باي.</li>
+            <li><strong>الأمان والمصادقة:</strong> JWT، وتشفير AES-256 للبيانات الحساسة، وسجل تدقيق نشط (Audit Logs).</li>
+          </ul>
+        </div>
+
+        <!-- 2. Web Portals -->
+        <div class="card card-highlight">
+          <div class="card-header">
+            <div class="card-icon" style="background: #EDE9FE; color: #7C3AED;">
+              <i class="bi bi-window-stack"></i>
+            </div>
+            <div>
+              <div class="card-title">2. منصة الويب (3 لوحات تحكم متخصصة)</div>
+              <span class="badge badge-purple">Web Portals (SPA/Angular)</span>
+            </div>
+          </div>
+          <ul>
+            <li><strong>لوحة الإدارة المركزية (Super Admin):</strong> تحكم شامل في العقود، الشاليهات، الشؤون المالية، العمولات، وصلاحيات الموظفين.</li>
+            <li><strong>بوابة العميل والنزيل (Guest Portal):</strong> منصة استكشاف الوحدات، محرك حجز سريع، وتأكيد الحجوزات وإصدار الفاوتشر.</li>
+            <li><strong>بوابة المالك (Owner Dashboard):</strong> شاشة مخصصة لمالك الشاليه لمتابعة نسب الإشغال، الأرباح اللحظية، وتعديل بيانات وحداته.</li>
+          </ul>
+        </div>
+
+        <!-- 3. Mobile App -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background: #DCFCE7; color: #16A34A;">
+              <i class="bi bi-phone-fill"></i>
+            </div>
+            <div>
+              <div class="card-title">3. تطبيق الهاتف الذكي (iOS & Android)</div>
+              <span class="badge badge-green">Cross-Platform App</span>
+            </div>
+          </div>
+          <ul>
+            <li><strong>تجربة مستخدم حصرية وسريعة:</strong> تصميم متوافق مع معايير Apple HIG و Material 3.</li>
+            <li><strong>نظام تصاريح الـ QR الذكية:</strong> تصاريح بوابات القرى والشواطئ تعمل أوفلاين مع فحص أمني.</li>
+            <li><strong>خدمات الكونسيرج وVIP:</strong> طلب خدمات الصيانة، التوصيل، الإشراف الفندقي، والليموزين.</li>
+            <li><strong>الإشعارات الفورية (Push Notifications):</strong> تأكيدات الحجز، العروض الحصرية، وتنبيهات الدفع.</li>
+          </ul>
+        </div>
+
+        <!-- 4. AI Model -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background: #FEF3C7; color: #D97706;">
+              <i class="bi bi-robot"></i>
+            </div>
+            <div>
+              <div class="card-title">4. نموذج ومحرك الذكاء الاصطناعي (Ragab AI)</div>
+              <span class="badge badge-amber">Dedicated AI Phase</span>
+            </div>
+          </div>
+          <ul>
+            <li><strong>المستشار الفندقي الذكي (Multi-turn Assistant):</strong> يفهم تفضيلات النزلاء باللغة الطبيعية ويقترح أفضل خيارات الإقامة.</li>
+            <li><strong>محرك البحث الذكي (RAG & Semantic Search):</strong> بحث بالمعنى والمواصفات حتى مع اختلاف الصياغة.</li>
+            <li><strong>نموذج التسعير الديناميكي (Dynamic Pricing):</strong> توصيات بتعديل الأسعار حسب الموسم ومعدلات الطلب لتعظيم أرباح الملاك.</li>
+            <li><strong>لوحة تحليلات سلوك النزلاء:</strong> تنبؤ بنسب الإشغال ومقترحات لتحسين تجربة النزلاء.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- أهم مميزات المنظومة للمالك والإدارة -->
+      <div style="background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 12px; padding: 14px 18px; margin-top: 10px;">
+        <div style="font-weight: 800; color: #0369A1; font-size: 13px; margin-bottom: 6px;">
+          <i class="bi bi-stars"></i> أبرز المميزات التنافسية لمنظومة Ragab Bay:
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 11.5px; color: #0C4A6E;">
+          <div><i class="bi bi-check-circle-fill text-primary"></i> محفظة موحدة ونقاط مكافآت للمستخدم</div>
+          <div><i class="bi bi-check-circle-fill text-primary"></i> تصاريح دخول رقمية مؤمنة بـ QR Code</div>
+          <div><i class="bi bi-check-circle-fill text-primary"></i> فصل مالي آلي بين أرباح الملاك ونسبة المنصة</div>
+          <div><i class="bi bi-check-circle-fill text-primary"></i> دعم ثنائي الاتجاه (عربي RTL وإنجليزي LTR)</div>
+          <div><i class="bi bi-check-circle-fill text-primary"></i> نظام حجز فوري ومؤكد 100% بدون تعارض</div>
+          <div><i class="bi bi-check-circle-fill text-primary"></i> لوحات مراقبة وتقارير مالية قابلة للتصدير Excel/PDF</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>منظومة رجب باي الفندقية | Ragab Bay Hospitality Ecosystem</div>
+        <div>صفحة 1 من 3</div>
+      </div>
+    </div>
+
+    <!-- SHEET 2: خطة مراحل التنفيذ مع عزل الـ AI -->
+    <div class="sheet page-break">
+      <div class="header">
+        <div class="brand">
+          <div class="brand-icon">
+            <i class="bi bi-diagram-3-fill"></i>
+          </div>
+          <div class="brand-title">
+            <h1>خطة مراحل التنفيذ (Project Roadmap)</h1>
+            <p>Structured Phases with Independent AI Lifecycle</p>
+          </div>
+        </div>
+        <div class="meta-badge">
+          <span class="ref">EXECUTION TIMELINE</span>
+          <div><strong>المنهجية:</strong> Agile / Scrum Sprints</div>
+        </div>
+      </div>
+
+      <p style="font-size: 12.5px; color: var(--slate-600); margin-bottom: 20px;">
+        بناءً على المتطلبات، تم تصميم مراحل التنفيذ بتوازي هندسي ذكي؛ حيث يتم بناء وتكامل وتجهيز بنية <strong>الباك إند وقواعد البيانات واللوحات الثلاث وتطبيق الهاتف</strong> في المرحلتين الأولى والثانية معاً لضمان جاهزية المنظومة للتشغيل الفعلي، بينما تم تخصيص <strong>المرحلة الثالثة بالكامل لنموذج الذكاء الاصطناعي (AI Model)</strong> لتطويره وتدريبه على بيانات حقيقية بعد استقرار دورة العمل.
+      </p>
+
+      <!-- المراحل الثلاث -->
+      <div class="grid-3" style="gap: 16px; margin-bottom: 24px;">
+        
+        <!-- المرحلة 1 -->
+        <div class="card" style="border-top: 4px solid var(--primary);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="badge badge-blue">المرحلة الأولى</span>
+            <span style="font-family: var(--font-en); font-weight: 800; font-size: 12px; color: var(--primary);">7 أسابيع</span>
+          </div>
+          <div style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
+            تأسيس البنية وقواعد البيانات ولوحات الويب
+          </div>
+          <ul style="font-size: 11.5px; padding-right: 14px; color: var(--slate-600);">
+            <li>هندسة قواعد البيانات وعلاقات الوحدات والملاك.</li>
+            <li>بناء Core APIs للباك إند والمصادقة الأمنية.</li>
+            <li>تطوير لوحة تحكم الإدارة العامة (Admin Portal).</li>
+            <li>بناء بوابة العميل والنزيل (Guest Web Portal).</li>
+            <li>بناء واجهة المالك (Owner Portal MVP).</li>
+          </ul>
+        </div>
+
+        <!-- المرحلة 2 -->
+        <div class="card" style="border-top: 4px solid var(--emerald);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="badge badge-green">المرحلة الثانية</span>
+            <span style="font-family: var(--font-en); font-weight: 800; font-size: 12px; color: var(--emerald);">6 أسابيع</span>
+          </div>
+          <div style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
+            تطبيق الموبايل، بوابات الدفع ونظام الـ QR
+          </div>
+          <ul style="font-size: 11.5px; padding-right: 14px; color: var(--slate-600);">
+            <li>تطوير تطبيق الهاتف بنسختيه (iOS & Android).</li>
+            <li>ربط بوابات الدفع الإلكتروني (Paymob/Stripe).</li>
+            <li>برمجة نظام تصاريح الدخول الرقمية المشفرة (QR Pass).</li>
+            <li>نظام المحفظة وحساب أرباح الملاك وعمولات المنصة.</li>
+            <li>الاختبارات الشاملة (E2E Testing) وتجهيز إطلاق الـ Production.</li>
+          </ul>
+        </div>
+
+        <!-- المرحلة 3: AI Model المنفصل -->
+        <div class="card" style="border-top: 4px solid var(--amber); background: #FFFDF8;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="badge badge-amber">المرحلة الثالثة (مستقلة)</span>
+            <span style="font-family: var(--font-en); font-weight: 800; font-size: 12px; color: var(--amber);">4 أسابيع</span>
+          </div>
+          <div style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
+            محرك ونموذج الذكاء الاصطناعي (Ragab AI)
+          </div>
+          <ul style="font-size: 11.5px; padding-right: 14px; color: var(--slate-600);">
+            <li>بناء مستشار الحجز الذكي (Conversational Assistant).</li>
+            <li>تطبيق خوارزميات البحث الدلالي الذكي (Semantic Search).</li>
+            <li>نموذج اقتراح التسعير التكيفي للشاليهات والقرى.</li>
+            <li>ربط محرك الذكاء الاصطناعي بلوحة الإدارة وتطبيق الجوال.</li>
+            <li>تدريب النموذج واختبار دقة الردود والتوصيات.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- التفاصيل التقنية للـ Tech Stack -->
+      <div class="section-title">
+        <i class="bi bi-cpu-fill"></i>
+        <span>الحزمة التقنية المعتمدة (Technology Stack)</span>
+      </div>
+
+      <div class="grid-2" style="font-size: 12px;">
+        <div style="border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--slate-50);">
+          <div style="font-weight: 800; color: var(--navy); margin-bottom: 6px;"><i class="bi bi-server text-primary"></i> البنية الخلفية والسحابية (Backend & Cloud):</div>
+          <p style="color: var(--slate-600); margin: 0;">Node.js (NestJS / TypeScript) أو Python FastApi، مع قاعدة بيانات PostgreSQL، وخادم التخزين المؤقت Redis، وحاويات Docker منشورة على خوادم AWS أو DigitalOcean مع شبكة Cloudflare للحماية وCDN.</p>
+        </div>
+        <div style="border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--slate-50);">
+          <div style="font-weight: 800; color: var(--navy); margin-bottom: 6px;"><i class="bi bi-laptop text-primary"></i> واجهات الويب وتطبيق الجوال (Frontend & Mobile):</div>
+          <p style="color: var(--slate-600); margin: 0;">Angular 19 مع Tailwind CSS للوحات الويب الثلاث لتوفير أعلى سرعة واستقرار، وتطبيق هجين Capacitor / Flutter لتشغيل نسخة واحدة متطابقة على أجهزة iPhone و Android مع دعم الإشعارات وNative Camera للـ QR.</p>
+        </div>
+      </div>
+
+      <!-- نموذج الذكاء الاصطناعي المستقل -->
+      <div style="border: 1px dashed #F59E0B; background: #FFFBEB; border-radius: 10px; padding: 14px; margin-top: 14px; font-size: 12px;">
+        <strong style="color: #B45309;"><i class="bi bi-lightbulb-fill"></i> ميزة عزل مرحلة الذكاء الاصطناعي (AI Phase Isolation):</strong>
+        <p style="color: #92400E; margin: 4px 0 0 0;">
+          يتيح هذا العزل إطلاق وتشغيل النظام الفندقي بالكامل وحجز الشاليهات وتحصيل الأموال في السوق أولاً (خلال المرحلتين 1 و 2)، ثم إدماج وتدريب الـ AI Model في المرحلة الثالثة بأعلى كفاءة اعتماداً على البيانات الحقيقية للوحدات والنزلاء دون تعطيل إطلاق النظام الأساسي.
+        </p>
+      </div>
+
+      <div class="footer">
+        <div>منظومة رجب باي الفندقية | Ragab Bay Hospitality Ecosystem</div>
+        <div>صفحة 2 من 3</div>
+      </div>
+    </div>
+
+    <!-- SHEET 3: التكلفة المالية التفصيلية بالدولار والجدول الزمني -->
+    <div class="sheet page-break">
+      <div class="header">
+        <div class="brand">
+          <div class="brand-icon">
+            <i class="bi bi-cash-stack"></i>
+          </div>
+          <div class="brand-title">
+            <h1>التكلفة المالية والجدول الزمني (Financial & Timeline)</h1>
+            <p>Itemized Software Development Costs in USD ($)</p>
+          </div>
+        </div>
+        <div class="meta-badge">
+          <span class="ref">CURRENCY: USD ($)</span>
+          <div><strong>النوع:</strong> تكاليف البرمجة والتطوير الشامل</div>
+        </div>
+      </div>
+
+      <!-- جدول تفصيل التكاليف لكل مكون -->
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 5%;">#</th>
+              <th style="width: 32%;">المكون البرمجي / المخرجات</th>
+              <th style="width: 25%;">نطاق العمل والتفاصيل</th>
+              <th style="width: 15%; text-align: center;">المرحلة</th>
+              <th style="width: 10%; text-align: center;">المدة الزمنية</th>
+              <th style="width: 13%; text-align: left;">التكلفة ($)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>01</strong></td>
+              <td>
+                <strong>الباك إند وقاعدة البيانات</strong><br>
+                <span style="font-size: 11px; color: var(--slate-500);">Backend Architecture, APIs & DB</span>
+              </td>
+              <td>هندسة قاعدة بيانات PostgreSQL، خوادم Redis، الـ APIs المركزية، المصادقة JWT والتشفير.</td>
+              <td style="text-align: center;"><span class="badge badge-blue">المرحلة الأولى</span></td>
+              <td style="text-align: center;" class="td-num">3 أسابيع</td>
+              <td class="td-num price-tag">$3,200</td>
+            </tr>
+            <tr>
+              <td><strong>02</strong></td>
+              <td>
+                <strong>لوحة تحكم الإدارة العامة</strong><br>
+                <span style="font-size: 11px; color: var(--slate-500);">Super Admin Master Portal</span>
+              </td>
+              <td>إدارة الوحدات، المستخدمين، العقود، نسب الإشغال، الصلاحيات، والتقارير المالية والتحليلية.</td>
+              <td style="text-align: center;"><span class="badge badge-blue">المرحلة الأولى</span></td>
+              <td style="text-align: center;" class="td-num">2.5 أسبوع</td>
+              <td class="td-num price-tag">$2,500</td>
+            </tr>
+            <tr>
+              <td><strong>03</strong></td>
+              <td>
+                <strong>بوابة العميل والنزيل (الويب)</strong><br>
+                <span style="font-size: 11px; color: var(--slate-500);">Guest Booking Web Experience</span>
+              </td>
+              <td>استكشاف الشاليهات، محرك البحث والفلاتر، تفاصيل الوحدات، السلة والفاوتشر والحجز السريع.</td>
+              <td style="text-align: center;"><span class="badge badge-blue">المرحلة الأولى</span></td>
+              <td style="text-align: center;" class="td-num">2 أسابيع</td>
+              <td class="td-num price-tag">$2,100</td>
+            </tr>
+            <tr>
+              <td><strong>04</strong></td>
+              <td>
+                <strong>بوابة المالك للوحدات والأرباح</strong><br>
+                <span style="font-size: 11px; color: var(--slate-500);">Owner Portal & Unit Management</span>
+              </td>
+              <td>إضافة وتعديل بيانات الشاليهات، متابعة أرباح الإيجارات، تقويم الحجوزات، وطلب سحب المستحقات.</td>
+              <td style="text-align: center;"><span class="badge badge-blue">المرحلة الأولى</span></td>
+              <td style="text-align: center;" class="td-num">1.5 أسبوع</td>
+              <td class="td-num price-tag">$1,800</td>
+            </tr>
+            <tr>
+              <td><strong>05</strong></td>
+              <td>
+                <strong>تطبيق الهاتف الذكي (iOS & Android)</strong><br>
+                <span style="font-size: 11px; color: var(--slate-500);">Mobile App + Digital QR Passes</span>
+              </td>
+              <td>تطبيق الهجين بكامل مميزات النزلاء، تصاريح QR، طلب خدمات الـ VIP، والمحفظة والإشعارات.</td>
+              <td style="text-align: center;"><span class="badge badge-green">المرحلة الثانية</span></td>
+              <td style="text-align: center;" class="td-num">3.5 أسابيع</td>
+              <td class="td-num price-tag">$3,600</td>
+            </tr>
+            <tr>
+              <td><strong>06</strong></td>
+              <td>
+                <strong>بوابات الدفع والربط المالي</strong><br>
+                <span style="font-size: 11px; color: var(--slate-500);">Payment Gateways & Wallet System</span>
+              </td>
+              <td>ربط البطاقات البنكية، Paymob / Stripe، المحافظ الإلكترونية، ونظام توزيع الحصص المالي.</td>
+              <td style="text-align: center;"><span class="badge badge-green">المرحلة الثانية</span></td>
+              <td style="text-align: center;" class="td-num">1.5 أسبوع</td>
+              <td class="td-num price-tag">$1,400</td>
+            </tr>
+            <tr style="background: #FFFDF8;">
+              <td><strong>07</strong></td>
+              <td>
+                <strong style="color: #B45309;">محرك ونموذج الذكاء الاصطناعي</strong><br>
+                <span style="font-size: 11px; color: #D97706;">Custom AI Model & Smart Assistant</span>
+              </td>
+              <td>مستشار الحجز الذكي التفاعلي، خوارزميات البحث الدلالي بالمعنى، ونموذج التسعير الديناميكي.</td>
+              <td style="text-align: center;"><span class="badge badge-amber">المرحلة الثالثة (مستقلة)</span></td>
+              <td style="text-align: center;" class="td-num">4 أسابيع</td>
+              <td class="td-num price-tag" style="color: #D97706;">$2,800</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- إجمالي التكلفة والمدة الصندوق المميز -->
+      <div class="total-box">
+        <div class="total-info">
+          <h3>التكلفة الإجمالية لبرمجة وتطوير المنظومة</h3>
+          <p>شاملة كافة الأركان: الباك إند، اللوحات الثلاث، تطبيق الموبايل، والـ AI Model المستقل</p>
+          <div class="duration-badge">
+            <i class="bi bi-clock-history"></i> المدة الإجمالية للتنفيذ: <strong>14 إلى 16 أسبوع عمل</strong> (مع التوازي)
+          </div>
+        </div>
+        <div class="total-amount">
+          <div class="grand-usd">$17,400</div>
+          <div style="font-size: 11px; color: #94A3B8; text-align: left; margin-top: 4px;">USD (الدولار الأمريكي)</div>
+        </div>
+      </div>
+
+      <!-- ملخص التكاليف حسب المراحل -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px;">
+        <div style="background: var(--slate-50); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+          <div style="font-size: 11px; color: var(--slate-500);">تكلفة المرحلة الأولى (الأساس واللوحات)</div>
+          <div style="font-family: var(--font-en); font-weight: 800; font-size: 17px; color: var(--primary);">$9,600</div>
+          <div style="font-size: 11px; color: var(--slate-600);">7 أسابيع عمل</div>
+        </div>
+        <div style="background: var(--slate-50); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+          <div style="font-size: 11px; color: var(--slate-500);">تكلفة المرحلة الثانية (الموبايل والدفع)</div>
+          <div style="font-family: var(--font-en); font-weight: 800; font-size: 17px; color: var(--emerald);">$5,000</div>
+          <div style="font-size: 11px; color: var(--slate-600);">5 أسابيع عمل</div>
+        </div>
+        <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; padding: 12px;">
+          <div style="font-size: 11px; color: #B45309;">تكلفة المرحلة الثالثة (الـ AI المستقل)</div>
+          <div style="font-family: var(--font-en); font-weight: 800; font-size: 17px; color: #D97706;">$2,800</div>
+          <div style="font-size: 11px; color: #92400E;">4 أسابيع عمل</div>
+        </div>
+      </div>
+
+      <!-- الدفعات المالية وجدول السداد -->
+      <div class="section-title" style="margin-top: 26px;">
+        <i class="bi bi-credit-card-2-front-fill"></i>
+        <span>جدول الدفعات المالية المقترح (Payment Milestones)</span>
+      </div>
+
+      <div class="milestone-grid">
+        <div class="milestone-card">
+          <div class="milestone-pct">30%</div>
+          <div class="milestone-title">دفعة مقدمة للتعاقد</div>
+          <div class="milestone-desc">عند توقيع العقد وبدء هندسة البنية وقواعد البيانات والـ UX/UI. ($5,220)</div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-pct">35%</div>
+          <div class="milestone-title">إنجاز اللوحات والباك إند</div>
+          <div class="milestone-desc">تسليم واختبار الباك إند واللوحات الثلاث (المرحلة الأولى جاهزة). ($6,090)</div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-pct">20%</div>
+          <div class="milestone-title">تسليم الموبايل وبوابات الدفع</div>
+          <div class="milestone-desc">تسليم التطبيق وربط الدفع وإطلاق البيئة التشغيلية (المرحلة الثانية). ($3,480)</div>
+        </div>
+      </div>
+
+      <div class="milestone-grid" style="grid-template-columns: 1fr; margin-top: 10px;">
+        <div class="milestone-card" style="background: #FFFDF8; border-color: #FCD34D; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div class="milestone-title" style="color: #92400E;">دفعة المرحلة الثالثة المستقلة: نموذج ومحرك الـ AI (15%)</div>
+            <div class="milestone-desc">يتم سدادها عند بدء وتدريب محرك الذكاء الاصطناعي ودمجه بالكامل. ($2,610)</div>
+          </div>
+          <div class="milestone-pct" style="color: #D97706; margin-bottom: 0;">15%</div>
+        </div>
+      </div>
+
+      <!-- شروط وضمانات إضافية مجانية -->
+      <div style="margin-top: 20px; background: var(--slate-50); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px;">
+        <div style="font-weight: 800; color: var(--navy); font-size: 12.5px; margin-bottom: 6px;">
+          <i class="bi bi-shield-check text-primary"></i> بنود الدعم الفني والضمان (Included Free Services):
+        </div>
+        <ul class="terms-list">
+          <li><strong>ضمان شامل ومجاني لمدة 3 أشهر</strong> بعد التسليم النهائي لحل أي أخطاء برمجية (Bug Fixes) دون أي تكلفة إضافية.</li>
+          <li><strong>تسليم كامل الكود المصدري (Full Source Code)</strong> مع حقوق الملكية الفكرية وتوثيق كامل للـ APIs والمنظومة (API Documentation).</li>
+          <li><strong>تدريب كامل للإدارة والموظفين</strong> على استخدام لوحة التحكم وبوابة الملاك لإدارة العمليات اليومية بكفاءة.</li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        <div>منظومة رجب باي الفندقية | Ragab Bay Hospitality Ecosystem</div>
+        <div>صفحة 3 من 3</div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
