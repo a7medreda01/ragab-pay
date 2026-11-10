@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>التصميم الهندسي الكامل لقاعدة بيانات Airbnb & Ragab Pay (Schema, ERD, Relationships & Rows)</title>
+  <title>التصميم الهندسي المتكامل لقاعدة بيانات Airbnb & Ragab Pay (32 جداول عبر 9 أنظمة فرعية)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
@@ -61,21 +61,21 @@
       background-color: #F8FAFC;
       color: var(--navy);
       line-height: 1.6;
-      font-size: 13.5px;
+      font-size: 13px;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1140px;
       margin: 0 auto;
       padding: 24px;
     }
 
-    /* Floating Print & Navigation Bar */
+    /* Floating Navigation Bar */
     .top-bar {
       position: sticky;
       top: 14px;
       z-index: 1000;
-      background: rgba(15, 23, 42, 0.94);
+      background: rgba(15, 23, 42, 0.95);
       backdrop-filter: blur(12px);
       color: white;
       padding: 12px 24px;
@@ -125,7 +125,7 @@
       transform: translateY(-1px);
     }
 
-    /* Cards & Sections */
+    /* Document Sheets */
     .doc-sheet {
       background: var(--white);
       border-radius: 14px;
@@ -141,11 +141,11 @@
       align-items: center;
       border-bottom: 2px solid var(--slate-100);
       padding-bottom: 18px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .brand-title h1 {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 900;
       color: var(--navy);
       line-height: 1.2;
@@ -156,35 +156,80 @@
       color: var(--slate-500);
       font-family: var(--font-en);
       font-weight: 600;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .section-title {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: 800;
       color: var(--navy);
-      margin: 28px 0 16px 0;
+      margin: 26px 0 14px 0;
       padding-bottom: 8px;
       border-bottom: 2px solid var(--primary-light);
     }
 
     .section-title i {
       color: var(--primary);
-      font-size: 20px;
+      font-size: 19px;
     }
 
-    /* Diagram Wrapper */
+    /* Diagrams */
     .diagram-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 24px;
+      padding: 20px;
       overflow-x: auto;
       margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
+    }
+
+    /* Grid Layouts */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .subsystem-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      background: var(--slate-50);
+      transition: all 0.2s;
+    }
+
+    .subsystem-card:hover {
+      border-color: #38BDF8;
+      background: #F0F9FF;
+    }
+
+    .subsystem-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .subsystem-tables {
+      font-family: var(--font-code);
+      font-size: 11px;
+      color: #0284C7;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .subsystem-desc {
+      font-size: 11px;
+      color: var(--slate-600);
+      line-height: 1.5;
     }
 
     /* Tables */
@@ -192,7 +237,7 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow-x: auto;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       background: white;
     }
 
@@ -200,21 +245,20 @@
       width: 100%;
       border-collapse: collapse;
       text-align: right;
-      font-size: 12px;
+      font-size: 11.5px;
     }
 
     thead th {
       background: var(--slate-50);
       color: var(--slate-800);
       font-weight: 800;
-      padding: 11px 14px;
+      padding: 9px 12px;
       border-bottom: 1px solid var(--border);
-      font-size: 11.5px;
       white-space: nowrap;
     }
 
     tbody td {
-      padding: 10px 14px;
+      padding: 8px 12px;
       border-bottom: 1px solid var(--border);
       color: var(--slate-700);
       vertical-align: middle;
@@ -234,7 +278,7 @@
       color: #0284C7;
       padding: 2px 6px;
       border-radius: 4px;
-      font-size: 11px;
+      font-size: 10.5px;
       direction: ltr;
       display: inline-block;
     }
@@ -242,26 +286,23 @@
     .pk-badge {
       background: #FEF3C7;
       color: #B45309;
-      padding: 2px 6px;
+      padding: 2px 5px;
       border-radius: 4px;
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 800;
       font-family: var(--font-en);
-      margin-left: 4px;
     }
 
     .fk-badge {
       background: #E0F2FE;
       color: #0369A1;
-      padding: 2px 6px;
+      padding: 2px 5px;
       border-radius: 4px;
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 800;
       font-family: var(--font-en);
-      margin-left: 4px;
     }
 
-    /* Badges */
     .badge {
       display: inline-block;
       padding: 2px 7px;
@@ -280,52 +321,19 @@
       background: #FAF5FF;
       border: 1px solid #E9D5FF;
       border-radius: 10px;
-      padding: 16px;
-      margin-top: 10px;
-      margin-bottom: 24px;
+      padding: 14px;
+      margin-top: 8px;
+      margin-bottom: 20px;
     }
 
     .sample-title {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 800;
       color: #6B21A8;
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    /* Grid layout */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .card-info {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px;
-      background: var(--slate-50);
-    }
-
-    .card-info h4 {
-      font-size: 12.5px;
-      font-weight: 800;
-      color: var(--navy);
       margin-bottom: 6px;
-    }
-
-    .card-info p {
-      font-size: 11px;
-      color: var(--slate-600);
-      line-height: 1.5;
     }
 
     @media print {
@@ -333,7 +341,6 @@
       .container { max-width: 100%; padding: 0; }
       .top-bar { display: none !important; }
       .doc-sheet { border: none; box-shadow: none; padding: 0; margin-bottom: 20px; page-break-after: always; }
-      .page-break { page-break-before: always; }
     }
   </style>
 </head>
@@ -341,613 +348,467 @@
 
   <div class="container">
 
-    <!-- Sticky Navigation / Action Bar -->
+    <!-- Top Navigation Bar -->
     <div class="top-bar">
       <div style="display: flex; align-items: center; gap: 10px;">
         <i class="bi bi-database-fill-gear" style="font-size: 20px; color: #38BDF8;"></i>
-        <strong style="font-size: 13px;">هندسة قاعدة بيانات Airbnb & Ragab Pay</strong>
+        <strong style="font-size: 13px;">منظومة بيانات Airbnb & Ragab Pay الكاملة (32 جدول)</strong>
       </div>
       <div class="top-bar-links">
-        <a href="#erd">مخطط العلاقات (ERD)</a>
-        <a href="#relationships">خريطة العلاقات (Foreign Keys)</a>
-        <a href="#tables">الجداول والـ Schemas</a>
-        <a href="#rows">الصفوف والبيانات التجريبية (Rows)</a>
+        <a href="#subsystems">الأنظمة الفرعية (9 Subsystems)</a>
+        <a href="#erd">المخطط البصري (ERD)</a>
+        <a href="#dictionary">قاموس الجداول الـ 32</a>
+        <a href="#rows">الصفوف التجريبية (Live Rows)</a>
       </div>
       <button class="print-btn" onclick="window.print()">
         <i class="bi bi-printer-fill"></i> طباعة / حفظ PDF
       </button>
     </div>
 
-    <!-- ==================== SHEET 1: المقدمة والمخطط البصري الكامل ==================== -->
-    <div class="doc-sheet" id="erd">
+    <!-- ==================== SHEET 1: ملخص الأنظمة الـ 9 والمخطط البصري الكامل ==================== -->
+    <div class="doc-sheet" id="subsystems">
       <div class="doc-header">
         <div class="brand-title">
-          <h1>التصميم الهندسي المتكامل لقاعدة البيانات (Database Architecture)</h1>
-          <p>Airbnb & Ragab Pay System Design: Schema, ERD, Relational Mapping & Production Sample Rows</p>
+          <h1>المعمارية المؤسسية لقاعدة بيانات Airbnb & Ragab Pay</h1>
+          <p>Enterprise Production Data Architecture: 32 Normalized Relational Tables Across 9 Core Domains</p>
         </div>
-        <div style="text-align: left; font-size: 11.5px; color: var(--slate-600);">
+        <div style="text-align: left; font-size: 11px; color: var(--slate-600);">
           <span class="badge badge-blue">ENTERPRISE SCALE</span>
-          <div><strong>محرك التخزين:</strong> SQL Server / PostgreSQL</div>
+          <div><strong>المعمارية:</strong> 3NF Normalized + High Scalability</div>
         </div>
       </div>
 
-      <!-- ملخص فلسفة التصميم -->
-      <div style="background: var(--slate-50); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 22px;">
-        <h3 style="font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">
-          <i class="bi bi-lightbulb-fill text-amber"></i> الركائز الهندسية لمعمارية بيانات Airbnb:
-        </h3>
-        <p style="font-size: 12px; color: var(--slate-600); line-height: 1.7;">
-          تعتمد معمارية Airbnb على الفصل الدقيق بين <strong>بيانات الكتالوج والبحث</strong> (العقارات، المرافق، والتقييمات)، وبين <strong>محرك الإتاحة والتقويم اليومي</strong> (الذي يخزن كل يوم كسجل منفصل لمنع الحجز المزدوج)، وبين <strong>سجل المعاملات المالية الوسيطة (Escrow Ledger)</strong> التي تؤمن احتجاز أموال النزيل ولا تصرف للمالك إلا بعد مرور 24 ساعة من تسجيل الدخول الفعلي.
-        </p>
+      <!-- ملخص الأنظمة الـ 9 -->
+      <div class="section-title">
+        <i class="bi bi-boxes"></i>
+        <span>أولاً: تقسيم المنظومة إلى 9 أنظمة فرعية متخصصة (9 Core Subsystems - 32 Tables)</span>
+      </div>
+
+      <div class="grid-3">
+        <!-- 1. Identity & KYC -->
+        <div class="subsystem-card">
+          <div class="subsystem-title"><i class="bi bi-shield-check text-primary"></i> 1. الهويات والأمان والـ KYC</div>
+          <div class="subsystem-tables">users, user_profiles, user_verifications, roles, user_roles, user_devices, audit_logs</div>
+          <div class="subsystem-desc">إدارة حسابات النزلاء والملاك، توثيق الهويات الرسمية والبطاقات/الجوازات، الصلاحيات الإدارية، وتوكنات إشعارات FCM. (7 جداول)</div>
+        </div>
+
+        <!-- 2. Inventory & Units -->
+        <div class="subsystem-card">
+          <div class="subsystem-title"><i class="bi bi-building text-primary"></i> 2. العقارات والوحدات وسكن الشركات</div>
+          <div class="subsystem-tables">properties, property_locations, property_rooms, property_images, amenities, property_amenities, house_rules, property_rules</div>
+          <div class="subsystem-desc">تفاصيل الشاليهات وسكن العمال، الإحداثيات الجغرافية (Lat/Long)، تفصيل الغرف والأسِرة، ألبوم الصور، والمرافق وقواعد الإقامة. (8 جداول)</div>
+        </div>
+
+        <!-- 3. Calendar & Anti-Overbooking -->
+        <div class="subsystem-card">
+          <div class="subsystem-title"><i class="bi bi-calendar3 text-primary"></i> 3. التقويم اليومي ومنع التضارب</div>
+          <div class="subsystem-tables">listing_calendar, channel_connections, channel_sync_logs, temporary_reservation_holds</div>
+          <div class="subsystem-desc">محرك الإتاحة الدقيقة صف لكل يوم (Day-by-Day Slots)، مزامنة التقويم الخارجي iCal، وسجلات أقفال الحجز المؤقتة لمنع الـ Overbooking. (4 جداول)</div>
+        </div>
+
+        <!-- 4. Pricing & Policies -->
+        <div class="subsystem-card">
+          <div class="subsystem-title"><i class="bi bi-tags-fill text-primary"></i> 4. التسعير المتدرج وسياسات الإلغاء</div>
+          <div class="subsystem-tables">pricing_rules, seasonal_pricing, cancellation_policies</div>
+          <div class="subsystem-desc">الخصومات التلقائية لمدد الإقامة (ليلة، أسبوع، شهر، سكن شركات)، مواسم الذروة والأعياد، وسياسات الإلغاء المتدرجة (Flexible/Strict). (3 جداول)</div>
+        </div>
+
+        <!-- 5. Reservations Lifecycle -->
+        <div class="subsystem-card">
+          <div class="subsystem-title"><i class="bi bi-ticket-perforated-fill text-primary"></i> 5. الحجوزات وإدارة النزلاء</div>
+          <div class="subsystem-tables">bookings, booking_guests_manifest, booking_status_history</div>
+          <div class="subsystem-desc">سجل الحجز الشامل، التجميد المالي للأسعار لحظة الحجز، كشف أسماء النزلاء المعتمد للبوابات الأمنية، وتاريخ انتقالات حالة الحجز. (3 جداول)</div>
+        </div>
+
+        <!-- 6. Payments & Escrow Ledger -->
+        <div class="subsystem-card">
+          <div class="subsystem-title"><i class="bi bi-bank2 text-primary"></i> 6. المدفوعات والـ Escrow والمستحقات</div>
+          <div class="subsystem-tables">payment_transactions, escrow_ledger, host_payout_methods, payout_transfers, booking_refunds</div>
+          <div class="subsystem-desc">معاملات بوابات الدفع، الأستاذ المالي وحجز أموال النزلاء حتى 24 ساعة بعد تسجيل الدخول، الحسابات البنكية للملاك، وجدولة التحويلات. (5 جداول)</div>
+        </div>
+
+        <!-- 7. Passes & VIP Services -->
+        <div class="subsystem-card">
+          <div class="subsystem-title"><i class="bi bi-qr-code text-primary"></i> 7. تصاريح الدخول وباقات VIP</div>
+          <div class="subsystem-tables">resort_gate_passes, vip_services, booking_vip_orders</div>
+          <div class="subsystem-desc">تصاريح بوابات القرى والشواطئ الذكية، وكاتالوج خدمات الـ VIP الإضافية (شيف، ليموزين، يخوت) ومتابعة تنفيذها. (3 جداول)</div>
+        </div>
+
+        <!-- 8. Reviews & Quality -->
+        <div class="subsystem-card">
+          <div class="subsystem-title"><i class="bi bi-star-fill text-primary"></i> 8. التقييمات والجودة</div>
+          <div class="subsystem-tables">reviews</div>
+          <div class="subsystem-desc">تقييمات معايير Airbnb الستة الأساسية (النظافة، الدقة، التواصل، الموقع، سلاسة الدخول، القيمة) مع دعم رد المالك المعتمد. (1 جدول)</div>
+        </div>
+
+        <!-- 9. Chat & Messaging -->
+        <div class="subsystem-card">
+          <div class="subsystem-title"><i class="bi bi-chat-dots-fill text-primary"></i> 9. المحادثات والمراسلات</div>
+          <div class="subsystem-tables">conversations, messages</div>
+          <div class="subsystem-desc">نظام المراسلات اللحظي المدمج بين النزيل والمالك وفريق كونسيرج رجب باي مع دعم المرفقات وسجلات القراءة. (2 جداول)</div>
+        </div>
       </div>
 
       <!-- المخطط البصري الكامل Mermaid ERD -->
-      <div class="section-title">
+      <div class="section-title" id="erd">
         <i class="bi bi-diagram-3-fill"></i>
-        <span>1. المخطط الكياني للعلاقات (Entity Relationship Diagram - ERD)</span>
+        <span>ثانياً: المخطط الكياني البصري الشامل (Enterprise ERD Diagram)</span>
       </div>
 
       <div class="diagram-card">
         <div class="mermaid">
 erDiagram
-    USERS ||--o{ PROPERTIES : "hosts / owns (1:N)"
-    USERS ||--o{ BOOKINGS : "reserves as guest (1:N)"
-    USERS ||--o{ REVIEWS : "writes (1:N)"
+    USERS ||--|| USER_PROFILES : "extends"
+    USERS ||--o{ USER_VERIFICATIONS : "submits_KYC"
+    USERS ||--|{ USER_ROLES : "assigned"
+    ROLES ||--|{ USER_ROLES : "defines"
+    USERS ||--o{ USER_DEVICES : "registers_FCM"
+    USERS ||--o{ AUDIT_LOGS : "logs_actions"
     
-    CANCELLATION_POLICIES ||--o{ PROPERTIES : "governs (1:N)"
+    USERS ||--o{ PROPERTIES : "hosts_owns"
+    CANCELLATION_POLICIES ||--o{ PROPERTIES : "applied_to"
     
-    PROPERTIES ||--o{ PROPERTY_IMAGES : "displays (1:N)"
-    PROPERTIES ||--|{ PROPERTY_AMENITIES : "features (1:N)"
-    AMENITIES ||--|{ PROPERTY_AMENITIES : "categorizes (1:N)"
-    PROPERTIES ||--o{ PRICING_RULES : "tiered_discounts (1:N)"
-    PROPERTIES ||--o{ LISTING_CALENDAR : "daily_slots (1:N)"
-    PROPERTIES ||--o{ CHANNEL_CONNECTIONS : "syncs_iCal (1:N)"
-    PROPERTIES ||--o{ BOOKINGS : "booked_in (1:N)"
+    PROPERTIES ||--|| PROPERTY_LOCATIONS : "geolocated_at"
+    PROPERTIES ||--o{ PROPERTY_ROOMS : "contains_rooms"
+    PROPERTIES ||--o{ PROPERTY_IMAGES : "displays_gallery"
+    PROPERTIES ||--|{ PROPERTY_AMENITIES : "features"
+    AMENITIES ||--|{ PROPERTY_AMENITIES : "categorized"
+    PROPERTIES ||--|{ PROPERTY_RULES : "enforces"
+    HOUSE_RULES ||--|{ PROPERTY_RULES : "specifies"
     
-    BOOKINGS ||--|| ESCROW_LEDGER : "holds_funds (1:1)"
-    BOOKINGS ||--o{ REVIEWS : "generates (1:N)"
-    BOOKINGS ||--o{ LISTING_CALENDAR : "locks_dates (1:N)"
+    PROPERTIES ||--o{ LISTING_CALENDAR : "daily_slots"
+    PROPERTIES ||--o{ CHANNEL_CONNECTIONS : "syncs_iCal"
+    CHANNEL_CONNECTIONS ||--o{ CHANNEL_SYNC_LOGS : "audits"
+    PROPERTIES ||--o{ TEMPORARY_RESERVATION_HOLDS : "locks_during_checkout"
+    
+    PROPERTIES ||--o{ PRICING_RULES : "tiered_discounts"
+    PROPERTIES ||--o{ SEASONAL_PRICING : "season_surges"
+    
+    USERS ||--o{ BOOKINGS : "books_as_guest"
+    PROPERTIES ||--o{ BOOKINGS : "reserved_in"
+    BOOKINGS ||--o{ BOOKING_GUESTS_MANIFEST : "registers_manifest"
+    BOOKINGS ||--o{ BOOKING_STATUS_HISTORY : "tracks_transitions"
+    
+    BOOKINGS ||--o{ PAYMENT_TRANSACTIONS : "charges"
+    BOOKINGS ||--|| ESCROW_LEDGER : "holds_funds_24h"
+    USERS ||--o{ HOST_PAYOUT_METHODS : "configures_banks"
+    HOST_PAYOUT_METHODS ||--o{ PAYOUT_TRANSFERS : "receives_payouts"
+    BOOKINGS ||--o{ BOOKING_REFUNDS : "refunds_cancellations"
+    
+    BOOKINGS ||--o{ RESORT_GATE_PASSES : "issues_QR"
+    BOOKINGS ||--o{ BOOKING_VIP_ORDERS : "orders_vip"
+    VIP_SERVICES ||--o{ BOOKING_VIP_ORDERS : "catalog"
+    
+    BOOKINGS ||--|| REVIEWS : "generates_rating"
+    USERS ||--o{ CONVERSATIONS : "chats"
+    CONVERSATIONS ||--o{ MESSAGES : "contains"
         </div>
       </div>
     </div>
 
-    <!-- ==================== SHEET 2: جدول العلاقات التفصيلي ==================== -->
-    <div class="doc-sheet" id="relationships">
+    <!-- ==================== SHEET 2: قاموس الجداول الـ 32 كاملة ==================== -->
+    <div class="doc-sheet" id="dictionary">
       <div class="section-title">
-        <i class="bi bi-link-45deg"></i>
-        <span>2. خريطة العلاقات البرمجية بين الجداول (Foreign Keys & Cardinality)</span>
+        <i class="bi bi-journal-text"></i>
+        <span>ثالثاً: القاموس الكامل لـ 32 جدولاً في المنظومة (Database Data Dictionary)</span>
       </div>
-
-      <p style="font-size: 12px; color: var(--slate-600); margin-bottom: 14px;">
-        يوضح الجدول أدناه كيفية ترابط كل جدول مع الجداول الأخرى، نوع العلاقة، القيود البرمجية (**Cascade Rules**)، والهدف التجاري من كل علاقة:
-      </p>
 
       <div class="table-container">
         <table>
           <thead>
             <tr>
-              <th style="width: 22%;">الجدول الأساسي (Source)</th>
-              <th style="width: 10%; text-align: center;">العلاقة</th>
-              <th style="width: 22%;">الجدول المرتبط (Target)</th>
-              <th style="width: 18%;">المفتاح الخارجي (Foreign Key)</th>
-              <th style="width: 14%;">سلوك الحذف (On Delete)</th>
-              <th style="width: 24%;">الغرض الوظيفي</th>
+              <th style="width: 5%;">#</th>
+              <th style="width: 22%;">اسم الجدول (Table Name)</th>
+              <th style="width: 18%;">النظام الفرعي (Subsystem)</th>
+              <th style="width: 12%;">المفتاح الأساسي (PK)</th>
+              <th style="width: 18%;">المفاتيح الخارجية (Foreign Keys)</th>
+              <th style="width: 25%;">الوظيفة الهندسية والتجارية</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><span class="code-text">USERS</span> (المالك)</td>
-              <td style="text-align: center;"><span class="badge badge-blue">1 : N</span></td>
-              <td><span class="code-text">PROPERTIES</span></td>
-              <td><span class="code-text">host_id</span></td>
-              <td><span class="badge badge-amber">RESTRICT</span></td>
-              <td>المالك الواحد يمكنه امتلاك عدة شاليهات، ولا يُحذف المالك إذا كانت له شاليهات نشطة.</td>
-            </tr>
-            <tr>
-              <td><span class="code-text">PROPERTIES</span> (الوحدة)</td>
-              <td style="text-align: center;"><span class="badge badge-blue">1 : N</span></td>
-              <td><span class="code-text">PROPERTY_IMAGES</span></td>
-              <td><span class="code-text">property_id</span></td>
-              <td><span class="badge badge-red">CASCADE</span></td>
-              <td>الوحدة لها عدة صور؛ وعند حذف الوحدة تُحذف صورها المرتبطة تلقائياً.</td>
-            </tr>
-            <tr>
-              <td><span class="code-text">PROPERTIES</span> & <span class="code-text">AMENITIES</span></td>
-              <td style="text-align: center;"><span class="badge badge-purple">N : M</span></td>
-              <td><span class="code-text">PROPERTY_AMENITIES</span></td>
-              <td><span class="code-text">property_id, amenity_id</span></td>
-              <td><span class="badge badge-red">CASCADE</span></td>
-              <td>جدول وسيط للربط المتعدد بين الشاليهات والمميزات (مسبح، واي فاي، إطلالة بحر).</td>
-            </tr>
-            <tr>
-              <td><span class="code-text">PROPERTIES</span> (الوحدة)</td>
-              <td style="text-align: center;"><span class="badge badge-blue">1 : N</span></td>
-              <td><span class="code-text">LISTING_CALENDAR</span></td>
-              <td><span class="code-text">property_id</span></td>
-              <td><span class="badge badge-red">CASCADE</span></td>
-              <td>سجل لكل يوم في السنة؛ لتسجيل سعر الليلة وحالة التوفر ومنع الـ Double-Booking.</td>
-            </tr>
-            <tr>
-              <td><span class="code-text">PROPERTIES</span> (الوحدة)</td>
-              <td style="text-align: center;"><span class="badge badge-blue">1 : N</span></td>
-              <td><span class="code-text">PRICING_RULES</span></td>
-              <td><span class="code-text">property_id</span></td>
-              <td><span class="badge badge-red">CASCADE</span></td>
-              <td>قواعد الخصومات المتدرجة (خصم الحجز الأسبوعي 7 أيام أو الشهري 30 يوماً).</td>
-            </tr>
-            <tr>
-              <td><span class="code-text">USERS</span> (النزيل)</td>
-              <td style="text-align: center;"><span class="badge badge-blue">1 : N</span></td>
-              <td><span class="code-text">BOOKINGS</span></td>
-              <td><span class="code-text">guest_id</span></td>
-              <td><span class="badge badge-amber">RESTRICT</span></td>
-              <td>النزيل الواحد ينفذ عدة حجوزات؛ ويُمنع حذف حسابه في حال وجود حجوزات جارية.</td>
-            </tr>
-            <tr>
-              <td><span class="code-text">BOOKINGS</span> (الحجز)</td>
-              <td style="text-align: center;"><span class="badge badge-green">1 : 1</span></td>
-              <td><span class="code-text">ESCROW_LEDGER</span></td>
-              <td><span class="code-text">booking_id</span></td>
-              <td><span class="badge badge-amber">RESTRICT</span></td>
-              <td>سجل مالي مصرفي معلق لكل حجز، يُفرج عن أموال المالك بعد 24 ساعة من الـ Check-in.</td>
-            </tr>
-            <tr>
-              <td><span class="code-text">BOOKINGS</span> (الحجز)</td>
-              <td style="text-align: center;"><span class="badge badge-blue">1 : N</span></td>
-              <td><span class="code-text">REVIEWS</span></td>
-              <td><span class="code-text">booking_id</span></td>
-              <td><span class="badge badge-amber">RESTRICT</span></td>
-              <td>التقييم مرتبط حصراً بحجز مؤكد مكتمل لضمان مصداقية المراجعات ومنع التقييمات الوهمية.</td>
-            </tr>
+            <tr><td>01</td><td><span class="code-text">users</span></td><td>1. الهويات والأمان</td><td>user_id</td><td>-</td><td>الحسابات الأساسية، بيانات الدخول، ورتبة المستخدم والمحفظة.</td></tr>
+            <tr><td>02</td><td><span class="code-text">user_profiles</span></td><td>1. الهويات والأمان</td><td>profile_id</td><td>user_id (1:1)</td><td>البيانات الممتدة، النبذة الشخصية، جهة الاتصال في الطوارئ، ومعدل سرعة الرد.</td></tr>
+            <tr><td>03</td><td><span class="code-text">user_verifications</span></td><td>1. الهويات والأمان</td><td>verification_id</td><td>user_id, verified_by_admin_id</td><td>توثيق هويات الملاك والنزلاء (KYC)، فحص البطاقات وجوازات السفر.</td></tr>
+            <tr><td>04</td><td><span class="code-text">roles</span></td><td>1. الهويات والأمان</td><td>role_id</td><td>-</td><td>كتالوج الأدوار الإدارية (SuperAdmin, Host, Guest, Operations).</td></tr>
+            <tr><td>05</td><td><span class="code-text">user_roles</span></td><td>1. الهويات والأمان</td><td>user_id, role_id</td><td>user_id, role_id</td><td>جدول وسيط للتحكم في صلاحيات المستخدمين (RBAC).</td></tr>
+            <tr><td>06</td><td><span class="code-text">user_devices</span></td><td>1. الهويات والأمان</td><td>device_id</td><td>user_id</td><td>تسجيل أجهزة الموبايل وتوكنات إشعارات Firebase Cloud Messaging.</td></tr>
+            <tr><td>07</td><td><span class="code-text">audit_logs</span></td><td>1. الهويات والأمان</td><td>log_id</td><td>user_id</td><td>سجل الرقابة لتوثيق كل حركة إدارية (تعديل عمولة، موافقة على وحدة، صرف أموال).</td></tr>
+            <tr><td>08</td><td><span class="code-text">cancellation_policies</span></td><td>2. العقارات والسياسات</td><td>policy_id</td><td>-</td><td>سياسات الإلغاء المعتمدة (مرنة، معتدلة، صارمة) وساعات الاسترجاع.</td></tr>
+            <tr><td>09</td><td><span class="code-text">properties</span></td><td>2. العقارات والسياسات</td><td>property_id</td><td>host_id, policy_id</td><td>جدول الشاليهات والوحدات وسكن الشركات والأسعار الأساسية والعمولة الخاصة.</td></tr>
+            <tr><td>10</td><td><span class="code-text">property_locations</span></td><td>2. العقارات والسياسات</td><td>location_id</td><td>property_id (1:1)</td><td>الموقع الجغرافي التفصيلي، القرية، وإحداثيات الخريطة (Latitude / Longitude).</td></tr>
+            <tr><td>11</td><td><span class="code-text">property_rooms</span></td><td>2. العقارات والسياسات</td><td>room_id</td><td>property_id</td><td>تفصيل كل غرفة نوم في الشاليه، أنواع الأسِرة (King, Single)، والحمامات الخاصة.</td></tr>
+            <tr><td>12</td><td><span class="code-text">property_images</span></td><td>2. العقارات والسياسات</td><td>image_id</td><td>property_id</td><td>ألبوم صور الوحدة المتعددة، ترتيب العرض، وتحديد الصورة الرئيسية للغلاف.</td></tr>
+            <tr><td>13</td><td><span class="code-text">amenities</span></td><td>2. العقارات والسياسات</td><td>amenity_id</td><td>-</td><td>قاموس المرافق والمميزات (حمام سباحة، واي فاي، فيو بحر، تكييف، مطبخ).</td></tr>
+            <tr><td>14</td><td><span class="code-text">property_amenities</span></td><td>2. العقارات والسياسات</td><td>property_id, amenity_id</td><td>property_id, amenity_id</td><td>جدول ربط متعدد لمميزات كل شاليه (Many-to-Many).</td></tr>
+            <tr><td>15</td><td><span class="code-text">house_rules</span></td><td>2. العقارات والسياسات</td><td>rule_id</td><td>-</td><td>شروط وتعليمات الإقامة (ممنوع التدخين، مواعيد الهدوء، اصطحاب الحيوانات).</td></tr>
+            <tr><td>16</td><td><span class="code-text">property_rules</span></td><td>2. العقارات والسياسات</td><td>property_id, rule_id</td><td>property_id, rule_id</td><td>تطبيق قواعد وشروط الإقامة الخاصة بكل مالك على شاليهاته.</td></tr>
+            <tr><td>17</td><td><span class="code-text">listing_calendar</span></td><td>3. التقويم والإتاحة</td><td>calendar_id</td><td>property_id, booking_id</td><td>سجل كل يوم في السنة لكل وحدة؛ لمنع التضارب اللحظي وتغيير أسعار الويك إند.</td></tr>
+            <tr><td>18</td><td><span class="code-text">channel_connections</span></td><td>3. التقويم والإتاحة</td><td>connection_id</td><td>property_id</td><td>روابط مزامنة الـ iCal الخارجية ثنائية الاتجاه (Two-Way External Sync).</td></tr>
+            <tr><td>19</td><td><span class="code-text">channel_sync_logs</span></td><td>3. التقويم والإتاحة</td><td>sync_log_id</td><td>connection_id</td><td>سجل التزامن الخارجي ورصد أي محاولة حجز خارجي متعارض (Conflict Alarms).</td></tr>
+            <tr><td>20</td><td><span class="code-text">temporary_reservation_holds</span></td><td>3. التقويم والإتاحة</td><td>hold_id</td><td>property_id, guest_id</td><td>قفل مؤقت في الكاش لمدة 15 دقيقة أثناء الدفع لمنع حجز نفس التواريخ متزامناً.</td></tr>
+            <tr><td>21</td><td><span class="code-text">pricing_rules</span></td><td>4. التسعير المتدرج</td><td>rule_id</td><td>property_id</td><td>خصومات الإقامة الطويلة (خصم أسبوعي 7 أيام، خصم شهري، سكن شركات).</td></tr>
+            <tr><td>22</td><td><span class="code-text">seasonal_pricing</span></td><td>4. التسعير المتدرج</td><td>season_id</td><td>property_id</td><td>تسعير مواسم الذروة والأعياد والصيف بالزيادات المحددة.</td></tr>
+            <tr><td>23</td><td><span class="code-text">bookings</span></td><td>5. الحجوزات</td><td>booking_id</td><td>property_id, guest_id, host_id</td><td>سجل الحجز المتكامل، الأكواد، التواريخ، وتجميد الأسعار والخصومات لحظة الدفع.</td></tr>
+            <tr><td>24</td><td><span class="code-text">booking_guests_manifest</span></td><td>5. الحجوزات</td><td>guest_record_id</td><td>booking_id</td><td>كشف بيانات النزلاء المسافرين بصحبة صاحب الحجز لإصدار تصاريح القرى.</td></tr>
+            <tr><td>25</td><td><span class="code-text">booking_status_history</span></td><td>5. الحجوزات</td><td>transition_id</td><td>booking_id, changed_by</td><td>سجل الـ State Machine لتتبع دورة حياة الحجز (Pending -> Confirmed -> CheckedIn).</td></tr>
+            <tr><td>26</td><td><span class="code-text">payment_transactions</span></td><td>6. المدفوعات والـ Escrow</td><td>transaction_id</td><td>booking_id</td><td>معاملات بوابات الدفع الإلكتروني (Paymob/Stripe)، البطاقات، وأكواد التأكيد.</td></tr>
+            <tr><td>27</td><td><span class="code-text">escrow_ledger</span></td><td>6. المدفوعات والـ Escrow</td><td>ledger_id</td><td>booking_id, host_id, guest_id</td><td>نظام الـ Escrow لحجز أموال النزيل وصرفها للمالك بعد 24 ساعة من الوصول.</td></tr>
+            <tr><td>28</td><td><span class="code-text">host_payout_methods</span></td><td>6. المدفوعات والـ Escrow</td><td>payout_method_id</td><td>host_id</td><td>حسابات الملاك البنكية (IBAN, Swift, InstaPay, فودافون كاش).</td></tr>
+            <tr><td>29</td><td><span class="code-text">payout_transfers</span></td><td>6. المدفوعات والـ Escrow</td><td>payout_id</td><td>host_id, payout_method_id</td><td>أوامر تحويل أرباح الملاك بعد موافقة الإدارة، مع أكواد التحويل البنكي.</td></tr>
+            <tr><td>30</td><td><span class="code-text">booking_refunds</span></td><td>6. المدفوعات والـ Escrow</td><td>refund_id</td><td>booking_id, guest_id</td><td>إدارة عمليات رد المبالغ للعميل عند الإلغاء وفق شروط وسياسة الإلغاء.</td></tr>
+            <tr><td>31</td><td><span class="code-text">resort_gate_passes</span></td><td>7. التصاريح وباقات VIP</td><td>pass_id</td><td>booking_id</td><td>تصاريح الدخول الرقمية المشفرة بـ QR Code لبوابات القرى والشواطئ.</td></tr>
+            <tr><td>32</td><td><span class="code-text">reviews</span></td><td>8. التقييمات والجودة</td><td>review_id</td><td>booking_id, property_id, guest_id</td><td>التقييم الشامل المعتمد بمعايير Airbnb الستة ورد المالك الرسمي.</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- ==================== SHEET 3: الجداول والـ Rows التجريبية الواقعية ==================== -->
-    <div class="doc-sheet" id="tables">
+    <!-- ==================== SHEET 3: نماذج صفوف البيانات الفعلية ==================== -->
+    <div class="doc-sheet" id="rows">
       <div class="section-title">
-        <i class="bi bi-table"></i>
-        <span>3. هيكل الجداول التفصيلي وبيانات الـ Rows الواقعية (Schema & Live Rows)</span>
+        <i class="bi bi-card-checklist"></i>
+        <span>رابعاً: نماذج صفوف البيانات التجريبية الحية (Live Production Sample Rows)</span>
       </div>
 
-      <!-- 1. USERS -->
-      <div style="margin-bottom: 24px;">
-        <h3 style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
-          1. جدول المستخدمين (<span class="code-text">users</span>)
-        </h3>
-        <p style="font-size: 11.5px; color: var(--slate-600); margin-bottom: 10px;">
-          يضم النزلاء والملاك ومديري النظام مع تفاصيل التوثيق الأمني الرسمي (**KYC Verification**) ومحفظة الرصيد.
-        </p>
-
-        <!-- الأعمدة -->
-        <div class="table-container">
+      <!-- Sample Users -->
+      <div class="sample-box">
+        <div class="sample-title"><i class="bi bi-person-badge"></i> 1. صفوف جدول المستخدمين والتوثيق (users):</div>
+        <div class="table-container" style="margin-bottom: 0;">
           <table>
             <thead>
-              <tr>
-                <th>اسم الحقل (Column)</th>
-                <th>نوع البيانات (Data Type)</th>
-                <th>القيود (Constraints)</th>
-                <th>الوصف البرمجي</th>
+              <tr style="background: #F3E8FF;">
+                <th>user_id</th>
+                <th>full_name</th>
+                <th>email</th>
+                <th>phone_number</th>
+                <th>user_role</th>
+                <th>is_verified (KYC)</th>
+                <th>is_superhost</th>
+                <th>preferred_currency</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><span class="code-text">user_id</span></td><td>BIGINT</td><td><span class="pk-badge">PK</span> IDENTITY</td><td>المعرف الفريد للمستخدم</td></tr>
-              <tr><td><span class="code-text">full_name</span></td><td>NVARCHAR(100)</td><td>NOT NULL</td><td>الاسم الكامل للمستخدم</td></tr>
-              <tr><td><span class="code-text">email</span></td><td>NVARCHAR(150)</td><td>UNIQUE NOT NULL</td><td>البريد الإلكتروني المعتمد للمصادقة</td></tr>
-              <tr><td><span class="code-text">phone_number</span></td><td>NVARCHAR(25)</td><td>UNIQUE NOT NULL</td><td>رقم الهاتف للتواصل والـ SMS OTP</td></tr>
-              <tr><td><span class="code-text">user_role</span></td><td>NVARCHAR(20)</td><td>NOT NULL</td><td>الدور: 'Guest', 'Host', 'SuperAdmin'</td></tr>
-              <tr><td><span class="code-text">is_verified</span></td><td>BIT</td><td>DEFAULT 0</td><td>حالة توثيق الهوية KYC (1 = موثق، 0 = قيد المراجعة)</td></tr>
-              <tr><td><span class="code-text">wallet_balance</span></td><td>DECIMAL(12,2)</td><td>DEFAULT 0.00</td><td>رصيد المحفظة الإلكترونية</td></tr>
+              <tr>
+                <td><strong>1</strong></td>
+                <td><strong>أحمد محمد الشناوي</strong></td>
+                <td>ahmed.host&#64;ragabpay.com</td>
+                <td>+201012345678</td>
+                <td><span class="badge badge-purple">Host (مالك)</span></td>
+                <td><span class="badge badge-green">1 (موثق رسمياً)</span></td>
+                <td><span class="badge badge-amber">1 (سوبر هوست)</span></td>
+                <td>EGP</td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td><strong>كريم عبد العزيز</strong></td>
+                <td>karim.guest&#64;gmail.com</td>
+                <td>+201198765432</td>
+                <td><span class="badge badge-blue">Guest (نزيل)</span></td>
+                <td><span class="badge badge-green">1 (موثق)</span></td>
+                <td>0</td>
+                <td>EGP</td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td><strong>سارة المهدي</strong></td>
+                <td>sara.host&#64;ragabpay.com</td>
+                <td>+201234567890</td>
+                <td><span class="badge badge-purple">Host (مالك)</span></td>
+                <td><span class="badge badge-green">1 (موثق)</span></td>
+                <td><span class="badge badge-amber">1 (سوبر هوست)</span></td>
+                <td>EGP</td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td><strong>المهندس شريف راشد (الإدارة)</strong></td>
+                <td>admin&#64;ragabpay.com</td>
+                <td>+201000000001</td>
+                <td><span class="badge badge-amber">SuperAdmin</span></td>
+                <td><span class="badge badge-green">1 (موثق)</span></td>
+                <td>0</td>
+                <td>EGP</td>
+              </tr>
             </tbody>
           </table>
         </div>
+      </div>
 
-        <!-- Sample Rows -->
-        <div class="sample-box">
-          <div class="sample-title"><i class="bi bi-card-checklist"></i> نماذج صفوف البيانات الفعلية (Sample Data Rows):</div>
-          <div class="table-container" style="margin-bottom: 0;">
-            <table>
-              <thead>
-                <tr style="background: #F3E8FF;">
-                  <th>user_id</th>
-                  <th>full_name</th>
-                  <th>email</th>
-                  <th>phone_number</th>
-                  <th>user_role</th>
-                  <th>is_verified</th>
-                  <th>wallet_balance</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>1</strong></td>
-                  <td><strong>أحمد محمد الشناوي</strong></td>
-                  <td>ahmed.host&#64;ragabpay.com</td>
-                  <td>+201012345678</td>
-                  <td><span class="badge badge-purple">Host (مالك)</span></td>
-                  <td><span class="badge badge-green">1 (موثق)</span></td>
-                  <td><strong>14,250.00 ج.م</strong></td>
-                </tr>
-                <tr>
-                  <td><strong>2</strong></td>
-                  <td><strong>كريم عبد العزيز</strong></td>
-                  <td>karim.guest&#64;gmail.com</td>
-                  <td>+201198765432</td>
-                  <td><span class="badge badge-blue">Guest (نزيل)</span></td>
-                  <td><span class="badge badge-green">1 (موثق)</span></td>
-                  <td><strong>0.00 ج.م</strong></td>
-                </tr>
-                <tr>
-                  <td><strong>3</strong></td>
-                  <td><strong>سارة المهدي</strong></td>
-                  <td>sara.host&#64;ragabpay.com</td>
-                  <td>+201234567890</td>
-                  <td><span class="badge badge-purple">Host (مالك)</span></td>
-                  <td><span class="badge badge-green">1 (موثق)</span></td>
-                  <td><strong>28,600.00 ج.م</strong></td>
-                </tr>
-                <tr>
-                  <td><strong>4</strong></td>
-                  <td><strong>إدارة رجب باي (Admin)</strong></td>
-                  <td>admin&#64;ragabpay.com</td>
-                  <td>+201000000001</td>
-                  <td><span class="badge badge-amber">SuperAdmin</span></td>
-                  <td><span class="badge badge-green">1 (موثق)</span></td>
-                  <td><strong>850,000.00 ج.م</strong></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <!-- Sample Properties with Locations & Custom Commissions -->
+      <div class="sample-box">
+        <div class="sample-title"><i class="bi bi-houses"></i> 2. صفوف جدول العقارات والعمولات الخاصة (properties):</div>
+        <div class="table-container" style="margin-bottom: 0;">
+          <table>
+            <thead>
+              <tr style="background: #F3E8FF;">
+                <th>property_id</th>
+                <th>host_id</th>
+                <th>title</th>
+                <th>property_type</th>
+                <th>max_guests</th>
+                <th>base_price</th>
+                <th>custom_commission</th>
+                <th>listing_status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>101</strong></td>
+                <td>1 (أحمد الشناوي)</td>
+                <td><strong>شاليه ملكي بفيو بانورامي على البحر مباشرة</strong></td>
+                <td><span class="badge badge-blue">Chalet</span></td>
+                <td>6 أفراد (3 غرف)</td>
+                <td><strong>4,000 ج.م</strong></td>
+                <td><span class="badge badge-purple">12.5% (عمولة خاصة)</span></td>
+                <td><span class="badge badge-green">Approved</span></td>
+              </tr>
+              <tr>
+                <td><strong>102</strong></td>
+                <td>1 (أحمد الشناوي)</td>
+                <td><strong>فيلا عائلية مستقلة بإنفينيتي بول وحديقة خاصة</strong></td>
+                <td><span class="badge badge-green">Villa</span></td>
+                <td>10 أفراد (5 غرف)</td>
+                <td><strong>9,500 ج.م</strong></td>
+                <td><span class="badge badge-purple">10.0% (عمولة خاصة)</span></td>
+                <td><span class="badge badge-green">Approved</span></td>
+              </tr>
+              <tr>
+                <td><strong>103</strong></td>
+                <td>3 (سارة المهدي)</td>
+                <td><strong>مجمع سكن كوادر وعمالة فنية مجهز بالكامل</strong></td>
+                <td><span class="badge badge-amber">CorporateStaff</span></td>
+                <td>24 فرد (6 غرف)</td>
+                <td><strong>2,800 ج.م</strong></td>
+                <td><span class="badge badge-purple">15.0% (عمولة خاصة)</span></td>
+                <td><span class="badge badge-green">Approved</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <!-- 2. PROPERTIES -->
-      <div style="margin-bottom: 24px;">
-        <h3 style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
-          2. جدول العقارات والشاليهات (<span class="code-text">properties</span>)
-        </h3>
-        <p style="font-size: 11.5px; color: var(--slate-600); margin-bottom: 10px;">
-          يحتوي على كافة بيانات الوحدة، الموقع الجغرافي، السعة، السعر الأساسي لليلة، ونسبة عمولة الإدارة المخصصة.
-        </p>
-
-        <div class="sample-box">
-          <div class="sample-title"><i class="bi bi-card-checklist"></i> نماذج صفوف البيانات الفعلية (Sample Data Rows):</div>
-          <div class="table-container" style="margin-bottom: 0;">
-            <table>
-              <thead>
-                <tr style="background: #F3E8FF;">
-                  <th>property_id</th>
-                  <th>host_id</th>
-                  <th>title</th>
-                  <th>city / district</th>
-                  <th>lat, long</th>
-                  <th>max_guests</th>
-                  <th>base_price</th>
-                  <th>service_fee_%</th>
-                  <th>status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>101</strong></td>
-                  <td>1</td>
-                  <td><strong>شاليه ملكي بفيو بانورامي على البحر مباشرة</strong></td>
-                  <td>الساحل الشمالي - قرية Sea View</td>
-                  <td>30.9123, 29.1456</td>
-                  <td>6 أفراد</td>
-                  <td><strong>4,000 ج.م</strong></td>
-                  <td><strong>12.5% (خاصة)</strong></td>
-                  <td><span class="badge badge-green">Approved</span></td>
-                </tr>
-                <tr>
-                  <td><strong>102</strong></td>
-                  <td>1</td>
-                  <td><strong>فيلا عائلية مستقلة بحديقة وحمام سباحة خاص</strong></td>
-                  <td>الساحل الشمالي - هاسيندا باي</td>
-                  <td>30.8950, 28.9810</td>
-                  <td>10 أفراد</td>
-                  <td><strong>9,500 ج.م</strong></td>
-                  <td><strong>10.0% (خاصة)</strong></td>
-                  <td><span class="badge badge-green">Approved</span></td>
-                </tr>
-                <tr>
-                  <td><strong>103</strong></td>
-                  <td>3</td>
-                  <td><strong>مجمع سكن كوادر وعمالة فنية مجهز بالكامل</strong></td>
-                  <td>مدينة 6 أكتوبر - المنطقة الصناعية</td>
-                  <td>29.9821, 30.9320</td>
-                  <td>24 فرد</td>
-                  <td><strong>2,800 ج.م</strong></td>
-                  <td><strong>15.0% (خاصة)</strong></td>
-                  <td><span class="badge badge-green">Approved</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <!-- Sample Calendar (Day-by-Day Slots) -->
+      <div class="sample-box">
+        <div class="sample-title"><i class="bi bi-calendar-event"></i> 3. صفوف التقويم اليومي الإفرادي (listing_calendar Slots):</div>
+        <div class="table-container" style="margin-bottom: 0;">
+          <table>
+            <thead>
+              <tr style="background: #F3E8FF;">
+                <th>calendar_id</th>
+                <th>property_id</th>
+                <th>calendar_date</th>
+                <th>is_available</th>
+                <th>nightly_price</th>
+                <th>status_reason</th>
+                <th>booking_id</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>5001</strong></td>
+                <td>101</td>
+                <td>2026-12-10</td>
+                <td><span class="badge badge-red">0 (محجوز)</span></td>
+                <td>4,000 ج.م</td>
+                <td>Booked_Platform</td>
+                <td><span class="code-text">8821</span></td>
+              </tr>
+              <tr>
+                <td><strong>5002</strong></td>
+                <td>101</td>
+                <td>2026-12-11</td>
+                <td><span class="badge badge-red">0 (محجوز)</span></td>
+                <td>4,500 ج.م (Weekend)</td>
+                <td>Booked_Platform</td>
+                <td><span class="code-text">8821</span></td>
+              </tr>
+              <tr>
+                <td><strong>5003</strong></td>
+                <td>101</td>
+                <td>2026-12-12</td>
+                <td><span class="badge badge-green">1 (متاح)</span></td>
+                <td>4,000 ج.م</td>
+                <td>Available</td>
+                <td>NULL</td>
+              </tr>
+              <tr>
+                <td><strong>5004</strong></td>
+                <td>101</td>
+                <td>2026-12-13</td>
+                <td><span class="badge badge-amber">0 (مغلق)</span></td>
+                <td>4,000 ج.م</td>
+                <td>External_OTA_Hold (iCal)</td>
+                <td>NULL</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <!-- 3. LISTING_CALENDAR (Day-by-Day Slots) -->
-      <div style="margin-bottom: 24px;">
-        <h3 style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
-          3. جدول التقويم اليومي والإتاحة (<span class="code-text">listing_calendar</span>)
-        </h3>
-        <p style="font-size: 11.5px; color: var(--slate-600); margin-bottom: 10px;">
-          محرك الإتاحة والأسعار اللحظية؛ يحدد حالة كل يوم (متاح، محجوز، أو مغلق خارجياً)، وسعر الليلة المتغير (Weekend / Holiday).
-        </p>
-
-        <div class="sample-box">
-          <div class="sample-title"><i class="bi bi-card-checklist"></i> نماذج صفوف التقويم اليومي (Sample Calendar Rows):</div>
-          <div class="table-container" style="margin-bottom: 0;">
-            <table>
-              <thead>
-                <tr style="background: #F3E8FF;">
-                  <th>calendar_id</th>
-                  <th>property_id</th>
-                  <th>calendar_date</th>
-                  <th>is_available</th>
-                  <th>nightly_price</th>
-                  <th>status_reason</th>
-                  <th>booking_id</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>5001</strong></td>
-                  <td>101</td>
-                  <td>2026-12-10</td>
-                  <td><span class="badge badge-red">0 (محجوز)</span></td>
-                  <td>4,000 ج.م</td>
-                  <td>Booked_Platform</td>
-                  <td><span class="code-text">BK-8821</span></td>
-                </tr>
-                <tr>
-                  <td><strong>5002</strong></td>
-                  <td>101</td>
-                  <td>2026-12-11</td>
-                  <td><span class="badge badge-red">0 (محجوز)</span></td>
-                  <td>4,500 ج.م (Weekend)</td>
-                  <td>Booked_Platform</td>
-                  <td><span class="code-text">BK-8821</span></td>
-                </tr>
-                <tr>
-                  <td><strong>5003</strong></td>
-                  <td>101</td>
-                  <td>2026-12-12</td>
-                  <td><span class="badge badge-green">1 (متاح)</span></td>
-                  <td>4,000 ج.م</td>
-                  <td>Available</td>
-                  <td>NULL</td>
-                </tr>
-                <tr>
-                  <td><strong>5004</strong></td>
-                  <td>101</td>
-                  <td>2026-12-13</td>
-                  <td><span class="badge badge-amber">0 (مغلق)</span></td>
-                  <td>4,000 ج.م</td>
-                  <td>External_iCal_Hold</td>
-                  <td>NULL</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <!-- Sample Bookings & Financial Snapshot -->
+      <div class="sample-box">
+        <div class="sample-title"><i class="bi bi-cash-coin"></i> 4. صفوف الحجوزات والتجميد المالي (bookings):</div>
+        <div class="table-container" style="margin-bottom: 0;">
+          <table>
+            <thead>
+              <tr style="background: #F3E8FF;">
+                <th>booking_id</th>
+                <th>booking_code</th>
+                <th>النزيل</th>
+                <th>الوحدة</th>
+                <th>التواريخ</th>
+                <th>الليالي</th>
+                <th>إجمالي المدفوع</th>
+                <th>عمولة الإدارة</th>
+                <th>صافي المالك</th>
+                <th>الحالة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>8821</strong></td>
+                <td><span class="code-text">RP-2026-8821</span></td>
+                <td>كريم عبد العزيز (2)</td>
+                <td>شاليه ملكي (101)</td>
+                <td>2026-12-10 ➔ 12-12</td>
+                <td>2 ليالي</td>
+                <td><strong>9,350 ج.م</strong></td>
+                <td><strong>1,062.50 ج.م (12.5%)</strong></td>
+                <td><strong>7,787.50 ج.م</strong></td>
+                <td><span class="badge badge-green">Confirmed</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <!-- 4. PRICING_RULES (Tiered Discounts) -->
-      <div style="margin-bottom: 24px;">
-        <h3 style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
-          4. جدول التسعير المتدرج والخصومات (<span class="code-text">pricing_rules</span>)
-        </h3>
-        <p style="font-size: 11.5px; color: var(--slate-600); margin-bottom: 10px;">
-          يطبق الخصومات التلقائية حسب مدة الإقامة (أسبوع، شهر) لزيادة نسب الإشغال.
-        </p>
-
-        <div class="sample-box">
-          <div class="sample-title"><i class="bi bi-card-checklist"></i> نماذج صفوف قواعد التسعير (Sample Pricing Rules):</div>
-          <div class="table-container" style="margin-bottom: 0;">
-            <table>
-              <thead>
-                <tr style="background: #F3E8FF;">
-                  <th>rule_id</th>
-                  <th>property_id</th>
-                  <th>rule_type</th>
-                  <th>min_nights</th>
-                  <th>discount_percentage</th>
-                  <th>تطبيق القاعدة</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>1</strong></td>
-                  <td>101</td>
-                  <td><span class="badge badge-blue">WeeklyDiscount</span></td>
-                  <td>7 ليالي</td>
-                  <td><strong>10.0%</strong></td>
-                  <td>خصم 10% عند حجز 7 ليالي فأكثر</td>
-                </tr>
-                <tr>
-                  <td><strong>2</strong></td>
-                  <td>101</td>
-                  <td><span class="badge badge-purple">MonthlyDiscount</span></td>
-                  <td>28 ليلة</td>
-                  <td><strong>22.0%</strong></td>
-                  <td>خصم 22% عند حجز شهر كامل</td>
-                </tr>
-                <tr>
-                  <td><strong>3</strong></td>
-                  <td>103</td>
-                  <td><span class="badge badge-green">CorporateContract</span></td>
-                  <td>30 ليلة</td>
-                  <td><strong>30.0%</strong></td>
-                  <td>خصم تعاقدات سكن الشركات طويل الأجل</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. BOOKINGS -->
-      <div style="margin-bottom: 24px;">
-        <h3 style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
-          5. جدول الحجوزات والحسابات المالية (<span class="code-text">bookings</span>)
-        </h3>
-        <p style="font-size: 11.5px; color: var(--slate-600); margin-bottom: 10px;">
-          سجل الحجز المتكامل؛ يوثق التواريخ، الرسوم، المبالغ الصافية، والخصومات المطبقة في لحظة الحجز.
-        </p>
-
-        <div class="sample-box">
-          <div class="sample-title"><i class="bi bi-card-checklist"></i> نماذج صفوف الحجوزات (Sample Booking Rows):</div>
-          <div class="table-container" style="margin-bottom: 0;">
-            <table>
-              <thead>
-                <tr style="background: #F3E8FF;">
-                  <th>booking_id</th>
-                  <th>booking_code</th>
-                  <th>prop_id</th>
-                  <th>guest</th>
-                  <th>check_in / out</th>
-                  <th>nights</th>
-                  <th>total_guest_paid</th>
-                  <th>commission</th>
-                  <th>net_host</th>
-                  <th>status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>8821</strong></td>
-                  <td><span class="code-text">RP-2026-8821</span></td>
-                  <td>101</td>
-                  <td>كريم عبد العزيز (2)</td>
-                  <td>2026-12-10 ➔ 12-12</td>
-                  <td>2 ليالي</td>
-                  <td><strong>8,850 ج.م</strong></td>
-                  <td><strong>1,062 ج.م</strong></td>
-                  <td><strong>7,788 ج.م</strong></td>
-                  <td><span class="badge badge-green">Confirmed</span></td>
-                </tr>
-                <tr>
-                  <td><strong>8822</strong></td>
-                  <td><span class="code-text">RP-2026-8822</span></td>
-                  <td>103</td>
-                  <td>شركة إعمار للمقاولات (5)</td>
-                  <td>2026-12-01 ➔ 12-31</td>
-                  <td>30 ليلة</td>
-                  <td><strong>58,800 ج.م</strong></td>
-                  <td><strong>8,820 ج.م</strong></td>
-                  <td><strong>49,980 ج.م</strong></td>
-                  <td><span class="badge badge-purple">CheckedIn</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. ESCROW_LEDGER -->
-      <div style="margin-bottom: 24px;">
-        <h3 style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
-          6. جدول الحسابات المعلقة والأرباح (<span class="code-text">escrow_ledger</span>)
-        </h3>
-        <p style="font-size: 11.5px; color: var(--slate-600); margin-bottom: 10px;">
-          نظام الوساطة البنكية والـ Escrow المالي المعتمد في Airbnb؛ يضمن حقوق النزيل بعدم تحويل مستحقات المالك إلا بعد مرور 24 ساعة على تسجيل الدخول.
-        </p>
-
-        <div class="sample-box">
-          <div class="sample-title"><i class="bi bi-card-checklist"></i> نماذج قيود الـ Escrow المالية (Sample Escrow Rows):</div>
-          <div class="table-container" style="margin-bottom: 0;">
-            <table>
-              <thead>
-                <tr style="background: #F3E8FF;">
-                  <th>ledger_id</th>
-                  <th>booking_id</th>
-                  <th>held_amount</th>
-                  <th>platform_cut</th>
-                  <th>host_net_payout</th>
-                  <th>escrow_status</th>
-                  <th>payout_due_at</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>901</strong></td>
-                  <td>8821</td>
-                  <td>8,850.00 ج.م</td>
-                  <td>1,062.00 ج.م (أرباح المنصة)</td>
-                  <td>7,788.00 ج.م (للمالك)</td>
-                  <td><span class="badge badge-amber">HeldInEscrow (معلق)</span></td>
-                  <td>2026-12-11 15:00:00 (بعد 24 س)</td>
-                </tr>
-                <tr>
-                  <td><strong>902</strong></td>
-                  <td>8822</td>
-                  <td>58,800.00 ج.م</td>
-                  <td>8,820.00 ج.م (أرباح المنصة)</td>
-                  <td>49,980.00 ج.م (للمالك)</td>
-                  <td><span class="badge badge-green">PaidOutToHost (تم الصرف)</span></td>
-                  <td>2026-12-02 15:00:00</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7. REVIEWS -->
-      <div style="margin-bottom: 24px;">
-        <h3 style="font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
-          7. جدول التقييمات التفصيلية (<span class="code-text">reviews</span>)
-        </h3>
-        <p style="font-size: 11.5px; color: var(--slate-600); margin-bottom: 10px;">
-          يقيم 6 معايير أساسية لكل إقامة حقيقية، مع حساب المتوسط المرجح بدقة.
-        </p>
-
-        <div class="sample-box">
-          <div class="sample-title"><i class="bi bi-card-checklist"></i> نماذج صفوف التقييمات (Sample Reviews):</div>
-          <div class="table-container" style="margin-bottom: 0;">
-            <table>
-              <thead>
-                <tr style="background: #F3E8FF;">
-                  <th>review_id</th>
-                  <th>booking_id</th>
-                  <th>author</th>
-                  <th>النظافة</th>
-                  <th>الدقة</th>
-                  <th>التواصل</th>
-                  <th>الموقع</th>
-                  <th>المتوسط العام</th>
-                  <th>نص التقييم</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>301</strong></td>
-                  <td>8821</td>
-                  <td>كريم عبد العزيز</td>
-                  <td>5 / 5</td>
-                  <td>5 / 5</td>
-                  <td>5 / 5</td>
-                  <td>5 / 5</td>
-                  <td><span class="badge badge-green">4.96 ★</span></td>
-                  <td>"إقامة استثنائية وإطلالة ساحرة مطابقة تماماً للصور. خدمة ممتازة وسهولة في الدخول."</td>
-                </tr>
-                <tr>
-                  <td><strong>302</strong></td>
-                  <td>8810</td>
-                  <td>م. طارق يحيى</td>
-                  <td>4 / 5</td>
-                  <td>5 / 5</td>
-                  <td>5 / 5</td>
-                  <td>4 / 5</td>
-                  <td><span class="badge badge-blue">4.75 ★</span></td>
-                  <td>"مكان مريح جداً ونظيف وفريق كونسيرج رجب باي كان متعاوناً للغاية طوال فترة الإقامة."</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <!-- Sample Escrow Ledger -->
+      <div class="sample-box">
+        <div class="sample-title"><i class="bi bi-safe2"></i> 5. صفوف حسابات الوساطة البنكية والـ Escrow (escrow_ledger):</div>
+        <div class="table-container" style="margin-bottom: 0;">
+          <table>
+            <thead>
+              <tr style="background: #F3E8FF;">
+                <th>ledger_id</th>
+                <th>booking_id</th>
+                <th>المبلغ المحتجز في الوساطة</th>
+                <th>أرباح منصة رجب باي</th>
+                <th>صافي تحويل المالك</th>
+                <th>حالة القيد</th>
+                <th>موعد الإفراج والتحويل البنكي</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>901</strong></td>
+                <td>8821</td>
+                <td><strong>9,350.00 ج.م</strong></td>
+                <td><strong>1,562.50 ج.م</strong></td>
+                <td><strong>7,787.50 ج.م</strong></td>
+                <td><span class="badge badge-amber">HeldInEscrow (معلق)</span></td>
+                <td><strong>2026-12-11 15:00:00</strong> (بعد 24 ساعة من تسجيل الدخول)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
