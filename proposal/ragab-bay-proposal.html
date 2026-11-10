@@ -45,7 +45,7 @@
       background-color: #F1F5F9;
       color: var(--navy);
       line-height: 1.6;
-      font-size: 13.5px;
+      font-size: 13px;
     }
 
     .container {
@@ -98,7 +98,7 @@
       border-radius: 14px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow-md);
-      padding: 40px 44px;
+      padding: 38px 42px;
       margin-bottom: 30px;
       page-break-after: always;
       position: relative;
@@ -115,8 +115,8 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid var(--slate-100);
-      padding-bottom: 18px;
-      margin-bottom: 24px;
+      padding-bottom: 16px;
+      margin-bottom: 22px;
     }
 
     .brand-group {
@@ -167,7 +167,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 15.5px;
+      font-size: 15px;
       font-weight: 800;
       color: var(--navy);
       margin-bottom: 14px;
@@ -177,7 +177,7 @@
 
     .section-title i {
       color: var(--primary);
-      font-size: 19px;
+      font-size: 18px;
     }
 
     /* Cards & Grids */
@@ -267,41 +267,6 @@
     .badge-purple { background: #EDE9FE; color: #6D28D9; }
     .badge-amber { background: #FEF3C7; color: #B45309; }
 
-    /* Showcase Screenshot Gallery */
-    .showcase-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .showcase-item {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      background: var(--slate-50);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .showcase-item img {
-      width: 100%;
-      height: 145px;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .showcase-caption {
-      padding: 8px 10px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--slate-800);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
     /* Tech Stack Pills */
     .tech-pill-card {
       border: 1px solid var(--border);
@@ -331,27 +296,27 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       text-align: right;
-      font-size: 12px;
+      font-size: 11.5px;
     }
 
     thead th {
       background: var(--slate-50);
       color: var(--slate-800);
       font-weight: 800;
-      padding: 10px 14px;
+      padding: 10px 12px;
       border-bottom: 1px solid var(--border);
       font-size: 11.5px;
     }
 
     tbody td {
-      padding: 10px 14px;
+      padding: 10px 12px;
       border-bottom: 1px solid var(--border);
       color: var(--slate-600);
       vertical-align: top;
@@ -384,16 +349,16 @@
       background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
       color: white;
       border-radius: 12px;
-      padding: 22px 26px;
+      padding: 20px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 18px;
+      margin-top: 16px;
       box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
     }
 
     .total-info h3 {
-      font-size: 17px;
+      font-size: 16.5px;
       font-weight: 800;
       margin-bottom: 4px;
     }
@@ -418,7 +383,7 @@
 
     .total-amount .duration-badge {
       display: inline-block;
-      margin-top: 6px;
+      margin-top: 5px;
       background: rgba(255, 255, 255, 0.12);
       padding: 3px 12px;
       border-radius: 20px;
@@ -429,8 +394,8 @@
     /* Footer */
     .page-footer {
       border-top: 1px solid var(--slate-200);
-      padding-top: 14px;
-      margin-top: 24px;
+      padding-top: 12px;
+      margin-top: 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -598,7 +563,7 @@
             <li><strong>رفع التطبيق على Apple App Store:</strong> تجهيز حساب المطور، الشهادات، ومتابعة اعتماد أبل حتى النشر.</li>
             <li><strong>رفع التطبيق على Google Play Store:</strong> مطابقة معايير Google وتجهيز لقطات الشاشة ونشره رسمياً.</li>
             <li><strong>إشعارات Push فورية عبر Firebase:</strong> تنبيهات بتأكيد الحجز، الدفع، والعروض الحصرية.</li>
-            <li><strong>تصاريح الدخول السريعة:</strong> استعراض فاوتشر الحجز وتفاصيل الوصول أوفلاين.</li>
+            <li><strong>استعراض الفاوتشر السريع:</strong> استعراض فاوتشر الحجز وتفاصيل الوصول أوفلاين بكل سلاسة.</li>
           </ul>
         </div>
       </div>
@@ -609,84 +574,37 @@
       </div>
     </div>
 
-    <!-- ==================== SHEET 2: معرض شاشات الديمو والحزمة التقنية ==================== -->
+    <!-- ==================== SHEET 2: الحزمة التقنية ومراحل التنفيذ ==================== -->
     <div class="sheet page-break">
       <!-- Header with Logo -->
       <div class="page-header">
         <div class="brand-group">
           <img src="assets/logo.png" alt="Ragab Pay Logo" class="brand-logo-img">
           <div class="brand-text">
-            <h1>شاشات النظام والحزمة التقنية (Showcase & Tech Stack)</h1>
-            <p>Live Demo Screenshots & Enterprise Architecture</p>
+            <h1>الحزمة التقنية ومراحل التنفيذ (Tech Stack & Architecture)</h1>
+            <p>Enterprise Scalability, Integrations & Phased Roadmap</p>
           </div>
         </div>
         <div class="meta-badge">
-          <span class="ref">DEMO VERIFIED</span>
-          <div><strong>الحالة:</strong> نماذج حية مطورة ومختبرة</div>
-        </div>
-      </div>
-
-      <!-- معرض صور الديمو -->
-      <div class="section-title">
-        <i class="bi bi-images"></i>
-        <span>معرض لقطات من صفحات وشاشات الديمو الفعلي (Live Demo Screens)</span>
-      </div>
-
-      <div class="showcase-grid">
-        <div class="showcase-item">
-          <img src="assets/demo_mobile_home.png" alt="تطبيق الموبايل والواجهة الرئيسية">
-          <div class="showcase-caption">
-            <span>الرئيسية وتجربة الجوال الفاخرة</span>
-            <span class="badge badge-blue">Mobile View</span>
-          </div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/demo_details.png" alt="تفاصيل الوحدة شبيه Airbnb">
-          <div class="showcase-caption">
-            <span>تفاصيل الشاليه وتجربة Airbnb</span>
-            <span class="badge badge-green">Guest Portal</span>
-          </div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/demo_checkout.png" alt="شاشة الدفع وحساب التكلفة">
-          <div class="showcase-caption">
-            <span>محرك الدفع والخصم الزمني</span>
-            <span class="badge badge-purple">Checkout</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="showcase-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 22px;">
-        <div class="showcase-item">
-          <img src="assets/demo_owner.png" alt="لوحة تحكم المالك" style="height: 155px;">
-          <div class="showcase-caption">
-            <span>لوحة المالك (متابعة الأرباح والوحدات والحجوزات اللحظية)</span>
-            <span class="badge badge-amber">Owner Portal</span>
-          </div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/demo_owner_edit.png" alt="تعديل بيانات الوحدة للمالك" style="height: 155px;">
-          <div class="showcase-caption">
-            <span>نافذة تعديل ومراجعة الوحدة والأسعار والمميزات</span>
-            <span class="badge badge-blue">Unit Management</span>
-          </div>
+          <span class="ref">SYSTEM ARCHITECTURE</span>
+          <div><strong>المعمارية:</strong> Clean Architecture / Scalable</div>
         </div>
       </div>
 
       <!-- الحزمة التقنية والربط والتكامل -->
       <div class="section-title">
         <i class="bi bi-cpu-fill"></i>
-        <span>الحزمة التقنية ومحركات الربط والتكامل (Enterprise Tech Stack & Integrations)</span>
+        <span>ثانياً: الحزمة التقنية المعتمدة للمنظومة (Enterprise Technology Stack)</span>
       </div>
 
-      <div class="grid-4" style="margin-bottom: 14px;">
+      <div class="grid-4" style="margin-bottom: 16px;">
         <!-- .NET API -->
         <div class="tech-pill-card">
           <div class="tech-pill-header">
             <i class="bi bi-code-slash text-primary"></i>
             <span>.NET Web API (C#)</span>
           </div>
-          <div class="tech-pill-desc">خوادم خلفية فائقة السرعة، بنية Clean Architecture، أمان عالي، ومطابقة للمعايير المؤسسية.</div>
+          <div class="tech-pill-desc">خوادم خلفية فائقة السرعة، بنية Clean Architecture، أمان عالي، ومطابقة للمعايير المؤسسية مع دعم التوثيق التلقائي لـ Swagger.</div>
         </div>
 
         <!-- SQL Database -->
@@ -695,7 +613,7 @@
             <i class="bi bi-database-fill text-primary"></i>
             <span>SQL Server Database</span>
           </div>
-          <div class="tech-pill-desc">قاعدة بيانات علائقية متقدمة تدعم العمليات المالية المعقدة، الفهارس الذكية، والنسخ الاحتياطي التلقائي.</div>
+          <div class="tech-pill-desc">قاعدة بيانات علائقية متقدمة تدعم العمليات المالية المعقدة، الفهارس الذكية، والنسخ الاحتياطي التلقائي مع حفظ سلامة البيانات.</div>
         </div>
 
         <!-- Angular -->
@@ -704,7 +622,7 @@
             <i class="bi bi-layers-fill text-primary"></i>
             <span>Angular 19 + Tailwind</span>
           </div>
-          <div class="tech-pill-desc">واجهات مستخدم تفاعلية (SPA) سريعة الاستجابة للوحات الثلاث مع دعم كامل لاتجاه RTL العربي وتجاوب الشاشات.</div>
+          <div class="tech-pill-desc">واجهات مستخدم تفاعلية (SPA) سريعة الاستجابة للوحات الثلاث مع دعم كامل لاتجاه RTL العربي وتجاوب كامل مع مختلف الشاشات.</div>
         </div>
 
         <!-- Firebase Notifications -->
@@ -713,61 +631,58 @@
             <i class="bi bi-bell-fill text-primary"></i>
             <span>Firebase (FCM)</span>
           </div>
-          <div class="tech-pill-desc">منظومة الإشعارات السحابية الفورية (Push Notifications) للنزلاء والملاك وإدارة المنصة في الوقت الفعلي.</div>
+          <div class="tech-pill-desc">منظومة الإشعارات السحابية الفورية (Push Notifications) للنزلاء والملاك وإدارة المنصة في الوقت الفعلي مع سجل تنبيهات.</div>
         </div>
       </div>
 
       <!-- محركات الربط والتكامل Integrations -->
-      <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
-        <div style="font-size: 12.5px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
-          <i class="bi bi-diagram-2-fill text-primary"></i> قنوات الربط والتكامل المدمجة (Integrated Services):
+      <div class="section-title" style="margin-top: 18px;">
+        <i class="bi bi-diagram-2-fill"></i>
+        <span>ثالثاً: قنوات الربط والتكامل المدمجة (Integrated Services)</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px;">
+        <div style="background: white; border: 1px solid var(--border); padding: 12px; border-radius: 8px;">
+          <div style="font-size: 12px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">
+            <i class="bi bi-chat-dots-fill text-primary"></i> SMS Integration
+          </div>
+          <div style="font-size: 11px; color: var(--slate-600); line-height: 1.5;">
+            ربط بوابة الرسائل القصيرة لإرسال رموز التحقق (OTP)، تأكيد الحجز، وإشعارات العمليات المالية الفورية.
+          </div>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; font-size: 11px; color: var(--slate-700);">
-          <div style="background: white; border: 1px solid var(--slate-200); padding: 8px; border-radius: 6px;">
-            <strong><i class="bi bi-chat-dots-fill text-primary"></i> SMS Integration:</strong> رسائل OTP لتسجيل الدخول وتأكيد الحجوزات.
+        <div style="background: white; border: 1px solid var(--border); padding: 12px; border-radius: 8px;">
+          <div style="font-size: 12px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">
+            <i class="bi bi-whatsapp text-emerald"></i> WhatsApp API
           </div>
-          <div style="background: white; border: 1px solid var(--slate-200); padding: 8px; border-radius: 6px;">
-            <strong><i class="bi bi-whatsapp text-emerald"></i> WhatsApp API:</strong> إرسال الفاوتشر وتفاصيل الوصول ومحادثات الدعم.
+          <div style="font-size: 11px; color: var(--slate-600); line-height: 1.5;">
+            إرسال الفاوتشر وتفاصيل الوصول وموقع الشاليه التلقائي للنزيل، مع قناة تواصل مباشرة مع كونسيرج المنصة.
           </div>
-          <div style="background: white; border: 1px solid var(--slate-200); padding: 8px; border-radius: 6px;">
-            <strong><i class="bi bi-envelope-at-fill text-purple"></i> Email Integration:</strong> فواتير رسمية وإشعارات العقود عبر SMTP/SendGrid.
+        </div>
+        <div style="background: white; border: 1px solid var(--border); padding: 12px; border-radius: 8px;">
+          <div style="font-size: 12px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">
+            <i class="bi bi-envelope-at-fill text-purple"></i> Email Integration
           </div>
-          <div style="background: white; border: 1px solid var(--slate-200); padding: 8px; border-radius: 6px;">
-            <strong><i class="bi bi-credit-card-fill text-amber"></i> Payment Integration:</strong> بوابات دفع Paymob / Stripe والبطاقات البنكية.
+          <div style="font-size: 11px; color: var(--slate-600); line-height: 1.5;">
+            إرسال الفواتير الرسمية، إشعارات العقود المعتمدة للملاك، وملخص الحجوزات عبر خوادم SMTP / SendGrid.
+          </div>
+        </div>
+        <div style="background: white; border: 1px solid var(--border); padding: 12px; border-radius: 8px;">
+          <div style="font-size: 12px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">
+            <i class="bi bi-credit-card-fill text-amber"></i> Payment Gateways
+          </div>
+          <div style="font-size: 11px; color: var(--slate-600); line-height: 1.5;">
+            ربط بوابات الدفع الإلكتروني (Paymob / Stripe) لدعم فيزا، ماستركارد، ميزة، المحافظ الإلكترونية، وأبل باي.
           </div>
         </div>
       </div>
 
-      <div class="page-footer">
-        <div>منظومة رجب باي الفندقية | Ragab Pay Hospitality Ecosystem</div>
-        <div>صفحة 2 من 3</div>
-      </div>
-    </div>
-
-    <!-- ==================== SHEET 3: خطة المراحل والتكلفة الإجمالية (10,000$) ==================== -->
-    <div class="sheet page-break">
-      <!-- Header with Logo -->
-      <div class="page-header">
-        <div class="brand-group">
-          <img src="assets/logo.png" alt="Ragab Pay Logo" class="brand-logo-img">
-          <div class="brand-text">
-            <h1>خطة المراحل والتكلفة المالية (Roadmap & Financials)</h1>
-            <p>Phase Execution Plan & Exact Itemized Cost Breakdown</p>
-          </div>
-        </div>
-        <div class="meta-badge">
-          <span class="ref">TOTAL: $10,000 USD</span>
-          <div><strong>العملة:</strong> الدولار الأمريكي ($)</div>
-        </div>
-      </div>
-
-      <!-- عزل مرحلة الذكاء الاصطناعي -->
+      <!-- خطة المراحل وعزل الـ AI -->
       <div class="section-title">
         <i class="bi bi-diagram-3-fill"></i>
-        <span>مراحل التنفيذ (تقسيم هندسي متزامن مع مرحلة مستقلة للـ AI)</span>
+        <span>رابعاً: خطة مراحل التنفيذ (Project Roadmap) - مع عزل مرحلة الـ AI</span>
       </div>
 
-      <div class="grid-3" style="margin-bottom: 20px;">
+      <div class="grid-3" style="margin-bottom: 18px;">
         <!-- المرحلة 1 -->
         <div class="card" style="border-top: 4px solid var(--primary);">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
@@ -777,9 +692,12 @@
           <div style="font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">
             البنية الخلفية واللوحات الثلاث
           </div>
-          <p style="font-size: 11px; color: var(--slate-600); line-height: 1.5;">
-            بناء قاعدة بيانات SQL Server، خوادم .NET Core API، لوحة الإدارة العامة مع التحليلات وتوثيق الملاك، لوحة المالك وإدارة الوحدات والأسعار، وبوابة النزيل بتجربة Airbnb.
-          </p>
+          <ul style="font-size: 11px; padding-right: 14px; color: var(--slate-600);">
+            <li>هندسة قاعدة بيانات SQL Server والـ APIs بـ .NET Core.</li>
+            <li>لوحة الإدارة العامة (KYC، مراجعة الوحدات، والعمولات المتغيرة).</li>
+            <li>بوابة المالك (إدارة الشاليهات والتسعير المتدرج والمستحقات).</li>
+            <li>موقع النزيل والعميل بتجربة Airbnb واستكشاف الوحدات.</li>
+          </ul>
         </div>
 
         <!-- المرحلة 2 -->
@@ -791,9 +709,12 @@
           <div style="font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">
             الموبايل والمتاجر ومحركات الربط
           </div>
-          <p style="font-size: 11px; color: var(--slate-600); line-height: 1.5;">
-            تطوير تطبيق الهاتف الموحد، رفعه على Apple App Store و Google Play، ربط بوابات الدفع الإلكتروني، إشعارات Firebase، وتكامل SMS و WhatsApp و Email.
-          </p>
+          <ul style="font-size: 11px; padding-right: 14px; color: var(--slate-600);">
+            <li>تطوير تطبيق الهاتف الموحد لنظامي iOS و Android.</li>
+            <li>رفع واعتماد التطبيق رسمياً على Apple App Store و Google Play.</li>
+            <li>ربط بوابات الدفع الإلكتروني وإشعارات Firebase.</li>
+            <li>تكامل رسائل الـ SMS وتنبيهات WhatsApp و Email.</li>
+          </ul>
         </div>
 
         <!-- المرحلة 3: AI Model المستقل -->
@@ -805,16 +726,50 @@
           <div style="font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">
             نموذج ومحرك الذكاء الاصطناعي (AI)
           </div>
-          <p style="font-size: 11px; color: var(--slate-600); line-height: 1.5;">
-            بناء وتدريب نموذج الذكاء الاصطناعي (Ragab AI) لاقتراح الوحدات باللغة الطبيعية، البحث الدلالي بالمعنى، وتقديم توصيات التسعير المتكيف بعد استقرار النظام التشغيلي.
-          </p>
+          <ul style="font-size: 11px; padding-right: 14px; color: var(--slate-600);">
+            <li>تطوير مستشار الحجز الذكي التفاعلي (Conversational AI).</li>
+            <li>خوارزميات البحث الدلالي بالمعنى والمواصفات.</li>
+            <li>نموذج التوصيات والتسعير التكيفي لتعظيم أرباح الملاك.</li>
+            <li>تدريب النموذج واختبار دقته بعد استقرار التشغيل الفعلي.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ميزة عزل مرحلة الـ AI -->
+      <div style="border: 1px dashed #F59E0B; background: #FFFBEB; border-radius: 8px; padding: 12px 16px; font-size: 11.5px;">
+        <strong style="color: #B45309;"><i class="bi bi-lightbulb-fill"></i> ميزة عزل مرحلة الذكاء الاصطناعي (AI Phase Isolation):</strong>
+        <span style="color: #92400E;">
+          يتيح هذا العزل إطلاق وتشغيل المنظومة الفندقية وحجز الشاليهات وتحصيل الإيرادات في السوق فور انتهاء المرحلتين 1 و 2، ثم تدريب محرك الـ AI في المرحلة 3 اعتماداً على البيانات الحقيقية للوحدات وسلوك النزلاء دون تأخير الإطلاق التشغيلي.
+        </span>
+      </div>
+
+      <div class="page-footer">
+        <div>منظومة رجب باي الفندقية | Ragab Pay Hospitality Ecosystem</div>
+        <div>صفحة 2 من 3</div>
+      </div>
+    </div>
+
+    <!-- ==================== SHEET 3: التكلفة المالية والتسليمات (10,000$) ==================== -->
+    <div class="sheet page-break">
+      <!-- Header with Logo -->
+      <div class="page-header">
+        <div class="brand-group">
+          <img src="assets/logo.png" alt="Ragab Pay Logo" class="brand-logo-img">
+          <div class="brand-text">
+            <h1>التكلفة المالية والتسليمات (Financials & Deliverables)</h1>
+            <p>Itemized Software Development Costs & Final Deliverables</p>
+          </div>
+        </div>
+        <div class="meta-badge">
+          <span class="ref">TOTAL: $10,000 USD</span>
+          <div><strong>العملة:</strong> الدولار الأمريكي ($)</div>
         </div>
       </div>
 
       <!-- جدول التكاليف التفصيلي المحدد لـ 10,000 دولار -->
       <div class="section-title">
         <i class="bi bi-cash-stack"></i>
-        <span>جدول تكاليف البرمجة والتطوير التفصيلية (Itemized Development Costs)</span>
+        <span>خامساً: جدول تكاليف البرمجة والتطوير التفصيلية (Itemized Development Costs)</span>
       </div>
 
       <div class="table-container">
@@ -927,7 +882,7 @@
       </div>
 
       <!-- ملخص التكاليف حسب المراحل الثلاث -->
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; margin-bottom: 20px;">
         <div style="background: var(--slate-50); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
           <div style="font-size: 11px; color: var(--slate-500);">تكلفة المرحلة الأولى (الأساس واللوحات 3)</div>
           <div style="font-family: var(--font-en); font-weight: 800; font-size: 17px; color: var(--primary);">$6,700</div>
@@ -941,7 +896,20 @@
         <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; padding: 12px;">
           <div style="font-size: 11px; color: #B45309;">تكلفة المرحلة الثالثة (الـ AI المستقل)</div>
           <div style="font-family: var(--font-en); font-weight: 800; font-size: 17px; color: var(--amber);">$900</div>
-          <div style="font-size: 10.5px; color: #92400E;">3 أسابيع عمل</div>
+          <div style="font-size: 10.5px; color: var(--slate-600);">3 أسابيع عمل</div>
+        </div>
+      </div>
+
+      <!-- مصفوفة تسليمات المشروع والاعتماد -->
+      <div style="background: var(--slate-50); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px;">
+        <div style="font-size: 12.5px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
+          <i class="bi bi-box-seam-fill text-primary"></i> مخرجات وتسليمات المنظومة البرمجية (Project Deliverables & Handover):
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 11.5px; color: var(--slate-700);">
+          <div><i class="bi bi-check2-circle text-primary"></i> <strong>تسليم كامل الكود المصدري (Full Source Code):</strong> مع حقوق الملكية الفكرية كاملة لإدارة Ragab Pay.</div>
+          <div><i class="bi bi-check2-circle text-primary"></i> <strong>اعتماد ونشر المتاجر:</strong> تجهيز ورفع التطبيق على متجري Apple App Store و Google Play Store.</div>
+          <div><i class="bi bi-check2-circle text-primary"></i> <strong>توثيق الـ APIs وقواعد البيانات:</strong> وثائق Swagger تفاعلية وتوثيق معماري شامل للـ Backend.</div>
+          <div><i class="bi bi-check2-circle text-primary"></i> <strong>جلسات تدريب وتشغيل:</strong> تدريب فريق الإدارة والموظفين على إدارة المنظومة والعمليات اليومية.</div>
         </div>
       </div>
 
